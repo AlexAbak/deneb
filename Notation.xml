@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<notation lang="">
+  <choice name="ЭлементНотации">
+    <variant name="ОпределениеЛексемы" ignore="false"/>
+    <variant name="Комментарий" ignore="false"/>
+    <variant name="Пробел" ignore="true"/>
+  </choice>
+  <choice name="Комментарий">
+    <variant name="ОднострочныйКомментарий" ignore="false"/>
+    <variant name="МногострочныйКомментарий" ignore="false"/>
+  </choice>
+  <choice name="Определение">
+    <variant name="Выбор" ignore="false"/>
+    <variant name="Список" ignore="false"/>
+    <variant name="Повторение" ignore="false"/>
+    <variant name="Лексема" ignore="false"/>
+    <variant name="Символы" ignore="false"/>
+    <variant name="Строка" ignore="false"/>
+    <variant name="РегулярноеВыражение" ignore="false"/>
+    <variant name="Блок" ignore="false"/>
+  </choice>
+  <choice name="ПробельныйСимвол">
+    <variant name="СимволПробела" ignore="false"/>
+    <variant name="СимволТабуляции" ignore="false"/>
+    <variant name="СимволВозвратаКаретки" ignore="false"/>
+    <variant name="СимволПереносаСтроки" ignore="false"/>
+  </choice>
+  <choice name="ОкончаниеОднострочногоКомментария">
+    <variant name="ПереносСтроки" ignore="false"/>
+    <variant name="СимволВозвратаКаретки" ignore="false"/>
+    <variant name="СимволПереносаСтроки" ignore="false"/>
+  </choice>
+  <choice name="Вариант">
+    <variant name="Список" ignore="false"/>
+    <variant name="Повторение" ignore="false"/>
+    <variant name="Лексема" ignore="false"/>
+    <variant name="Символы" ignore="false"/>
+    <variant name="Строка" ignore="false"/>
+    <variant name="РегулярноеВыражение" ignore="false"/>
+    <variant name="Блок" ignore="false"/>
+  </choice>
+  <choice name="Пункт">
+    <variant name="Выбор" ignore="false"/>
+    <variant name="Повторение" ignore="false"/>
+    <variant name="Лексема" ignore="false"/>
+    <variant name="Символы" ignore="false"/>
+    <variant name="Строка" ignore="false"/>
+    <variant name="РегулярноеВыражение" ignore="false"/>
+    <variant name="Блок" ignore="false"/>
+  </choice>
+  <choice name="Элемент">
+    <variant name="Лексема" ignore="false"/>
+    <variant name="Блок" ignore="false"/>
+    <variant name="БлокПовторения" ignore="false"/>
+  </choice>
+  <choice name="Количество">
+    <variant name="ЛюбоеКоличество" ignore="false"/>
+    <variant name="СписокДиапазонов" ignore="false"/>
+    <variant name="БолееОдного" ignore="false"/>
+    <variant name="НеБолееОдного" ignore="false"/>
+    <variant name="Число" ignore="false"/>
+    <variant name="Диапазон" ignore="false"/>
+    <variant name="ОграничениеСверху" ignore="false"/>
+    <variant name="ОграничениеСнизу" ignore="false"/>
+  </choice>
+  <choice name="Литерал">
+    <variant name="КодСимвола" ignore="false"/>
+    <variant name="ЛюбыеСимволы" ignore="false"/>
+  </choice>
+  <choice name="РазделительДиапазона">
+    <variant name="ВертикальноеДвоеточие" ignore="false"/>
+    <variant name="ГоризонтальноеДвоеточие" ignore="false"/>
+  </choice>
+  <choice name="НеБолееОдного">
+    <variant name="СимволОграниченияСверху" ignore="false"/>
+    <variant name="ДополнительныйСимволОграниченияСверху" ignore="false"/>
+  </choice>
+  <choice name="ОграничениеДиапазона">
+    <variant name="Число" ignore="false"/>
+    <variant name="Диапазон" ignore="false"/>
+    <variant name="ОграничениеСверху" ignore="false"/>
+    <variant name="ОграничениеСнизу" ignore="false"/>
+  </choice>
+</notation>

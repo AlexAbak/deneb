@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<notation lang="en">
+  <choice name="NotationItem">
+    <variant name="DefinitionLexeme" ignore="false"/>
+    <variant name="Comment" ignore="false"/>
+    <variant name="Space" ignore="true"/>
+  </choice>
+  <choice name="Comment">
+    <variant name="SingleLineComment" ignore="false"/>
+    <variant name="MultiLineComment" ignore="false"/>
+  </choice>
+  <choice name="Definition">
+    <variant name="Choice" ignore="false"/>
+    <variant name="List" ignore="false"/>
+    <variant name="Repeat" ignore="false"/>
+    <variant name="Lexeme" ignore="false"/>
+    <variant name="Characters" ignore="false"/>
+    <variant name="String" ignore="false"/>
+    <variant name="RegularExpression" ignore="false"/>
+    <variant name="Block" ignore="false"/>
+  </choice>
+  <choice name="SpaceCharacters">
+    <variant name="SpaceCharacter" ignore="false"/>
+    <variant name="TabCharacter" ignore="false"/>
+    <variant name="CarriageReturnCharacter" ignore="false"/>
+    <variant name="LineFoldingCharacter" ignore="false"/>
+  </choice>
+  <choice name="SingleLineCommentEnd">
+    <variant name="NewLine" ignore="false"/>
+    <variant name="CarriageReturnCharacter" ignore="false"/>
+    <variant name="LineFoldingCharacter" ignore="false"/>
+  </choice>
+  <choice name="Variant">
+    <variant name="List" ignore="false"/>
+    <variant name="Repeat" ignore="false"/>
+    <variant name="Lexeme" ignore="false"/>
+    <variant name="Characters" ignore="false"/>
+    <variant name="String" ignore="false"/>
+    <variant name="RegularExpression" ignore="false"/>
+    <variant name="Block" ignore="false"/>
+  </choice>
+  <choice name="Item">
+    <variant name="Choice" ignore="false"/>
+    <variant name="Repeat" ignore="false"/>
+    <variant name="Lexeme" ignore="false"/>
+    <variant name="Characters" ignore="false"/>
+    <variant name="String" ignore="false"/>
+    <variant name="RegularExpression" ignore="false"/>
+    <variant name="Block" ignore="false"/>
+  </choice>
+  <choice name="Cvomponent">
+    <variant name="Lexeme" ignore="false"/>
+    <variant name="Block" ignore="false"/>
+    <variant name="RepeatBlock" ignore="false"/>
+  </choice>
+  <choice name="Count">
+    <variant name="AnyQuantity" ignore="false"/>
+    <variant name="RangeList" ignore="false"/>
+    <variant name="MoreOne" ignore="false"/>
+    <variant name="NoMoreOne" ignore="false"/>
+    <variant name="Number" ignore="false"/>
+    <variant name="Range" ignore="false"/>
+    <variant name="UpRestriction" ignore="false"/>
+    <variant name="DownRestriction" ignore="false"/>
+  </choice>
+  <choice name="Literal">
+    <variant name="CharacterCode" ignore="false"/>
+    <variant name="AllCharacters" ignore="false"/>
+  </choice>
+  <choice name="RangeDelimiter">
+    <variant name="VerticalColon" ignore="false"/>
+    <variant name="HorizontalColon" ignore="false"/>
+  </choice>
+  <choice name="NoMoreOne">
+    <variant name="DownRestrictionCharacter" ignore="false"/>
+    <variant name="AdditionalDownRestrictionCharacter" ignore="false"/>
+  </choice>
+  <choice name="RangeLimit">
+    <variant name="Number" ignore="false"/>
+    <variant name="Range" ignore="false"/>
+    <variant name="UpRestriction" ignore="false"/>
+    <variant name="DownRestriction" ignore="false"/>
+  </choice>
+</notation>

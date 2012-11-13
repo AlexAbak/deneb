@@ -1,248 +1,292 @@
-#: Notation.nuss: 11,1 
-msgid "Словарь"
-msgstr "Dictionary"
+#: Notation.nuss: 9,1 
+msgid "Нотация"
+msgstr "Notation"
 
-#: Notation.nuss: 11,13 18,1 
+#: Notation.nuss: 9,12 13,1 
+msgid "ЭлементНотации"
+msgstr "NotationItem"
+
+#: Notation.nuss: 13,19 20,1 
 msgid "ОпределениеЛексемы"
 msgstr "DefinitionLexeme"
 
-#: Notation.nuss: 11,34 21,1 
+#: Notation.nuss: 13,40 23,1 
 msgid "Комментарий"
 msgstr "Comment"
 
-#: Notation.nuss: 11,49 18,32 18,59 18,79 24,1 61,22 61,49 65,21 67,24 67,42 69,54 69,84 148,81 148,112 150,20 150,50 152,29 154,28 
+#: Notation.nuss: 13,55 20,32 20,59 20,79 26,1 60,22 60,49 64,21 66,24 66,46 68,54 68,84 178,46 178,77 182,20 182,50 184,29 186,28 
 msgid "Пробел"
 msgstr "Space"
 
-#: Notation.nuss: 18,23 30,1 35,46 93,34 98,31 102,12 
+#: Notation.nuss: 20,23 32,1 37,46 110,34 115,31 119,12 
 msgid "Лексема"
 msgstr "Lexeme"
 
-#: Notation.nuss: 18,40 32,1 
+#: Notation.nuss: 20,40 34,1 
 msgid "НачалоОпределения"
 msgstr "DefinitionBegin"
 
-#: Notation.nuss: 18,66 35,1 75,22 136,32 136,50 
+#: Notation.nuss: 20,66 37,1 74,22 163,32 163,50 
 msgid "Определение"
 msgstr "Definition"
 
-#: Notation.nuss: 18,87 37,1 
+#: Notation.nuss: 20,87 39,1 
 msgid "ОкончаниеОпределения"
 msgstr "DefinitionEnd"
 
-#: Notation.nuss: 21,16 41,1 
+#: Notation.nuss: 23,16 43,1 
 msgid "ОднострочныйКомментарий"
 msgstr "SingleLineComment"
 
-#: Notation.nuss: 21,42 43,1 
+#: Notation.nuss: 23,42 45,1 
 msgid "МногострочныйКомментарий"
 msgstr "MultiLineComment"
 
-#: Notation.nuss: 24,12 46,1 
-msgid "СимволПробела"
-msgstr "SpaceCharacter"
+#: Notation.nuss: 26,11 48,1 
+msgid "ПробельныйСимвол"
+msgstr "SpaceCharacters"
 
-#: Notation.nuss: 24,28 47,1 
-msgid "СимволТабуляции"
-msgstr "TabCharacter"
+#: Notation.nuss: 32,12 52,1 
+msgid "МеткаИсключеннойЛексемы"
+msgstr "IgnoreLexemeTag"
 
-#: Notation.nuss: 24,46 48,1 83,38 83,104 83,128 
-msgid "СимволВозвратаКаретки"
-msgstr "CarriageReturnCharacter"
+#: Notation.nuss: 32,36 54,1 
+msgid "ИмяЛексемы"
+msgstr "LexemeName"
 
-#: Notation.nuss: 24,70 49,1 83,60 83,83 83,152 
-msgid "СимволПереносаСтроки"
-msgstr "LineFoldingCharacter"
-
-#: Notation.nuss: 30,12 53,1 
-msgid "ИсключеннаяЛексема"
-msgstr "IgnoreLexeme"
-
-#: Notation.nuss: 30,32 55,1 
-msgid "СимволЛексемы"
-msgstr "LexemeCharacter"
-
-#: Notation.nuss: 35,16 61,1 98,10 
+#: Notation.nuss: 37,16 60,1 115,10 
 msgid "Выбор"
 msgstr "Choice"
 
-#: Notation.nuss: 35,24 65,1 93,12 
+#: Notation.nuss: 37,24 64,1 110,12 
 msgid "Список"
 msgstr "List"
 
-#: Notation.nuss: 35,33 67,1 93,21 98,18 
+#: Notation.nuss: 37,33 66,1 110,21 115,18 
 msgid "Повторение"
 msgstr "Repeat"
 
-#: Notation.nuss: 35,56 69,1 93,44 98,41 
+#: Notation.nuss: 37,56 68,1 110,44 115,41 
 msgid "Символы"
 msgstr "Characters"
 
-#: Notation.nuss: 35,66 71,1 93,54 98,51 
+#: Notation.nuss: 37,66 70,1 110,54 115,51 
 msgid "Строка"
 msgstr "String"
 
-#: Notation.nuss: 35,75 73,1 93,63 98,60 
+#: Notation.nuss: 37,75 72,1 110,63 115,60 
 msgid "РегулярноеВыражение"
 msgstr "RegularExpression"
 
-#: Notation.nuss: 35,97 75,1 93,85 98,82 102,22 
+#: Notation.nuss: 37,97 74,1 110,85 115,82 119,22 
 msgid "Блок"
 msgstr "Block"
 
-#: Notation.nuss: 41,29 79,1 
+#: Notation.nuss: 43,29 78,1 
 msgid "НачалоОднострочногоКомментария"
 msgstr "SingleLineCommentBegin"
 
-#: Notation.nuss: 41,60 43,62 81,1 112,25 
+#: Notation.nuss: 43,60 45,62 80,1 129,25 
 msgid "ЛюбыеСимволы"
 msgstr "AllCharacters"
 
-#: Notation.nuss: 41,76 83,1 
+#: Notation.nuss: 43,74 82,1 
 msgid "ОкончаниеОднострочногоКомментария"
 msgstr "SingleLineCommentEnd"
 
-#: Notation.nuss: 43,30 87,1 
+#: Notation.nuss: 45,30 86,1 
 msgid "НачалоМногострочногоКомментария"
 msgstr "MultiLineCommentBegin"
 
-#: Notation.nuss: 43,78 89,1 
+#: Notation.nuss: 45,76 88,1 
 msgid "ОкончаниеМногострочногоКомментария"
 msgstr "MultiLineCommentEnd"
 
-#: Notation.nuss: 61,11 93,1 
+#: Notation.nuss: 48,21 92,1 
+msgid "СимволПробела"
+msgstr "SpaceCharacter"
+
+#: Notation.nuss: 48,37 94,1 
+msgid "СимволТабуляции"
+msgstr "TabCharacter"
+
+#: Notation.nuss: 48,55 82,54 96,1 159,18 
+msgid "СимволВозвратаКаретки"
+msgstr "CarriageReturnCharacter"
+
+#: Notation.nuss: 48,79 82,78 98,1 159,40 
+msgid "СимволПереносаСтроки"
+msgstr "LineFoldingCharacter"
+
+#: Notation.nuss: 52,28 102,1 
+msgid "ИсключеннаяЛексема"
+msgstr "IgnoreLexeme"
+
+#: Notation.nuss: 54,15 106,1 
+msgid "СимволЛексемы"
+msgstr "LexemeCharacter"
+
+#: Notation.nuss: 60,11 110,1 
 msgid "Вариант"
 msgstr "Variant"
 
-#: Notation.nuss: 61,30 95,1 
+#: Notation.nuss: 60,30 112,1 
 msgid "РазделительВыбора"
 msgstr "ChoiceDelimiter"
 
-#: Notation.nuss: 65,12 98,1 
+#: Notation.nuss: 64,12 115,1 
 msgid "Пункт"
 msgstr "Item"
 
-#: Notation.nuss: 67,15 102,1 
+#: Notation.nuss: 66,15 119,1 
 msgid "Элемент"
 msgstr "Cvomponent"
 
-#: Notation.nuss: 67,31 104,1 
-msgid "Щедрость"
-msgstr "Generosity"
+#: Notation.nuss: 66,31 121,1 
+msgid "МеткаЩедрости"
+msgstr "GenerosityTag"
 
-#: Notation.nuss: 67,49 106,1 
+#: Notation.nuss: 66,53 123,1 
 msgid "Количество"
 msgstr "Count"
 
-#: Notation.nuss: 69,13 69,92 110,1 
+#: Notation.nuss: 68,13 68,92 127,1 
 msgid "НачалоСимвола"
 msgstr "CharacterBegin"
 
-#: Notation.nuss: 69,27 69,106 71,25 73,65 112,1 
+#: Notation.nuss: 68,27 68,106 129,1 139,13 
 msgid "Литерал"
 msgstr "Literal"
 
-#: Notation.nuss: 69,36 69,115 114,1 
+#: Notation.nuss: 68,36 68,115 131,1 
 msgid "ОкончаниеСимвола"
 msgstr "CharacterEnd"
 
-#: Notation.nuss: 69,62 116,1 150,28 
+#: Notation.nuss: 68,62 133,1 182,28 
 msgid "РазделительДиапазона"
 msgstr "RangeDelimiter"
 
-#: Notation.nuss: 71,12 73,52 120,1 
+#: Notation.nuss: 70,12 72,52 137,1 
 msgid "НачалоСтроки"
 msgstr "StringBegin"
 
-#: Notation.nuss: 71,35 73,75 122,1 
+#: Notation.nuss: 70,25 72,65 139,1 
+msgid "Литералы"
+msgstr "Literals"
+
+#: Notation.nuss: 70,35 72,75 141,1 
 msgid "ОкончаниеСтроки"
 msgstr "StringEnd"
 
-#: Notation.nuss: 73,25 126,1 
+#: Notation.nuss: 72,25 145,1 
 msgid "МеткаРегулярногоВыражения"
 msgstr "RegularExpressionTag"
 
-#: Notation.nuss: 75,10 130,1 136,20 
+#: Notation.nuss: 74,10 149,1 163,20 
 msgid "НачалоБлока"
 msgstr "BlockBegin"
 
-#: Notation.nuss: 75,35 132,1 136,63 
+#: Notation.nuss: 74,35 151,1 163,63 
 msgid "ОкончаниеБлока"
 msgstr "BlockEnd"
 
-#: Notation.nuss: 102,29 136,1 
+#: Notation.nuss: 80,17 155,1 
+msgid "ЛюбойСимвол"
+msgstr "AllCharacter"
+
+#: Notation.nuss: 82,38 159,1 
+msgid "ПереносСтроки"
+msgstr "NewLine"
+
+#: Notation.nuss: 119,29 163,1 
 msgid "БлокПовторения"
 msgstr "RepeatBlock"
 
-#: Notation.nuss: 106,15 140,1 
+#: Notation.nuss: 121,18 166,1 
+msgid "Щедрость"
+msgstr "Generosity"
+
+#: Notation.nuss: 123,15 170,1 
 msgid "ЛюбоеКоличество"
 msgstr "AnyQuantity"
 
-#: Notation.nuss: 106,33 148,1 
+#: Notation.nuss: 123,33 178,1 
 msgid "СписокДиапазонов"
 msgstr "RangeList"
 
-#: Notation.nuss: 106,52 142,1 
+#: Notation.nuss: 123,52 172,1 
 msgid "БолееОдного"
 msgstr "MoreOne"
 
-#: Notation.nuss: 106,66 144,1 
+#: Notation.nuss: 123,66 174,1 
 msgid "НеБолееОдного"
 msgstr "NoMoreOne"
 
-#: Notation.nuss: 106,82 146,1 148,22 150,13 150,57 152,22 154,21 162,34 
+#: Notation.nuss: 123,82 176,1 180,25 182,13 182,57 184,22 186,21 194,34 
 msgid "Число"
 msgstr "Number"
 
-#: Notation.nuss: 106,90 148,30 150,1 
+#: Notation.nuss: 123,90 180,33 182,1 
 msgid "Диапазон"
 msgstr "Range"
 
-#: Notation.nuss: 106,101 148,41 152,1 
+#: Notation.nuss: 123,101 180,44 184,1 
 msgid "ОграничениеСверху"
 msgstr "UpRestriction"
 
-#: Notation.nuss: 106,121 148,61 154,1 
+#: Notation.nuss: 123,121 180,64 186,1 
 msgid "ОграничениеСнизу"
 msgstr "DownRestriction"
 
-#: Notation.nuss: 110,18 114,21 120,16 122,19 158,1 
+#: Notation.nuss: 127,18 131,21 137,17 141,20 190,1 
 msgid "Кавычка"
 msgstr "Quote"
 
-#: Notation.nuss: 112,12 162,1 
+#: Notation.nuss: 129,12 194,1 
 msgid "КодСимвола"
 msgstr "CharacterCode"
 
-#: Notation.nuss: 136,45 166,1 
+#: Notation.nuss: 133,25 198,1 
+msgid "ВертикальноеДвоеточие"
+msgstr "VerticalColon"
+
+#: Notation.nuss: 133,49 200,1 
+msgid "ГоризонтальноеДвоеточие"
+msgstr "HorizontalColon"
+
+#: Notation.nuss: 163,45 204,1 
 msgid "Клей"
 msgstr "Glue"
 
-#: Notation.nuss: 142,16 154,35 170,1 
+#: Notation.nuss: 172,16 186,35 208,1 
 msgid "СимволОграниченияСнизу"
 msgstr "UpRestrictionCharacter"
 
-#: Notation.nuss: 144,18 152,36 174,1 
+#: Notation.nuss: 174,18 184,36 212,1 
 msgid "СимволОграниченияСверху"
 msgstr "DownRestrictionCharacter"
 
-#: Notation.nuss: 144,44 176,1 
+#: Notation.nuss: 174,44 214,1 
 msgid "ДополнительныйСимволОграниченияСверху"
 msgstr "AdditionalDownRestrictionCharacter"
 
-#: Notation.nuss: 146,10 180,1 
+#: Notation.nuss: 176,10 218,1 
 msgid "Цифра"
 msgstr "Figure"
 
-#: Notation.nuss: 148,89 183,1 
+#: Notation.nuss: 178,22 180,1 
+msgid "ОграничениеДиапазона"
+msgstr "RangeLimit"
+
+#: Notation.nuss: 178,54 221,1 
 msgid "РазделительДиапазонов"
 msgstr "RangeDelimiter"
 
-#: Notation.nuss: 162,16 187,1 
+#: Notation.nuss: 194,16 225,1 
 msgid "НачалоКодаСимвола"
 msgstr "CharacterCodeBegin"
 
-#: Notation.nuss: 162,41 189,1 
+#: Notation.nuss: 194,41 227,1 
 msgid "ОкончаниеКодаСимвола"
 msgstr "CharacterCodeEnd"
 
