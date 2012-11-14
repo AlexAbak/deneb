@@ -14,11 +14,11 @@ msgstr ""
 msgid "Комментарий"
 msgstr ""
 
-#: Notation.nuss: 13,55 20,32 20,59 20,79 26,1 60,22 60,49 64,21 66,24 66,46 68,54 68,84 178,46 178,77 182,20 182,50 184,29 186,28 
+#: Notation.nuss: 13,55 20,32 20,59 20,79 26,1 64,21 66,24 66,46 68,54 68,84 112,28 112,53 183,20 183,50 185,29 187,28 222,32 222,61 
 msgid "Пробел"
 msgstr ""
 
-#: Notation.nuss: 20,23 32,1 37,46 110,34 115,31 119,12 
+#: Notation.nuss: 20,23 32,1 37,46 110,34 116,31 120,12 
 msgid "Лексема"
 msgstr ""
 
@@ -26,7 +26,7 @@ msgstr ""
 msgid "НачалоОпределения"
 msgstr ""
 
-#: Notation.nuss: 20,66 37,1 74,22 163,32 163,50 
+#: Notation.nuss: 20,66 37,1 74,22 164,32 164,50 
 msgid "Определение"
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr ""
 msgid "ИмяЛексемы"
 msgstr ""
 
-#: Notation.nuss: 37,16 60,1 115,10 
+#: Notation.nuss: 37,16 60,1 116,10 
 msgid "Выбор"
 msgstr ""
 
@@ -62,23 +62,23 @@ msgstr ""
 msgid "Список"
 msgstr ""
 
-#: Notation.nuss: 37,33 66,1 110,21 115,18 
+#: Notation.nuss: 37,33 66,1 110,21 116,18 
 msgid "Повторение"
 msgstr ""
 
-#: Notation.nuss: 37,56 68,1 110,44 115,41 
+#: Notation.nuss: 37,56 68,1 110,44 116,41 
 msgid "Символы"
 msgstr ""
 
-#: Notation.nuss: 37,66 70,1 110,54 115,51 
+#: Notation.nuss: 37,66 70,1 110,54 116,51 
 msgid "Строка"
 msgstr ""
 
-#: Notation.nuss: 37,75 72,1 110,63 115,60 
+#: Notation.nuss: 37,75 72,1 110,63 116,60 
 msgid "РегулярноеВыражение"
 msgstr ""
 
-#: Notation.nuss: 37,97 74,1 110,85 115,82 119,22 
+#: Notation.nuss: 37,97 74,1 110,85 116,82 120,22 
 msgid "Блок"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgstr ""
 msgid "НачалоОднострочногоКомментария"
 msgstr ""
 
-#: Notation.nuss: 43,60 45,62 80,1 129,25 
+#: Notation.nuss: 43,60 45,62 80,1 130,25 
 msgid "ЛюбыеСимволы"
 msgstr ""
 
@@ -110,11 +110,11 @@ msgstr ""
 msgid "СимволТабуляции"
 msgstr ""
 
-#: Notation.nuss: 48,55 82,54 96,1 159,18 
+#: Notation.nuss: 48,55 82,54 96,1 160,18 
 msgid "СимволВозвратаКаретки"
 msgstr ""
 
-#: Notation.nuss: 48,79 82,78 98,1 159,40 
+#: Notation.nuss: 48,79 82,78 98,1 160,40 
 msgid "СимволПереносаСтроки"
 msgstr ""
 
@@ -130,163 +130,171 @@ msgstr ""
 msgid "Вариант"
 msgstr ""
 
-#: Notation.nuss: 60,30 112,1 
-msgid "РазделительВыбора"
+#: Notation.nuss: 60,22 112,1 
+msgid "ПолныйРазделительВыбора"
 msgstr ""
 
-#: Notation.nuss: 64,12 115,1 
+#: Notation.nuss: 64,12 116,1 
 msgid "Пункт"
 msgstr ""
 
-#: Notation.nuss: 66,15 119,1 
+#: Notation.nuss: 66,15 120,1 
 msgid "Элемент"
 msgstr ""
 
-#: Notation.nuss: 66,31 121,1 
+#: Notation.nuss: 66,31 122,1 
 msgid "МеткаЩедрости"
 msgstr ""
 
-#: Notation.nuss: 66,53 123,1 
+#: Notation.nuss: 66,53 124,1 
 msgid "Количество"
 msgstr ""
 
-#: Notation.nuss: 68,13 68,92 127,1 
+#: Notation.nuss: 68,13 68,92 128,1 
 msgid "НачалоСимвола"
 msgstr ""
 
-#: Notation.nuss: 68,27 68,106 129,1 139,13 
+#: Notation.nuss: 68,27 68,106 130,1 140,13 
 msgid "Литерал"
 msgstr ""
 
-#: Notation.nuss: 68,36 68,115 131,1 
+#: Notation.nuss: 68,36 68,115 132,1 
 msgid "ОкончаниеСимвола"
 msgstr ""
 
-#: Notation.nuss: 68,62 133,1 182,28 
+#: Notation.nuss: 68,62 134,1 183,28 
 msgid "РазделительДиапазона"
 msgstr ""
 
-#: Notation.nuss: 70,12 72,52 137,1 
+#: Notation.nuss: 70,12 72,52 138,1 
 msgid "НачалоСтроки"
 msgstr ""
 
-#: Notation.nuss: 70,25 72,65 139,1 
+#: Notation.nuss: 70,25 72,65 140,1 
 msgid "Литералы"
 msgstr ""
 
-#: Notation.nuss: 70,35 72,75 141,1 
+#: Notation.nuss: 70,35 72,75 142,1 
 msgid "ОкончаниеСтроки"
 msgstr ""
 
-#: Notation.nuss: 72,25 145,1 
+#: Notation.nuss: 72,25 146,1 
 msgid "МеткаРегулярногоВыражения"
 msgstr ""
 
-#: Notation.nuss: 74,10 149,1 163,20 
+#: Notation.nuss: 74,10 150,1 164,20 
 msgid "НачалоБлока"
 msgstr ""
 
-#: Notation.nuss: 74,35 151,1 163,63 
+#: Notation.nuss: 74,35 152,1 164,63 
 msgid "ОкончаниеБлока"
 msgstr ""
 
-#: Notation.nuss: 80,17 155,1 
+#: Notation.nuss: 80,17 156,1 
 msgid "ЛюбойСимвол"
 msgstr ""
 
-#: Notation.nuss: 82,38 159,1 
+#: Notation.nuss: 82,38 160,1 
 msgid "ПереносСтроки"
 msgstr ""
 
-#: Notation.nuss: 119,29 163,1 
+#: Notation.nuss: 112,35 113,1 
+msgid "РазделительВыбора"
+msgstr ""
+
+#: Notation.nuss: 120,29 164,1 
 msgid "БлокПовторения"
 msgstr ""
 
-#: Notation.nuss: 121,18 166,1 
+#: Notation.nuss: 122,18 167,1 
 msgid "Щедрость"
 msgstr ""
 
-#: Notation.nuss: 123,15 170,1 
+#: Notation.nuss: 124,15 171,1 
 msgid "ЛюбоеКоличество"
 msgstr ""
 
-#: Notation.nuss: 123,33 178,1 
+#: Notation.nuss: 124,33 179,1 
 msgid "СписокДиапазонов"
 msgstr ""
 
-#: Notation.nuss: 123,52 172,1 
+#: Notation.nuss: 124,52 173,1 
 msgid "БолееОдного"
 msgstr ""
 
-#: Notation.nuss: 123,66 174,1 
+#: Notation.nuss: 124,66 175,1 
 msgid "НеБолееОдного"
 msgstr ""
 
-#: Notation.nuss: 123,82 176,1 180,25 182,13 182,57 184,22 186,21 194,34 
+#: Notation.nuss: 124,82 177,1 181,25 183,13 183,57 185,22 187,21 195,34 
 msgid "Число"
 msgstr ""
 
-#: Notation.nuss: 123,90 180,33 182,1 
+#: Notation.nuss: 124,90 181,33 183,1 
 msgid "Диапазон"
 msgstr ""
 
-#: Notation.nuss: 123,101 180,44 184,1 
+#: Notation.nuss: 124,101 181,44 185,1 
 msgid "ОграничениеСверху"
 msgstr ""
 
-#: Notation.nuss: 123,121 180,64 186,1 
+#: Notation.nuss: 124,121 181,64 187,1 
 msgid "ОграничениеСнизу"
 msgstr ""
 
-#: Notation.nuss: 127,18 131,21 137,17 141,20 190,1 
+#: Notation.nuss: 128,18 132,21 138,17 142,20 191,1 
 msgid "Кавычка"
 msgstr ""
 
-#: Notation.nuss: 129,12 194,1 
+#: Notation.nuss: 130,12 195,1 
 msgid "КодСимвола"
 msgstr ""
 
-#: Notation.nuss: 133,25 198,1 
+#: Notation.nuss: 134,25 199,1 
 msgid "ВертикальноеДвоеточие"
 msgstr ""
 
-#: Notation.nuss: 133,49 200,1 
+#: Notation.nuss: 134,49 201,1 
 msgid "ГоризонтальноеДвоеточие"
 msgstr ""
 
-#: Notation.nuss: 163,45 204,1 
+#: Notation.nuss: 164,45 205,1 
 msgid "Клей"
 msgstr ""
 
-#: Notation.nuss: 172,16 186,35 208,1 
+#: Notation.nuss: 173,16 187,35 209,1 
 msgid "СимволОграниченияСнизу"
 msgstr ""
 
-#: Notation.nuss: 174,18 184,36 212,1 
+#: Notation.nuss: 175,18 185,36 213,1 
 msgid "СимволОграниченияСверху"
 msgstr ""
 
-#: Notation.nuss: 174,44 214,1 
+#: Notation.nuss: 175,44 215,1 
 msgid "ДополнительныйСимволОграниченияСверху"
 msgstr ""
 
-#: Notation.nuss: 176,10 218,1 
+#: Notation.nuss: 177,10 219,1 
 msgid "Цифра"
 msgstr ""
 
-#: Notation.nuss: 178,22 180,1 
+#: Notation.nuss: 179,22 181,1 
 msgid "ОграничениеДиапазона"
 msgstr ""
 
-#: Notation.nuss: 178,54 221,1 
-msgid "РазделительДиапазонов"
+#: Notation.nuss: 179,46 222,1 
+msgid "ПолныйРазделительДиапазонов"
 msgstr ""
 
-#: Notation.nuss: 194,16 225,1 
+#: Notation.nuss: 195,16 227,1 
 msgid "НачалоКодаСимвола"
 msgstr ""
 
-#: Notation.nuss: 194,41 227,1 
+#: Notation.nuss: 195,41 229,1 
 msgid "ОкончаниеКодаСимвола"
+msgstr ""
+
+#: Notation.nuss: 222,39 223,1 
+msgid "РазделительДиапазонов"
 msgstr ""
 

@@ -57,7 +57,7 @@ LexemeName := LexemeCharacter+;
 // Выбор означает в качестве содержимого один из перечисленных вариантов.
 // Варианты разделены символом "/".
 // Выбор содержит не менее двух вариантов.
-Choice := (Variant _ %Space %ChoiceDelimiter %Space)2+;
+Choice := (Variant _ %FullChoiceDelimiter)2+;
 // Список означает в качестве содержимого расположенные по порядку пункты.
 // Пункты могут быть разделены пробелом.
 // Список содержит не менее двух пунктов.
@@ -91,11 +91,11 @@ MultiLineCommentEnd := "*/";
 // Символ пробела
 SpaceCharacter := " ";
 // Символ табуляции
-TabCharacter := "№9";
+TabCharacter := "№9;";
 // Символ возврата каретки
-CarriageReturnCharacter := "№13";
+CarriageReturnCharacter := "№13;";
 // Символ переноса строки
-LineFoldingCharacter := "№10";
+LineFoldingCharacter := "№10;";
 
 // == МеткаИсключеннойЛексемы ==
 // Символом исключенной лексемы является "%"
@@ -109,6 +109,7 @@ LexemeCharacter := "№1024;":"№1319;";
 // Вариант
 Variant := List / Repeat / Lexeme / Characters / String / RegularExpression / Block;
 // Разделитель выбора
+FullChoiceDelimiter := Space ChoiceDelimiter Space;
 ChoiceDelimiter := "/";
 
 // == Список ==
@@ -152,7 +153,7 @@ BlockEnd := ")";
 
 // == Любые символы ==
 // Любой символ
-AllCharacter := "№0":"№65535";
+AllCharacter := "№32;":"№1114109;";
 
 // == ОкончаниеОднострочногоКомментария ==
 // Перенос строки
@@ -175,7 +176,7 @@ NoMoreOne := DownRestrictionCharacter / AdditionalDownRestrictionCharacter;
 // Число
 Number := Figure+;
 // Список диапазонов
-RangeList := (RangeLimit _ %Space %RangeDelimiter %Space)2+;
+RangeList := (RangeLimit _ %FullRangeDelimiter)2+;
 // Ограничение диапазона
 RangeLimit := Number / Range / UpRestriction / DownRestriction;
 // Диапазон
@@ -218,6 +219,7 @@ AdditionalDownRestrictionCharacter := "?";
 Figure := "0":"9";
 
 // == Список диапазонов ==
+FullRangeDelimiter := Space RangeDelimiter Space;
 RangeDelimiter := ",";
 
 // == Код символа ==
