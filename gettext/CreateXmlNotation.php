@@ -88,7 +88,7 @@
     $ranges = $dom->createElement('ranges');
     $repeat->appendChild($ranges);
     $dfn = substr($dfn, 1, -3);
-    $range = $dom->createElement('range', $dfn);
+    $range = $dom->createElement('range');
     $range->setAttribute('min', 2);
     $range->setAttribute('max', 0);
     $ranges->appendChild($range);

@@ -117,7 +117,7 @@
   <definition lexeme="Choice">
     <repeat generosity="false">
       <ranges>
-        <range min="2" max="0">Variant _ %FullChoiceDelimiter</range>
+        <range min="2" max="0"/>
       </ranges>
       <body>
         <lexeme name="Variant" ignore="false"/>
@@ -130,7 +130,7 @@
   <definition lexeme="List">
     <repeat generosity="false">
       <ranges>
-        <range min="2" max="0">Item _ %Space</range>
+        <range min="2" max="0"/>
       </ranges>
       <body>
         <lexeme name="Item" ignore="false"/>
@@ -382,7 +382,7 @@
   <definition lexeme="RangeList">
     <repeat generosity="false">
       <ranges>
-        <range min="2" max="0">FullRangeDelimiter _ %RangeLimit</range>
+        <range min="2" max="0"/>
       </ranges>
       <body>
         <lexeme name="FullRangeDelimiter" ignore="false"/>

@@ -117,7 +117,7 @@
   <definition lexeme="Выбор">
     <repeat generosity="false">
       <ranges>
-        <range min="2" max="0">Вариант _ %ПолныйРазделительВыбора</range>
+        <range min="2" max="0"/>
       </ranges>
       <body>
         <lexeme name="Вариант" ignore="false"/>
@@ -130,7 +130,7 @@
   <definition lexeme="Список">
     <repeat generosity="false">
       <ranges>
-        <range min="2" max="0">Пункт _ %Пробел</range>
+        <range min="2" max="0"/>
       </ranges>
       <body>
         <lexeme name="Пункт" ignore="false"/>
@@ -382,7 +382,7 @@
   <definition lexeme="СписокДиапазонов">
     <repeat generosity="false">
       <ranges>
-        <range min="2" max="0">ПолныйРазделительДиапазонов _ %ОграничениеДиапазона</range>
+        <range min="2" max="0"/>
       </ranges>
       <body>
         <lexeme name="ПолныйРазделительДиапазонов" ignore="false"/>
