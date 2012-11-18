@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<notation lang="en">
+<notation lang="">
   <definition lexeme="Notation">
     <repeat generosity="false">
       <ranges>
@@ -382,13 +382,13 @@
   <definition lexeme="RangeList">
     <repeat generosity="false">
       <ranges>
-        <range min="2" max="0">RangeLimit _ %FullRangeDelimiter</range>
+        <range min="2" max="0">FullRangeDelimiter _ %RangeLimit</range>
       </ranges>
       <body>
-        <lexeme name="RangeLimit" ignore="false"/>
+        <lexeme name="FullRangeDelimiter" ignore="false"/>
       </body>
       <glue>
-        <lexeme name="FullRangeDelimiter" ignore="true"/>
+        <lexeme name="RangeLimit" ignore="true"/>
       </glue>
     </repeat>
   </definition>

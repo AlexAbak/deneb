@@ -176,7 +176,7 @@ NoMoreOne := DownRestrictionCharacter / AdditionalDownRestrictionCharacter;
 // Число
 Number := Figure+;
 // Список диапазонов
-RangeList := (RangeLimit _ %FullRangeDelimiter)2+;
+RangeList := (FullRangeDelimiter _ %RangeLimit)2+;
 // Ограничение диапазона
 RangeLimit := Number / Range / UpRestriction / DownRestriction;
 // Диапазон

@@ -45,7 +45,7 @@
 
   $notation = file('../Notation.nuss');
   foreach (glob('translations/*.po') as $filename) {
-    $lang = substr($filename, -5, 2);
+    $lang = substr($filename, strrpos($filename, '.', -5) + 1, strlen($filename) - strrpos($filename, '.'));
     $po = load_po($filename);
     translate_notation($notation, $lang, $po);
   }
