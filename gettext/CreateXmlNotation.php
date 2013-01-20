@@ -1,6 +1,17 @@
 #!/usr/bin/php
 <?php
 
+  function unicode_ord ($source) {
+    $source = mb_convert_encoding($source, 'UTF-32', 'UTF-8');
+    $r = 0;
+    for ($i = 0; $i < strlen($source); $i++) {
+      $c = substr($source, $i, 1);
+      $r *= 256;
+      $r += ord($c);
+    }
+    return $r;  
+  }
+
   function decode_notation_char($matches) {
     return html_entity_decode('&#'.$matches[1].';', ENT_QUOTES, 'UTF-8');
   }
@@ -18,15 +29,15 @@
     $definition->appendChild($string);
   }
 
-  function create_chars($dom, $root, $lexeme, $dfn) {
+  function create_characters($dom, $root, $lexeme, $dfn) {
     $definition = $dom->createElement('definition');
     $definition->setAttribute('lexeme', $lexeme);
     $root->appendChild($definition);
-    $char = $dom->createElement('char');
+    $char = $dom->createElement('characters');
     $min = substr($dfn, 1, strpos($dfn, ':') - 2);
     $max = substr($dfn, strpos($dfn, ':') + 2, -1);
-    $char->setAttribute('min', decode_notation_string($min));
-    $char->setAttribute('max', decode_notation_string($max));
+    $char->setAttribute('min', unicode_ord(decode_notation_string($min)));
+    $char->setAttribute('max', unicode_ord(decode_notation_string($max)));
     $definition->appendChild($char);
   }
 
@@ -217,7 +228,7 @@
         if (substr_count($dfn, '"') == 2) {
           create_string($dom, $root, $lexeme, $dfn);
         } elseif (substr_count($dfn, '"') == 4) {
-          create_chars($dom, $root, $lexeme, $dfn);
+          create_characters($dom, $root, $lexeme, $dfn);
         } elseif (strpos($dfn, '/') !== FALSE) {
           create_choice($dom, $root, $lexeme, $dfn);
         } elseif (strpos($dfn, '_') !== FALSE) {

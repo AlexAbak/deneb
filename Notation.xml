@@ -227,7 +227,7 @@
     <string value="%"/>
   </definition>
   <definition lexeme="СимволЛексемы">
-    <char min="Ѐ" max="ԧ"/>
+    <characters min="1024" max="1319"/>
   </definition>
   <definition lexeme="Вариант">
     <choice>
@@ -336,7 +336,7 @@
     <string value=")"/>
   </definition>
   <definition lexeme="ЛюбойСимвол">
-    <char min=" " max="􏿽"/>
+    <characters min="32" max="1114109"/>
   </definition>
   <definition lexeme="ПереносСтроки">
     <list>
@@ -452,7 +452,7 @@
     <string value="?"/>
   </definition>
   <definition lexeme="Цифра">
-    <char min="0" max="9"/>
+    <characters min="48" max="57"/>
   </definition>
   <definition lexeme="ПолныйРазделительДиапазонов">
     <list>
