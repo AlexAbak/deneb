@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<notation lang="">
+  <definition lexeme="Notation">
+    <repeat generosity="false">
+      <ranges>
+        <range min="0" max="0"/>
+      </ranges>
+      <body>
+        <lexeme name="NotationItem" ignore="false"/>
+      </body>
+      <glue/>
+    </repeat>
+  </definition>
+  <definition lexeme="NotationItem">
+    <choice>
+      <lexeme name="DefinitionLexeme" ignore="false"/>
+      <lexeme name="Comment" ignore="false"/>
+      <lexeme name="Space" ignore="true"/>
+    </choice>
+  </definition>
+  <definition lexeme="DefinitionLexeme">
+    <list>
+      <lexeme name="Lexeme" ignore="false"/>
+      <lexeme name="Space" ignore="true"/>
+      <lexeme name="DefinitionBegin" ignore="true"/>
+      <lexeme name="Space" ignore="true"/>
+      <lexeme name="Definition" ignore="false"/>
+      <lexeme name="Space" ignore="true"/>
+      <lexeme name="DefinitionEnd" ignore="true"/>
+    </list>
+  </definition>
+  <definition lexeme="Comment">
+    <choice>
+      <lexeme name="SingleLineComment" ignore="false"/>
+      <lexeme name="MultiLineComment" ignore="false"/>
+    </choice>
+  </definition>
+  <definition lexeme="Space">
+    <repeat generosity="false">
+      <ranges>
+        <range min="0" max="0"/>
+      </ranges>
+      <body>
+        <lexeme name="SpaceCharacters" ignore="false"/>
+      </body>
+      <glue/>
+    </repeat>
+  </definition>
+  <definition lexeme="Lexeme">
+    <list>
+      <lexeme name="IgnoreLexemeTag" ignore="false"/>
+      <lexeme name="LexemeName" ignore="false"/>
+    </list>
+  </definition>
+  <definition lexeme="DefinitionBegin">
+    <string value=":="/>
+  </definition>
+  <definition lexeme="Definition">
+    <choice>
+      <lexeme name="Choice" ignore="false"/>
+      <lexeme name="List" ignore="false"/>
+      <lexeme name="Repeat" ignore="false"/>
+      <lexeme name="Lexeme" ignore="false"/>
+      <lexeme name="Characters" ignore="false"/>
+      <lexeme name="String" ignore="false"/>
+      <lexeme name="RegularExpression" ignore="false"/>
+      <lexeme name="Block" ignore="false"/>
+    </choice>
+  </definition>
+  <definition lexeme="DefinitionEnd">
+    <string value=";"/>
+  </definition>
+  <definition lexeme="SingleLineComment">
+    <list>
+      <lexeme name="SingleLineCommentBegin" ignore="true"/>
+      <lexeme name="AllCharacters" ignore="false"/>
+      <lexeme name="SingleLineCommentEnd" ignore="true"/>
+    </list>
+  </definition>
+  <definition lexeme="MultiLineComment">
+    <list>
+      <lexeme name="MultiLineCommentBegin" ignore="true"/>
+      <lexeme name="AllCharacters" ignore="false"/>
+      <lexeme name="MultiLineCommentEnd" ignore="true"/>
+    </list>
+  </definition>
+  <definition lexeme="SpaceCharacters">
+    <choice>
+      <lexeme name="SpaceCharacter" ignore="false"/>
+      <lexeme name="TabCharacter" ignore="false"/>
+      <lexeme name="CarriageReturnCharacter" ignore="false"/>
+      <lexeme name="LineFoldingCharacter" ignore="false"/>
+    </choice>
+  </definition>
+  <definition lexeme="IgnoreLexemeTag">
+    <repeat generosity="false">
+      <ranges>
+        <range min="0" max="1"/>
+      </ranges>
+      <body>
+        <lexeme name="IgnoreLexeme" ignore="false"/>
+      </body>
+      <glue/>
+    </repeat>
+  </definition>
+  <definition lexeme="LexemeName">
+    <repeat generosity="false">
+      <ranges>
+        <range min="1" max="0"/>
+      </ranges>
+      <body>
+        <lexeme name="LexemeCharacter" ignore="false"/>
+      </body>
+      <glue/>
+    </repeat>
+  </definition>
+  <definition lexeme="Choice">
+    <repeat generosity="false">
+      <ranges>
+        <range min="2" max="0"/>
+      </ranges>
+      <body>
+        <lexeme name="Variant" ignore="false"/>
+      </body>
+      <glue>
+        <lexeme name="FullChoiceDelimiter" ignore="true"/>
+      </glue>
+    </repeat>
+  </definition>
+  <definition lexeme="List">
+    <repeat generosity="false">
+      <ranges>
+        <range min="2" max="0"/>
+      </ranges>
+      <body>
+        <lexeme name="Item" ignore="false"/>
+      </body>
+      <glue>
+        <lexeme name="Space" ignore="true"/>
+      </glue>
+    </repeat>
+  </definition>
+  <definition lexeme="Repeat">
+    <list>
+      <lexeme name="Cvomponent" ignore="false"/>
+      <lexeme name="Space" ignore="true"/>
+      <lexeme name="GenerosityTag" ignore="false"/>
+      <lexeme name="Space" ignore="true"/>
+      <lexeme name="Count" ignore="false"/>
+    </list>
+  </definition>
+  <definition lexeme="Characters">
+    <list>
+      <lexeme name="CharacterBegin" ignore="true"/>
+      <lexeme name="Literal" ignore="false"/>
+      <lexeme name="CharacterEnd" ignore="true"/>
+      <lexeme name="Space" ignore="true"/>
+      <lexeme name="RangeDelimiter" ignore="true"/>
+      <lexeme name="Space" ignore="true"/>
+      <lexeme name="CharacterBegin" ignore="true"/>
+      <lexeme name="Literal" ignore="false"/>
+      <lexeme name="CharacterEnd" ignore="true"/>
+    </list>
+  </definition>
+  <definition lexeme="String">
+    <list>
+      <lexeme name="StringBegin" ignore="true"/>
+      <lexeme name="Literals" ignore="false"/>
+      <lexeme name="StringEnd" ignore="true"/>
+    </list>
+  </definition>
+  <definition lexeme="RegularExpression">
+    <list>
+      <lexeme name="RegularExpressionTag" ignore="true"/>
+      <lexeme name="StringBegin" ignore="true"/>
+      <lexeme name="Literals" ignore="false"/>
+      <lexeme name="StringEnd" ignore="true"/>
+    </list>
+  </definition>
+  <definition lexeme="Block">
+    <list>
+      <lexeme name="BlockBegin" ignore="true"/>
+      <lexeme name="Definition" ignore="false"/>
+      <lexeme name="BlockEnd" ignore="true"/>
+    </list>
+  </definition>
+  <definition lexeme="SingleLineCommentBegin">
+    <string value="//"/>
+  </definition>
+  <definition lexeme="AllCharacters">
+    <repeat generosity="true">
+      <ranges>
+        <range min="0" max="0"/>
+      </ranges>
+      <body>
+        <lexeme name="AllCharacter" ignore="false"/>
+      </body>
+      <glue/>
+    </repeat>
+  </definition>
+  <definition lexeme="SingleLineCommentEnd">
+    <choice>
+      <lexeme name="NewLine" ignore="false"/>
+      <lexeme name="CarriageReturnCharacter" ignore="false"/>
+      <lexeme name="LineFoldingCharacter" ignore="false"/>
+    </choice>
+  </definition>
+  <definition lexeme="MultiLineCommentBegin">
+    <string value="/*"/>
+  </definition>
+  <definition lexeme="MultiLineCommentEnd">
+    <string value="*/"/>
+  </definition>
+  <definition lexeme="SpaceCharacter">
+    <string value=" "/>
+  </definition>
+  <definition lexeme="TabCharacter">
+    <string value="&#9;"/>
+  </definition>
+  <definition lexeme="CarriageReturnCharacter">
+    <string value="&#13;"/>
+  </definition>
+  <definition lexeme="LineFoldingCharacter">
+    <string value="&#10;"/>
+  </definition>
+  <definition lexeme="IgnoreLexeme">
+    <string value="%"/>
+  </definition>
+  <definition lexeme="LexemeCharacter">
+    <characters min="1024" max="1319"/>
+  </definition>
+  <definition lexeme="Variant">
+    <choice>
+      <lexeme name="List" ignore="false"/>
+      <lexeme name="Repeat" ignore="false"/>
+      <lexeme name="Lexeme" ignore="false"/>
+      <lexeme name="Characters" ignore="false"/>
+      <lexeme name="String" ignore="false"/>
+      <lexeme name="RegularExpression" ignore="false"/>
+      <lexeme name="Block" ignore="false"/>
+    </choice>
+  </definition>
+  <definition lexeme="FullChoiceDelimiter">
+    <list>
+      <lexeme name="Space" ignore="false"/>
+      <lexeme name="ChoiceDelimiter" ignore="false"/>
+      <lexeme name="Space" ignore="false"/>
+    </list>
+  </definition>
+  <definition lexeme="ChoiceDelimiter">
+    <string value="/"/>
+  </definition>
+  <definition lexeme="Item">
+    <choice>
+      <lexeme name="Choice" ignore="false"/>
+      <lexeme name="Repeat" ignore="false"/>
+      <lexeme name="Lexeme" ignore="false"/>
+      <lexeme name="Characters" ignore="false"/>
+      <lexeme name="String" ignore="false"/>
+      <lexeme name="RegularExpression" ignore="false"/>
+      <lexeme name="Block" ignore="false"/>
+    </choice>
+  </definition>
+  <definition lexeme="Cvomponent">
+    <choice>
+      <lexeme name="Lexeme" ignore="false"/>
+      <lexeme name="Block" ignore="false"/>
+      <lexeme name="RepeatBlock" ignore="false"/>
+    </choice>
+  </definition>
+  <definition lexeme="GenerosityTag">
+    <repeat generosity="false">
+      <ranges>
+        <range min="0" max="1"/>
+      </ranges>
+      <body>
+        <lexeme name="Generosity" ignore="false"/>
+      </body>
+      <glue/>
+    </repeat>
+  </definition>
+  <definition lexeme="Count">
+    <choice>
+      <lexeme name="AnyQuantity" ignore="false"/>
+      <lexeme name="RangeList" ignore="false"/>
+      <lexeme name="MoreOne" ignore="false"/>
+      <lexeme name="NoMoreOne" ignore="false"/>
+      <lexeme name="Number" ignore="false"/>
+      <lexeme name="Range" ignore="false"/>
+      <lexeme name="UpRestriction" ignore="false"/>
+      <lexeme name="DownRestriction" ignore="false"/>
+    </choice>
+  </definition>
+  <definition lexeme="CharacterBegin">
+    <lexeme name="Quote" ignore="false"/>
+  </definition>
+  <definition lexeme="Literal">
+    <choice>
+      <lexeme name="CharacterCode" ignore="false"/>
+      <lexeme name="AllCharacters" ignore="false"/>
+    </choice>
+  </definition>
+  <definition lexeme="CharacterEnd">
+    <lexeme name="Quote" ignore="false"/>
+  </definition>
+  <definition lexeme="RangeDelimiter">
+    <choice>
+      <lexeme name="VerticalColon" ignore="false"/>
+      <lexeme name="HorizontalColon" ignore="false"/>
+    </choice>
+  </definition>
+  <definition lexeme="StringBegin">
+    <lexeme name="Quote" ignore="false"/>
+  </definition>
+  <definition lexeme="Literals">
+    <repeat generosity="false">
+      <ranges>
+        <range min="1" max="0"/>
+      </ranges>
+      <body>
+        <lexeme name="Literal" ignore="false"/>
+      </body>
+      <glue/>
+    </repeat>
+  </definition>
+  <definition lexeme="StringEnd">
+    <lexeme name="Quote" ignore="false"/>
+  </definition>
+  <definition lexeme="RegularExpressionTag">
+    <string value="№"/>
+  </definition>
+  <definition lexeme="BlockBegin">
+    <string value="("/>
+  </definition>
+  <definition lexeme="BlockEnd">
+    <string value=")"/>
+  </definition>
+  <definition lexeme="AllCharacter">
+    <characters min="32" max="1114109"/>
+  </definition>
+  <definition lexeme="NewLine">
+    <list>
+      <lexeme name="CarriageReturnCharacter" ignore="false"/>
+      <lexeme name="LineFoldingCharacter" ignore="false"/>
+    </list>
+  </definition>
+  <definition lexeme="RepeatBlock">
+    <list>
+      <lexeme name="BlockBegin" ignore="true"/>
+      <lexeme name="Definition" ignore="false"/>
+      <lexeme name="Glue" ignore="true"/>
+      <lexeme name="Definition" ignore="false"/>
+      <lexeme name="BlockEnd" ignore="true"/>
+    </list>
+  </definition>
+  <definition lexeme="Generosity">
+    <string value="!"/>
+  </definition>
+  <definition lexeme="AnyQuantity">
+    <string value="*"/>
+  </definition>
+  <definition lexeme="MoreOne">
+    <lexeme name="UpRestrictionCharacter" ignore="false"/>
+  </definition>
+  <definition lexeme="NoMoreOne">
+    <choice>
+      <lexeme name="DownRestrictionCharacter" ignore="false"/>
+      <lexeme name="AdditionalDownRestrictionCharacter" ignore="false"/>
+    </choice>
+  </definition>
+  <definition lexeme="Number">
+    <repeat generosity="false">
+      <ranges>
+        <range min="1" max="0"/>
+      </ranges>
+      <body>
+        <lexeme name="Figure" ignore="false"/>
+      </body>
+      <glue/>
+    </repeat>
+  </definition>
+  <definition lexeme="RangeList">
+    <repeat generosity="false">
+      <ranges>
+        <range min="2" max="0"/>
+      </ranges>
+      <body>
+        <lexeme name="FullRangeDelimiter" ignore="false"/>
+      </body>
+      <glue>
+        <lexeme name="RangeLimit" ignore="true"/>
+      </glue>
+    </repeat>
+  </definition>
+  <definition lexeme="RangeLimit">
+    <choice>
+      <lexeme name="Number" ignore="false"/>
+      <lexeme name="Range" ignore="false"/>
+      <lexeme name="UpRestriction" ignore="false"/>
+      <lexeme name="DownRestriction" ignore="false"/>
+    </choice>
+  </definition>
+  <definition lexeme="Range">
+    <list>
+      <lexeme name="Number" ignore="false"/>
+      <lexeme name="Space" ignore="true"/>
+      <lexeme name="RangeDelimiter" ignore="true"/>
+      <lexeme name="Space" ignore="true"/>
+      <lexeme name="Number" ignore="false"/>
+    </list>
+  </definition>
+  <definition lexeme="UpRestriction">
+    <list>
+      <lexeme name="Number" ignore="false"/>
+      <lexeme name="Space" ignore="true"/>
+      <lexeme name="DownRestrictionCharacter" ignore="false"/>
+    </list>
+  </definition>
+  <definition lexeme="DownRestriction">
+    <list>
+      <lexeme name="Number" ignore="false"/>
+      <lexeme name="Space" ignore="true"/>
+      <lexeme name="UpRestrictionCharacter" ignore="false"/>
+    </list>
+  </definition>
+  <definition lexeme="Quote">
+    <string value="&quot;"/>
+  </definition>
+  <definition lexeme="CharacterCode">
+    <list>
+      <lexeme name="CharacterCodeBegin" ignore="true"/>
+      <lexeme name="Number" ignore="false"/>
+      <lexeme name="CharacterCodeEnd" ignore="true"/>
+    </list>
+  </definition>
+  <definition lexeme="VerticalColon">
+    <string value=":"/>
+  </definition>
+  <definition lexeme="HorizontalColon">
+    <string value=".."/>
+  </definition>
+  <definition lexeme="Glue">
+    <string value="_"/>
+  </definition>
+  <definition lexeme="UpRestrictionCharacter">
+    <string value="+"/>
+  </definition>
+  <definition lexeme="DownRestrictionCharacter">
+    <string value="-"/>
+  </definition>
+  <definition lexeme="AdditionalDownRestrictionCharacter">
+    <string value="?"/>
+  </definition>
+  <definition lexeme="Figure">
+    <characters min="48" max="57"/>
+  </definition>
+  <definition lexeme="FullRangeDelimiter">
+    <list>
+      <lexeme name="Space" ignore="false"/>
+      <lexeme name="RangeDelimiter" ignore="false"/>
+      <lexeme name="Space" ignore="false"/>
+    </list>
+  </definition>
+  <definition lexeme="RangeDelimiter">
+    <string value=","/>
+  </definition>
+  <definition lexeme="CharacterCodeBegin">
+    <string value="№"/>
+  </definition>
+  <definition lexeme="CharacterCodeEnd">
+    <string value=";"/>
+  </definition>
+</notation>

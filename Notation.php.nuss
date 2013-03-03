@@ -1,0 +1,230 @@
+// Основная нотация канонической формы описания синтаксиса языка.
+// Нотация может располагаться в файле с расширением ".nuss" (The notation using syntax sugar).
+// Нотация с синтаксическим сахаром является основой свободного синтаксиса языка Денеб.
+// Нотация описана в стиле литературного программирования.
+// Данный текст нотации можно использовать непосредственно для автоматической обработки.
+// Нотация описана рекурсивно на самой себе.
+
+// Нотация содержит список элементов нотации
+Notation := NotationItem*;
+
+// == Нотация ==
+// Элемент нотации это определений лексемы, комментарии иил пробел форматирования.
+NotationItem := DefinitionLexeme / Comment / %Space;
+
+// == Элемент нотации ==
+// Определение лексемы основная деталь словаря.
+// Определение лексемы представляет собой последовательность из лексемы и определения.
+// Определение заключено в скобки определения ":=" ";".
+// Между лексемой, скобками и определением могут находится пробелы.
+DefinitionLexeme := Lexeme %Space %DefinitionBegin %Space Definition %Space %DefinitionEnd;
+// Комментарий предназначен для пояснения к исходному тексту нотации.
+// Комментарий может быть однострочным и многострочным.
+Comment := SingleLineComment / MultiLineComment;
+// Пробел используется для форматирования нотации.
+// Пробел представляет из себя список символов пробела, символов табуляции, символов переноса строки и символов возврата каретки.
+Space := SpaceCharacters*;
+
+// == Определение лексемы ==
+// Лексема это имя конструкции языка.
+// Лексема может начинаться с символа исключенной лексемы, что означает что лексема исключается из результата.
+// Лексема содержит не менее одного символа лексемы.
+Lexeme := IgnoreLexemeTag LexemeName;
+// Начало определения ":="
+DefinitionBegin := ":=";
+// Определение является описанием содержимого лексемы.
+// Определение может быть выбором, списком, повторением, лексемой, символами, строкой, регулярным выражением или выражением в скобках.
+Definition := Choice / List / Repeat / Lexeme / Characters / String / RegularExpression / Block;
+// Окончание определения ";"
+DefinitionEnd := ";";
+
+// == Комментарий ==
+// Однострочный комментарий
+SingleLineComment := %SingleLineCommentBegin AllCharacters %SingleLineCommentEnd;
+// Многострочный комментарий
+MultiLineComment := %MultiLineCommentBegin AllCharacters %MultiLineCommentEnd;
+
+// == Пробел ==
+SpaceCharacters := SpaceCharacter / TabCharacter / CarriageReturnCharacter / LineFoldingCharacter;
+
+// == Лексема ==
+// Метка исключенной лексемы
+IgnoreLexemeTag := IgnoreLexeme-;
+// Имя лексемы
+LexemeName := LexemeCharacter+;
+
+// == Определение ==
+// Выбор означает в качестве содержимого один из перечисленных вариантов.
+// Варианты разделены символом "/".
+// Выбор содержит не менее двух вариантов.
+Choice := (Variant _ %FullChoiceDelimiter)2+;
+// Список означает в качестве содержимого расположенные по порядку пункты.
+// Пункты могут быть разделены пробелом.
+// Список содержит не менее двух пунктов.
+List := (Item _ %Space)2+;
+// Повторение означает в качестве содержимого некоторое повторяющееся содержимое.
+Repeat := Cvomponent %Space GenerosityTag %Space Count;
+// Символы означает один из набора символов указывается начальный и конечный символ набора заключенные в кавычки и разделенные двоеточием.
+Characters := %CharacterBegin Literal %CharacterEnd %Space %RangeDelimiter %Space %CharacterBegin Literal %CharacterEnd;
+// Строка последовательность символов заключенная в кавычки
+String := %StringBegin Literals %StringEnd;
+// Регулярное выражение
+RegularExpression := %RegularExpressionTag %StringBegin Literals %StringEnd;
+// Блок
+Block := %BlockBegin Definition %BlockEnd;
+
+// == Однострочный комментарий ==
+// Начало однострочного комментария
+SingleLineCommentBegin := "//";
+// Любые символы
+AllCharacters := AllCharacter!*;
+// Окончание однострочного комментария
+SingleLineCommentEnd := NewLine / CarriageReturnCharacter / LineFoldingCharacter;
+
+// == Многострочный комментарий ==
+// Начало многострочного комментария
+MultiLineCommentBegin := "/*";
+// Окончание многострочного комментария
+MultiLineCommentEnd := "*/";
+
+// == ПробельныйСимвол ==
+// Символ пробела
+SpaceCharacter := " ";
+// Символ табуляции
+TabCharacter := "№9;";
+// Символ возврата каретки
+CarriageReturnCharacter := "№13;";
+// Символ переноса строки
+LineFoldingCharacter := "№10;";
+
+// == МеткаИсключеннойЛексемы ==
+// Символом исключенной лексемы является "%"
+IgnoreLexeme := "%";
+
+// == ИмяЛексемы ==
+// Символом лексемы может являтся любой кирилический символ из основного набора Unicode
+LexemeCharacter := "№1024;":"№1319;";
+
+// == Выбор ==
+// Вариант
+Variant := List / Repeat / Lexeme / Characters / String / RegularExpression / Block;
+// Разделитель выбора
+FullChoiceDelimiter := Space ChoiceDelimiter Space;
+ChoiceDelimiter := "/";
+
+// == Список ==
+Item := Choice / Repeat / Lexeme / Characters / String / RegularExpression / Block;
+
+// == Повторение ==
+// Элемент
+Cvomponent := Lexeme / Block / RepeatBlock;
+// Метка щедрости
+GenerosityTag := Generosity-;
+// Количество
+Count := AnyQuantity / RangeList / MoreOne / NoMoreOne / Number / Range / UpRestriction / DownRestriction;
+
+// == Символы ==
+// Начало символа
+CharacterBegin := Quote;
+// Литерал
+Literal := CharacterCode / AllCharacters;
+// Окончание символа
+CharacterEnd := Quote;
+// Разделитель диапазона
+RangeDelimiter := VerticalColon / HorizontalColon;
+
+// == Строка ==
+// Начало строки
+StringBegin := Quote;
+// Литералы
+Literals := Literal+;
+// Окончание строки
+StringEnd := Quote;
+
+// == Регулярное выражение ==
+// Метка регулярного выражения
+RegularExpressionTag := "№";
+
+// == Блок ==
+// Начало блока
+BlockBegin := "(";
+// Окончание блока
+BlockEnd := ")";
+
+// == Любые символы ==
+// Любой символ
+AllCharacter := "№32;":"№1114109;";
+
+// == ОкончаниеОднострочногоКомментария ==
+// Перенос строки
+NewLine := CarriageReturnCharacter LineFoldingCharacter;
+
+// == Элемент ==
+// Блок повторения
+RepeatBlock := %BlockBegin Definition %Glue Definition %BlockEnd;
+
+// == Метка щедрости ==
+Generosity := "!";
+
+// == Количество ==
+// Любое количество
+AnyQuantity := "*";
+// Более одного
+MoreOne := UpRestrictionCharacter;
+// Не более одного
+NoMoreOne := DownRestrictionCharacter / AdditionalDownRestrictionCharacter;
+// Число
+Number := Figure+;
+// Список диапазонов
+RangeList := (FullRangeDelimiter _ %RangeLimit)2+;
+// Ограничение диапазона
+RangeLimit := Number / Range / UpRestriction / DownRestriction;
+// Диапазон
+Range := Number %Space %RangeDelimiter %Space Number;
+// Ограничение сверху
+UpRestriction := Number %Space DownRestrictionCharacter;
+// Ограничение снизу
+DownRestriction := Number %Space UpRestrictionCharacter;
+
+// == Начало символа ==
+// Кавычка
+Quote := "№34;";
+
+// == Литерал ==
+// Код символа
+CharacterCode := %CharacterCodeBegin Number %CharacterCodeEnd;
+
+// == Разделитель диапазона ==
+// Вертикальное двоеточие
+VerticalColon := ":";
+// Горизонтальное двоеточие
+HorizontalColon := "..";
+
+// == Блок повторения ==
+// Клей
+Glue := "_";
+
+// == Более одного ==
+// Символ ограничения снизу
+UpRestrictionCharacter := "+";
+
+// == Не более одного ==
+// Символ ограничения сверху
+DownRestrictionCharacter := "-";
+// Дополнительный символ ограничения сверху
+AdditionalDownRestrictionCharacter := "?";
+
+// == Число ==
+// Цифра
+Figure := "0":"9";
+
+// == Список диапазонов ==
+FullRangeDelimiter := Space RangeDelimiter Space;
+RangeDelimiter := ",";
+
+// == Код символа ==
+// Начало кода символа
+CharacterCodeBegin := "№";
+// Окончание кода символа
+CharacterCodeEnd := ";";
+
