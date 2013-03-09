@@ -2,9 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/alex/java/jcommander-master/target/jcommander-1.31-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="/home/alex/java/jcommander-master/target/jcommander-1.31-SNAPSHOT-bundle.jar"/>
-	<classpathentry kind="lib" path="/home/alex/java/jcommander-master/target/jcommander-1.31-SNAPSHOT-javadoc.jar"/>
-	<classpathentry kind="lib" path="/home/alex/java/jcommander-master/target/jcommander-1.31-SNAPSHOT-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jcommander-master"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
