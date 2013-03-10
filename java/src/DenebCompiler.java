@@ -1,18 +1,24 @@
-import ru.myweek_end.deneb.language.*;
-import ru.myweek_end.deneb.notation.*;
-import ru.myweek_end.deneb.parser.*;
 import java.io.*;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.deneblingvo.language.*;
+import org.deneblingvo.notation.*;
+import org.deneblingvo.parser.*;
+import org.xml.sax.SAXException;
+
 import com.beust.jcommander.*;
 
 public class DenebCompiler {
 	
-	public static void main(java.lang.String[] args) throws FileNotFoundException, ArrayIndexOutOfBoundsException {
+	public static void main(java.lang.String[] args) throws ArrayIndexOutOfBoundsException, ENotSupportedNotationable, ParserConfigurationException, SAXException, IOException {
 		DenebCompilerParameters parameters = new DenebCompilerParameters();
 		JCommander jc = new JCommander(parameters);
 		jc.parse(args);
 		Notationable notation;
 		notation = new Notation();
 		Parser parser;
+		
 		parser = new Parser(notation);
 		FileInputStream source;
 		if (parameters.file.isFile()) {

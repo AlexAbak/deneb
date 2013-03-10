@@ -21,19 +21,19 @@
   }
 
   function create_string($dom, $root, $lexeme, $dfn) {
-    $definition = $dom->createElement('definition');
+    $definition = $dom->createElement('den:definition');
     $definition->setAttribute('lexeme', $lexeme);
     $root->appendChild($definition);
-    $string = $dom->createElement('string');
+    $string = $dom->createElement('den:string');
     $string->setAttribute('value', decode_notation_string(substr($dfn, 1, -1)));
     $definition->appendChild($string);
   }
 
   function create_characters($dom, $root, $lexeme, $dfn) {
-    $definition = $dom->createElement('definition');
+    $definition = $dom->createElement('den:definition');
     $definition->setAttribute('lexeme', $lexeme);
     $root->appendChild($definition);
-    $char = $dom->createElement('characters');
+    $char = $dom->createElement('den:characters');
     $min = substr($dfn, 1, strpos($dfn, ':') - 2);
     $max = substr($dfn, strpos($dfn, ':') + 2, -1);
     $char->setAttribute('min', unicode_ord(decode_notation_string($min)));
@@ -42,10 +42,10 @@
   }
 
   function create_choice($dom, $root, $lexeme, $dfn) {
-    $definition = $dom->createElement('definition');
+    $definition = $dom->createElement('den:definition');
     $definition->setAttribute('lexeme', $lexeme);
     $root->appendChild($definition);
-    $choice = $dom->createElement('choice');
+    $choice = $dom->createElement('den:choice');
     $definition->appendChild($choice);
     $list = explode('/', $dfn);
     foreach ($list as $item) {
@@ -56,7 +56,7 @@
       } else {
         $ignore = 'false';
       }
-      $lexeme_node = $dom->createElement('lexeme');
+      $lexeme_node = $dom->createElement('den:lexeme');
       $lexeme_node->setAttribute('name', $item);
       $lexeme_node->setAttribute('ignore', $ignore);
       $choice->appendChild($lexeme_node);
@@ -65,41 +65,41 @@
 
   function create_repeat_all($dom, $root, $lexeme, $dfn) {
     $dfn = str_replace('*', '', $dfn);
-    $definition = $dom->createElement('definition');
+    $definition = $dom->createElement('den:definition');
     $definition->setAttribute('lexeme', $lexeme);
     $root->appendChild($definition);
-    $repeat = $dom->createElement('repeat');
+    $repeat = $dom->createElement('den:repeat');
     $repeat->setAttribute('generosity', (strpos($dfn, '!') !== FALSE)?'true':'false');
     $dfn = str_replace('!', '', $dfn);
     $definition->appendChild($repeat);
-    $ranges = $dom->createElement('ranges');
+    $ranges = $dom->createElement('den:ranges');
     $repeat->appendChild($ranges);
-    $range = $dom->createElement('range');
+    $range = $dom->createElement('den:range');
     $range->setAttribute('min', 0);
     $range->setAttribute('max', 0);
     $ranges->appendChild($range);
-    $body = $dom->createElement('body');
+    $body = $dom->createElement('den:body');
     $repeat->appendChild($body);
-    $lexeme_node = $dom->createElement('lexeme');
+    $lexeme_node = $dom->createElement('den:lexeme');
     $lexeme_node->setAttribute('name', $dfn);
     $lexeme_node->setAttribute('ignore', 'false');
     $body->appendChild($lexeme_node);
-    $glue = $dom->createElement('glue');
+    $glue = $dom->createElement('den:glue');
     $repeat->appendChild($glue);
   }
 
   function create_repeat_glue($dom, $root, $lexeme, $dfn) {
-    $definition = $dom->createElement('definition');
+    $definition = $dom->createElement('den:definition');
     $definition->setAttribute('lexeme', $lexeme);
     $root->appendChild($definition);
-    $repeat = $dom->createElement('repeat');
+    $repeat = $dom->createElement('den:repeat');
     $repeat->setAttribute('generosity', (strpos($dfn, '!') !== FALSE)?'true':'false');
     $dfn = str_replace('!', '', $dfn);
     $definition->appendChild($repeat);
-    $ranges = $dom->createElement('ranges');
+    $ranges = $dom->createElement('den:ranges');
     $repeat->appendChild($ranges);
     $dfn = substr($dfn, 1, -3);
-    $range = $dom->createElement('range');
+    $range = $dom->createElement('den:range');
     $range->setAttribute('min', 2);
     $range->setAttribute('max', 0);
     $ranges->appendChild($range);
@@ -109,15 +109,15 @@
     $glue_lexeme = trim(substr($dfn, strpos($dfn, '_') + 1));
     $glue_lexeme_ignore = (strpos($glue_lexeme, '%') !== FALSE)?'true':'false';
     $glue_lexeme = str_replace('%', '', $glue_lexeme);
-    $body = $dom->createElement('body');
+    $body = $dom->createElement('den:body');
     $repeat->appendChild($body);
-    $lexeme_node = $dom->createElement('lexeme');
+    $lexeme_node = $dom->createElement('den:lexeme');
     $lexeme_node->setAttribute('name', $body_lexeme);
     $lexeme_node->setAttribute('ignore', $body_lexeme_ignore);
     $body->appendChild($lexeme_node);
-    $glue = $dom->createElement('glue');
+    $glue = $dom->createElement('den:glue');
     $repeat->appendChild($glue);
-    $lexeme_node = $dom->createElement('lexeme');
+    $lexeme_node = $dom->createElement('den:lexeme');
     $lexeme_node->setAttribute('name', $glue_lexeme);
     $lexeme_node->setAttribute('ignore', $glue_lexeme_ignore);
     $glue->appendChild($lexeme_node);
@@ -125,69 +125,69 @@
 
   function create_repeat_minus($dom, $root, $lexeme, $dfn) {
     $dfn = str_replace('-', '', $dfn);
-    $definition = $dom->createElement('definition');
+    $definition = $dom->createElement('den:definition');
     $definition->setAttribute('lexeme', $lexeme);
     $root->appendChild($definition);
-    $repeat = $dom->createElement('repeat');
+    $repeat = $dom->createElement('den:repeat');
     $repeat->setAttribute('generosity', (strpos($dfn, '!') !== FALSE)?'true':'false');
     $dfn = str_replace('!', '', $dfn);
     $definition->appendChild($repeat);
-    $ranges = $dom->createElement('ranges');
+    $ranges = $dom->createElement('den:ranges');
     $repeat->appendChild($ranges);
-    $range = $dom->createElement('range');
+    $range = $dom->createElement('den:range');
     $range->setAttribute('min', 0);
     $range->setAttribute('max', 1);
     $ranges->appendChild($range);
-    $body = $dom->createElement('body');
+    $body = $dom->createElement('den:body');
     $repeat->appendChild($body);
-    $lexeme_node = $dom->createElement('lexeme');
+    $lexeme_node = $dom->createElement('den:lexeme');
     $lexeme_node->setAttribute('name', $dfn);
     $lexeme_node->setAttribute('ignore', 'false');
     $body->appendChild($lexeme_node);
-    $glue = $dom->createElement('glue');
+    $glue = $dom->createElement('den:glue');
     $repeat->appendChild($glue);
   }
 
   function create_repeat_plus($dom, $root, $lexeme, $dfn) {
     $dfn = str_replace('+', '', $dfn);
-    $definition = $dom->createElement('definition');
+    $definition = $dom->createElement('den:definition');
     $definition->setAttribute('lexeme', $lexeme);
     $root->appendChild($definition);
-    $repeat = $dom->createElement('repeat');
+    $repeat = $dom->createElement('den:repeat');
     $repeat->setAttribute('generosity', (strpos($dfn, '!') !== FALSE)?'true':'false');
     $dfn = str_replace('!', '', $dfn);
     $definition->appendChild($repeat);
-    $ranges = $dom->createElement('ranges');
+    $ranges = $dom->createElement('den:ranges');
     $repeat->appendChild($ranges);
-    $range = $dom->createElement('range');
+    $range = $dom->createElement('den:range');
     $range->setAttribute('min', 1);
     $range->setAttribute('max', 0);
     $ranges->appendChild($range);
-    $body = $dom->createElement('body');
+    $body = $dom->createElement('den:body');
     $repeat->appendChild($body);
-    $lexeme_node = $dom->createElement('lexeme');
+    $lexeme_node = $dom->createElement('den:lexeme');
     $lexeme_node->setAttribute('name', $dfn);
     $lexeme_node->setAttribute('ignore', 'false');
     $body->appendChild($lexeme_node);
-    $glue = $dom->createElement('glue');
+    $glue = $dom->createElement('den:glue');
     $repeat->appendChild($glue);
   }
 
   function create_lexeme($dom, $root, $lexeme, $dfn) {
-    $definition = $dom->createElement('definition');
+    $definition = $dom->createElement('den:definition');
     $definition->setAttribute('lexeme', $lexeme);
     $root->appendChild($definition);
-    $lexeme_node = $dom->createElement('lexeme');
+    $lexeme_node = $dom->createElement('den:lexeme');
     $lexeme_node->setAttribute('name', $dfn);
     $lexeme_node->setAttribute('ignore', 'false');
     $definition->appendChild($lexeme_node);
   }
 
   function create_list($dom, $root, $lexeme, $dfn) {
-    $definition = $dom->createElement('definition');
+    $definition = $dom->createElement('den:definition');
     $definition->setAttribute('lexeme', $lexeme);
     $root->appendChild($definition);
-    $list = $dom->createElement('list');
+    $list = $dom->createElement('den:list');
     $definition->appendChild($list);
     $items = explode(' ', $dfn);
     foreach ($items as $item) {
@@ -198,28 +198,28 @@
       } else {
         $ignore = 'false';
       }
-      $lexeme_node = $dom->createElement('lexeme');
+      $lexeme_node = $dom->createElement('den:lexeme');
       $lexeme_node->setAttribute('name', $item);
       $lexeme_node->setAttribute('ignore', $ignore);
       $list->appendChild($lexeme_node);
     }
   }
 
-  foreach (glob('../*.nuss') as $filename) {
+  foreach (glob('../nuss/*.nuss') as $filename) {
     $dom = new DOMDocument('1.0', 'utf-8');
-    $root = $dom->createElement('notation');
+    $root = $dom->createElement('den:notation');
     $dom->appendChild($root);
   
     $notation = file($filename);
-    $lang = substr($filename, -8, 3);
-    if (substr($lang, 0, 1) != '.') {
+    $lang = substr($filename, strrpos($filename, '.', -7) + 1, strrpos($filename, '.') - strlen($filename));
+    $name = substr($filename, 8, -5);
+    if (substr($lang, 0, 1) == '/') {
       $lang = '';
-      $name = substr($filename, 0, -5);
-    } else {
-      $lang = substr($lang, -2, 2);
-      $name = substr($filename, 0, -8);
     }
     $root->setAttribute('lang', $lang);
+    $root->setAttribute('xmlns:den', 'http://deneb-lingvo.org/Notation/1.0');
+    $root->setAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
+    $root->setAttribute('xsi:schemaLocation', 'http://deneb-lingvo.org/Notation/1.0 Notation.xsd');
     foreach ($notation as $line) {
       if ((trim($line) != '') && (substr($line, 0, 2) != '//')) {
         $pos = strpos($line, ':=');
@@ -246,12 +246,10 @@
         }
       }
     }
-    if ($lang == '') {
-      $filename = $name . '.xml';
-    } else {
-      $filename = $name . '.' . $lang . '.xml';
-    }
+    $filename = $name . '.xml';
+    $filename = '../xml/' . $filename;
     $dom->formatOutput = true;
     $dom->save($filename);
+    echo $filename."\n";
   }
 

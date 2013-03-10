@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<den:notation lang="pas" xmlns:den="http://deneb-lingvo.org/Notation/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://deneb-lingvo.org/Notation/1.0 Notation.xsd">
+  <den:definition lexeme="Notation">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="0" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="NotationItem" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="NotationItem">
+    <den:choice>
+      <den:lexeme name="DefinitionLexeme" ignore="false"/>
+      <den:lexeme name="Comment" ignore="false"/>
+      <den:lexeme name="Space" ignore="true"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="DefinitionLexeme">
+    <den:list>
+      <den:lexeme name="Lexeme" ignore="false"/>
+      <den:lexeme name="Space" ignore="true"/>
+      <den:lexeme name="DefinitionBegin" ignore="true"/>
+      <den:lexeme name="Space" ignore="true"/>
+      <den:lexeme name="Definition" ignore="false"/>
+      <den:lexeme name="Space" ignore="true"/>
+      <den:lexeme name="DefinitionEnd" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="Comment">
+    <den:choice>
+      <den:lexeme name="SingleLineComment" ignore="false"/>
+      <den:lexeme name="MultiLineComment" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="Space">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="0" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="SpaceCharacters" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="Lexeme">
+    <den:list>
+      <den:lexeme name="IgnoreLexemeTag" ignore="false"/>
+      <den:lexeme name="LexemeName" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="DefinitionBegin">
+    <den:string value=":="/>
+  </den:definition>
+  <den:definition lexeme="Definition">
+    <den:choice>
+      <den:lexeme name="Choice" ignore="false"/>
+      <den:lexeme name="List" ignore="false"/>
+      <den:lexeme name="Repeat" ignore="false"/>
+      <den:lexeme name="Lexeme" ignore="false"/>
+      <den:lexeme name="Characters" ignore="false"/>
+      <den:lexeme name="String" ignore="false"/>
+      <den:lexeme name="RegularExpression" ignore="false"/>
+      <den:lexeme name="Block" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="DefinitionEnd">
+    <den:string value=";"/>
+  </den:definition>
+  <den:definition lexeme="SingleLineComment">
+    <den:list>
+      <den:lexeme name="SingleLineCommentBegin" ignore="true"/>
+      <den:lexeme name="AllCharacters" ignore="false"/>
+      <den:lexeme name="SingleLineCommentEnd" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="MultiLineComment">
+    <den:list>
+      <den:lexeme name="MultiLineCommentBegin" ignore="true"/>
+      <den:lexeme name="AllCharacters" ignore="false"/>
+      <den:lexeme name="MultiLineCommentEnd" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="SpaceCharacters">
+    <den:choice>
+      <den:lexeme name="SpaceCharacter" ignore="false"/>
+      <den:lexeme name="TabCharacter" ignore="false"/>
+      <den:lexeme name="CarriageReturnCharacter" ignore="false"/>
+      <den:lexeme name="LineFoldingCharacter" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="IgnoreLexemeTag">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="0" max="1"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="IgnoreLexeme" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="LexemeName">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="1" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="LexemeCharacter" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="Choice">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="2" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="Variant" ignore="false"/>
+      </den:body>
+      <den:glue>
+        <den:lexeme name="FullChoiceDelimiter" ignore="true"/>
+      </den:glue>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="List">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="2" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="Item" ignore="false"/>
+      </den:body>
+      <den:glue>
+        <den:lexeme name="Space" ignore="true"/>
+      </den:glue>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="Repeat">
+    <den:list>
+      <den:lexeme name="Cvomponent" ignore="false"/>
+      <den:lexeme name="Space" ignore="true"/>
+      <den:lexeme name="GenerosityTag" ignore="false"/>
+      <den:lexeme name="Space" ignore="true"/>
+      <den:lexeme name="Count" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="Characters">
+    <den:list>
+      <den:lexeme name="CharacterBegin" ignore="true"/>
+      <den:lexeme name="Literal" ignore="false"/>
+      <den:lexeme name="CharacterEnd" ignore="true"/>
+      <den:lexeme name="Space" ignore="true"/>
+      <den:lexeme name="RangeDelimiter" ignore="true"/>
+      <den:lexeme name="Space" ignore="true"/>
+      <den:lexeme name="CharacterBegin" ignore="true"/>
+      <den:lexeme name="Literal" ignore="false"/>
+      <den:lexeme name="CharacterEnd" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="String">
+    <den:list>
+      <den:lexeme name="StringBegin" ignore="true"/>
+      <den:lexeme name="Literals" ignore="false"/>
+      <den:lexeme name="StringEnd" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="RegularExpression">
+    <den:list>
+      <den:lexeme name="RegularExpressionTag" ignore="true"/>
+      <den:lexeme name="StringBegin" ignore="true"/>
+      <den:lexeme name="Literals" ignore="false"/>
+      <den:lexeme name="StringEnd" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="Block">
+    <den:list>
+      <den:lexeme name="BlockBegin" ignore="true"/>
+      <den:lexeme name="Definition" ignore="false"/>
+      <den:lexeme name="BlockEnd" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="SingleLineCommentBegin">
+    <den:string value="//"/>
+  </den:definition>
+  <den:definition lexeme="AllCharacters">
+    <den:repeat generosity="true">
+      <den:ranges>
+        <den:range min="0" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="AllCharacter" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="SingleLineCommentEnd">
+    <den:choice>
+      <den:lexeme name="NewLine" ignore="false"/>
+      <den:lexeme name="CarriageReturnCharacter" ignore="false"/>
+      <den:lexeme name="LineFoldingCharacter" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="MultiLineCommentBegin">
+    <den:string value="/*"/>
+  </den:definition>
+  <den:definition lexeme="MultiLineCommentEnd">
+    <den:string value="*/"/>
+  </den:definition>
+  <den:definition lexeme="SpaceCharacter">
+    <den:string value=" "/>
+  </den:definition>
+  <den:definition lexeme="TabCharacter">
+    <den:string value="&#9;"/>
+  </den:definition>
+  <den:definition lexeme="CarriageReturnCharacter">
+    <den:string value="&#13;"/>
+  </den:definition>
+  <den:definition lexeme="LineFoldingCharacter">
+    <den:string value="&#10;"/>
+  </den:definition>
+  <den:definition lexeme="IgnoreLexeme">
+    <den:string value="%"/>
+  </den:definition>
+  <den:definition lexeme="LexemeCharacter">
+    <den:characters min="1024" max="1319"/>
+  </den:definition>
+  <den:definition lexeme="Variant">
+    <den:choice>
+      <den:lexeme name="List" ignore="false"/>
+      <den:lexeme name="Repeat" ignore="false"/>
+      <den:lexeme name="Lexeme" ignore="false"/>
+      <den:lexeme name="Characters" ignore="false"/>
+      <den:lexeme name="String" ignore="false"/>
+      <den:lexeme name="RegularExpression" ignore="false"/>
+      <den:lexeme name="Block" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="FullChoiceDelimiter">
+    <den:list>
+      <den:lexeme name="Space" ignore="false"/>
+      <den:lexeme name="ChoiceDelimiter" ignore="false"/>
+      <den:lexeme name="Space" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="ChoiceDelimiter">
+    <den:string value="/"/>
+  </den:definition>
+  <den:definition lexeme="Item">
+    <den:choice>
+      <den:lexeme name="Choice" ignore="false"/>
+      <den:lexeme name="Repeat" ignore="false"/>
+      <den:lexeme name="Lexeme" ignore="false"/>
+      <den:lexeme name="Characters" ignore="false"/>
+      <den:lexeme name="String" ignore="false"/>
+      <den:lexeme name="RegularExpression" ignore="false"/>
+      <den:lexeme name="Block" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="Cvomponent">
+    <den:choice>
+      <den:lexeme name="Lexeme" ignore="false"/>
+      <den:lexeme name="Block" ignore="false"/>
+      <den:lexeme name="RepeatBlock" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="GenerosityTag">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="0" max="1"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="Generosity" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="Count">
+    <den:choice>
+      <den:lexeme name="AnyQuantity" ignore="false"/>
+      <den:lexeme name="RangeList" ignore="false"/>
+      <den:lexeme name="MoreOne" ignore="false"/>
+      <den:lexeme name="NoMoreOne" ignore="false"/>
+      <den:lexeme name="Number" ignore="false"/>
+      <den:lexeme name="Range" ignore="false"/>
+      <den:lexeme name="UpRestriction" ignore="false"/>
+      <den:lexeme name="DownRestriction" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="CharacterBegin">
+    <den:lexeme name="Quote" ignore="false"/>
+  </den:definition>
+  <den:definition lexeme="Literal">
+    <den:choice>
+      <den:lexeme name="CharacterCode" ignore="false"/>
+      <den:lexeme name="AllCharacters" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="CharacterEnd">
+    <den:lexeme name="Quote" ignore="false"/>
+  </den:definition>
+  <den:definition lexeme="RangeDelimiter">
+    <den:choice>
+      <den:lexeme name="VerticalColon" ignore="false"/>
+      <den:lexeme name="HorizontalColon" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="StringBegin">
+    <den:lexeme name="Quote" ignore="false"/>
+  </den:definition>
+  <den:definition lexeme="Literals">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="1" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="Literal" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="StringEnd">
+    <den:lexeme name="Quote" ignore="false"/>
+  </den:definition>
+  <den:definition lexeme="RegularExpressionTag">
+    <den:string value="№"/>
+  </den:definition>
+  <den:definition lexeme="BlockBegin">
+    <den:string value="("/>
+  </den:definition>
+  <den:definition lexeme="BlockEnd">
+    <den:string value=")"/>
+  </den:definition>
+  <den:definition lexeme="AllCharacter">
+    <den:characters min="32" max="1114109"/>
+  </den:definition>
+  <den:definition lexeme="NewLine">
+    <den:list>
+      <den:lexeme name="CarriageReturnCharacter" ignore="false"/>
+      <den:lexeme name="LineFoldingCharacter" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="RepeatBlock">
+    <den:list>
+      <den:lexeme name="BlockBegin" ignore="true"/>
+      <den:lexeme name="Definition" ignore="false"/>
+      <den:lexeme name="Glue" ignore="true"/>
+      <den:lexeme name="Definition" ignore="false"/>
+      <den:lexeme name="BlockEnd" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="Generosity">
+    <den:string value="!"/>
+  </den:definition>
+  <den:definition lexeme="AnyQuantity">
+    <den:string value="*"/>
+  </den:definition>
+  <den:definition lexeme="MoreOne">
+    <den:lexeme name="UpRestrictionCharacter" ignore="false"/>
+  </den:definition>
+  <den:definition lexeme="NoMoreOne">
+    <den:choice>
+      <den:lexeme name="DownRestrictionCharacter" ignore="false"/>
+      <den:lexeme name="AdditionalDownRestrictionCharacter" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="Number">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="1" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="Figure" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="RangeList">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="2" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="FullRangeDelimiter" ignore="false"/>
+      </den:body>
+      <den:glue>
+        <den:lexeme name="RangeLimit" ignore="true"/>
+      </den:glue>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="RangeLimit">
+    <den:choice>
+      <den:lexeme name="Number" ignore="false"/>
+      <den:lexeme name="Range" ignore="false"/>
+      <den:lexeme name="UpRestriction" ignore="false"/>
+      <den:lexeme name="DownRestriction" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="Range">
+    <den:list>
+      <den:lexeme name="Number" ignore="false"/>
+      <den:lexeme name="Space" ignore="true"/>
+      <den:lexeme name="RangeDelimiter" ignore="true"/>
+      <den:lexeme name="Space" ignore="true"/>
+      <den:lexeme name="Number" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="UpRestriction">
+    <den:list>
+      <den:lexeme name="Number" ignore="false"/>
+      <den:lexeme name="Space" ignore="true"/>
+      <den:lexeme name="DownRestrictionCharacter" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="DownRestriction">
+    <den:list>
+      <den:lexeme name="Number" ignore="false"/>
+      <den:lexeme name="Space" ignore="true"/>
+      <den:lexeme name="UpRestrictionCharacter" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="Quote">
+    <den:string value="&quot;"/>
+  </den:definition>
+  <den:definition lexeme="CharacterCode">
+    <den:list>
+      <den:lexeme name="CharacterCodeBegin" ignore="true"/>
+      <den:lexeme name="Number" ignore="false"/>
+      <den:lexeme name="CharacterCodeEnd" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="VerticalColon">
+    <den:string value=":"/>
+  </den:definition>
+  <den:definition lexeme="HorizontalColon">
+    <den:string value=".."/>
+  </den:definition>
+  <den:definition lexeme="Glue">
+    <den:string value="_"/>
+  </den:definition>
+  <den:definition lexeme="UpRestrictionCharacter">
+    <den:string value="+"/>
+  </den:definition>
+  <den:definition lexeme="DownRestrictionCharacter">
+    <den:string value="-"/>
+  </den:definition>
+  <den:definition lexeme="AdditionalDownRestrictionCharacter">
+    <den:string value="?"/>
+  </den:definition>
+  <den:definition lexeme="Figure">
+    <den:characters min="48" max="57"/>
+  </den:definition>
+  <den:definition lexeme="FullRangeDelimiter">
+    <den:list>
+      <den:lexeme name="Space" ignore="false"/>
+      <den:lexeme name="RangeDelimiter" ignore="false"/>
+      <den:lexeme name="Space" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="RangeDelimiter">
+    <den:string value=","/>
+  </den:definition>
+  <den:definition lexeme="CharacterCodeBegin">
+    <den:string value="№"/>
+  </den:definition>
+  <den:definition lexeme="CharacterCodeEnd">
+    <den:string value=";"/>
+  </den:definition>
+</den:notation>

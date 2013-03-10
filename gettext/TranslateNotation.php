@@ -40,12 +40,16 @@
         $res[] = translate_line($line, $po);
       }
     }
-    file_put_contents('../Notation.'.$lang.'.nuss', $res);
+    $filename = '../nuss/Notation.'.$lang.'.nuss';
+    file_put_contents($filename, $res);
+    echo $filename."\n";
   }
 
   $notation = file('../Notation.nuss');
+  copy('../Notation.nuss', '../nuss/Notation.nuss');
+  echo '../nuss/Notation.nuss'."\n";
   foreach (glob('translations/*.po') as $filename) {
-    $lang = substr($filename, strrpos($filename, '.', -5) + 1, strlen($filename) - strrpos($filename, '.'));
+    $lang = substr($filename, strrpos($filename, '.', -5) + 1, strrpos($filename, '.') - strlen($filename));
     $po = load_po($filename);
     translate_notation($notation, $lang, $po);
   }

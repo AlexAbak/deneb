@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<den:notation lang="" xmlns:den="http://deneblingvo.org/Notation/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://deneblingvo.org/Notation/1.0 Notation.xsd">
+  <den:definition lexeme="Нотация">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="0" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="ЭлементНотации" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="ЭлементНотации">
+    <den:choice>
+      <den:lexeme name="ОпределениеЛексемы" ignore="false"/>
+      <den:lexeme name="Комментарий" ignore="false"/>
+      <den:lexeme name="Пробел" ignore="true"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="ОпределениеЛексемы">
+    <den:list>
+      <den:lexeme name="Лексема" ignore="false"/>
+      <den:lexeme name="Пробел" ignore="true"/>
+      <den:lexeme name="НачалоОпределения" ignore="true"/>
+      <den:lexeme name="Пробел" ignore="true"/>
+      <den:lexeme name="Определение" ignore="false"/>
+      <den:lexeme name="Пробел" ignore="true"/>
+      <den:lexeme name="ОкончаниеОпределения" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="Комментарий">
+    <den:choice>
+      <den:lexeme name="ОднострочныйКомментарий" ignore="false"/>
+      <den:lexeme name="МногострочныйКомментарий" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="Пробел">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="0" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="ПробельныйСимвол" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="Лексема">
+    <den:list>
+      <den:lexeme name="МеткаИсключеннойЛексемы" ignore="false"/>
+      <den:lexeme name="ИмяЛексемы" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="НачалоОпределения">
+    <den:string value=":="/>
+  </den:definition>
+  <den:definition lexeme="Определение">
+    <den:choice>
+      <den:lexeme name="Выбор" ignore="false"/>
+      <den:lexeme name="Список" ignore="false"/>
+      <den:lexeme name="Повторение" ignore="false"/>
+      <den:lexeme name="Лексема" ignore="false"/>
+      <den:lexeme name="Символы" ignore="false"/>
+      <den:lexeme name="Строка" ignore="false"/>
+      <den:lexeme name="РегулярноеВыражение" ignore="false"/>
+      <den:lexeme name="Блок" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="ОкончаниеОпределения">
+    <den:string value=";"/>
+  </den:definition>
+  <den:definition lexeme="ОднострочныйКомментарий">
+    <den:list>
+      <den:lexeme name="НачалоОднострочногоКомментария" ignore="true"/>
+      <den:lexeme name="ЛюбыеСимволы" ignore="false"/>
+      <den:lexeme name="ОкончаниеОднострочногоКомментария" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="МногострочныйКомментарий">
+    <den:list>
+      <den:lexeme name="НачалоМногострочногоКомментария" ignore="true"/>
+      <den:lexeme name="ЛюбыеСимволы" ignore="false"/>
+      <den:lexeme name="ОкончаниеМногострочногоКомментария" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="ПробельныйСимвол">
+    <den:choice>
+      <den:lexeme name="СимволПробела" ignore="false"/>
+      <den:lexeme name="СимволТабуляции" ignore="false"/>
+      <den:lexeme name="СимволВозвратаКаретки" ignore="false"/>
+      <den:lexeme name="СимволПереносаСтроки" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="МеткаИсключеннойЛексемы">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="0" max="1"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="ИсключеннаяЛексема" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="ИмяЛексемы">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="1" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="СимволЛексемы" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="Выбор">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="2" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="Вариант" ignore="false"/>
+      </den:body>
+      <den:glue>
+        <den:lexeme name="ПолныйРазделительВыбора" ignore="true"/>
+      </den:glue>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="Список">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="2" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="Пункт" ignore="false"/>
+      </den:body>
+      <den:glue>
+        <den:lexeme name="Пробел" ignore="true"/>
+      </den:glue>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="Повторение">
+    <den:list>
+      <den:lexeme name="Элемент" ignore="false"/>
+      <den:lexeme name="Пробел" ignore="true"/>
+      <den:lexeme name="МеткаЩедрости" ignore="false"/>
+      <den:lexeme name="Пробел" ignore="true"/>
+      <den:lexeme name="Количество" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="Символы">
+    <den:list>
+      <den:lexeme name="НачалоСимвола" ignore="true"/>
+      <den:lexeme name="Литерал" ignore="false"/>
+      <den:lexeme name="ОкончаниеСимвола" ignore="true"/>
+      <den:lexeme name="Пробел" ignore="true"/>
+      <den:lexeme name="РазделительДиапазона" ignore="true"/>
+      <den:lexeme name="Пробел" ignore="true"/>
+      <den:lexeme name="НачалоСимвола" ignore="true"/>
+      <den:lexeme name="Литерал" ignore="false"/>
+      <den:lexeme name="ОкончаниеСимвола" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="Строка">
+    <den:list>
+      <den:lexeme name="НачалоСтроки" ignore="true"/>
+      <den:lexeme name="Литералы" ignore="false"/>
+      <den:lexeme name="ОкончаниеСтроки" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="РегулярноеВыражение">
+    <den:list>
+      <den:lexeme name="МеткаРегулярногоВыражения" ignore="true"/>
+      <den:lexeme name="НачалоСтроки" ignore="true"/>
+      <den:lexeme name="Литералы" ignore="false"/>
+      <den:lexeme name="ОкончаниеСтроки" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="Блок">
+    <den:list>
+      <den:lexeme name="НачалоБлока" ignore="true"/>
+      <den:lexeme name="Определение" ignore="false"/>
+      <den:lexeme name="ОкончаниеБлока" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="НачалоОднострочногоКомментария">
+    <den:string value="//"/>
+  </den:definition>
+  <den:definition lexeme="ЛюбыеСимволы">
+    <den:repeat generosity="true">
+      <den:ranges>
+        <den:range min="0" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="ЛюбойСимвол" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="ОкончаниеОднострочногоКомментария">
+    <den:choice>
+      <den:lexeme name="ПереносСтроки" ignore="false"/>
+      <den:lexeme name="СимволВозвратаКаретки" ignore="false"/>
+      <den:lexeme name="СимволПереносаСтроки" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="НачалоМногострочногоКомментария">
+    <den:string value="/*"/>
+  </den:definition>
+  <den:definition lexeme="ОкончаниеМногострочногоКомментария">
+    <den:string value="*/"/>
+  </den:definition>
+  <den:definition lexeme="СимволПробела">
+    <den:string value=" "/>
+  </den:definition>
+  <den:definition lexeme="СимволТабуляции">
+    <den:string value="&#9;"/>
+  </den:definition>
+  <den:definition lexeme="СимволВозвратаКаретки">
+    <den:string value="&#13;"/>
+  </den:definition>
+  <den:definition lexeme="СимволПереносаСтроки">
+    <den:string value="&#10;"/>
+  </den:definition>
+  <den:definition lexeme="ИсключеннаяЛексема">
+    <den:string value="%"/>
+  </den:definition>
+  <den:definition lexeme="СимволЛексемы">
+    <den:characters min="1024" max="1319"/>
+  </den:definition>
+  <den:definition lexeme="Вариант">
+    <den:choice>
+      <den:lexeme name="Список" ignore="false"/>
+      <den:lexeme name="Повторение" ignore="false"/>
+      <den:lexeme name="Лексема" ignore="false"/>
+      <den:lexeme name="Символы" ignore="false"/>
+      <den:lexeme name="Строка" ignore="false"/>
+      <den:lexeme name="РегулярноеВыражение" ignore="false"/>
+      <den:lexeme name="Блок" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="ПолныйРазделительВыбора">
+    <den:list>
+      <den:lexeme name="Пробел" ignore="false"/>
+      <den:lexeme name="РазделительВыбора" ignore="false"/>
+      <den:lexeme name="Пробел" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="РазделительВыбора">
+    <den:string value="/"/>
+  </den:definition>
+  <den:definition lexeme="Пункт">
+    <den:choice>
+      <den:lexeme name="Выбор" ignore="false"/>
+      <den:lexeme name="Повторение" ignore="false"/>
+      <den:lexeme name="Лексема" ignore="false"/>
+      <den:lexeme name="Символы" ignore="false"/>
+      <den:lexeme name="Строка" ignore="false"/>
+      <den:lexeme name="РегулярноеВыражение" ignore="false"/>
+      <den:lexeme name="Блок" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="Элемент">
+    <den:choice>
+      <den:lexeme name="Лексема" ignore="false"/>
+      <den:lexeme name="Блок" ignore="false"/>
+      <den:lexeme name="БлокПовторения" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="МеткаЩедрости">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="0" max="1"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="Щедрость" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="Количество">
+    <den:choice>
+      <den:lexeme name="ЛюбоеКоличество" ignore="false"/>
+      <den:lexeme name="СписокДиапазонов" ignore="false"/>
+      <den:lexeme name="БолееОдного" ignore="false"/>
+      <den:lexeme name="НеБолееОдного" ignore="false"/>
+      <den:lexeme name="Число" ignore="false"/>
+      <den:lexeme name="Диапазон" ignore="false"/>
+      <den:lexeme name="ОграничениеСверху" ignore="false"/>
+      <den:lexeme name="ОграничениеСнизу" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="НачалоСимвола">
+    <den:lexeme name="Кавычка" ignore="false"/>
+  </den:definition>
+  <den:definition lexeme="Литерал">
+    <den:choice>
+      <den:lexeme name="КодСимвола" ignore="false"/>
+      <den:lexeme name="ЛюбыеСимволы" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="ОкончаниеСимвола">
+    <den:lexeme name="Кавычка" ignore="false"/>
+  </den:definition>
+  <den:definition lexeme="РазделительДиапазона">
+    <den:choice>
+      <den:lexeme name="ВертикальноеДвоеточие" ignore="false"/>
+      <den:lexeme name="ГоризонтальноеДвоеточие" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="НачалоСтроки">
+    <den:lexeme name="Кавычка" ignore="false"/>
+  </den:definition>
+  <den:definition lexeme="Литералы">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="1" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="Литерал" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="ОкончаниеСтроки">
+    <den:lexeme name="Кавычка" ignore="false"/>
+  </den:definition>
+  <den:definition lexeme="МеткаРегулярногоВыражения">
+    <den:string value="№"/>
+  </den:definition>
+  <den:definition lexeme="НачалоБлока">
+    <den:string value="("/>
+  </den:definition>
+  <den:definition lexeme="ОкончаниеБлока">
+    <den:string value=")"/>
+  </den:definition>
+  <den:definition lexeme="ЛюбойСимвол">
+    <den:characters min="32" max="1114109"/>
+  </den:definition>
+  <den:definition lexeme="ПереносСтроки">
+    <den:list>
+      <den:lexeme name="СимволВозвратаКаретки" ignore="false"/>
+      <den:lexeme name="СимволПереносаСтроки" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="БлокПовторения">
+    <den:list>
+      <den:lexeme name="НачалоБлока" ignore="true"/>
+      <den:lexeme name="Определение" ignore="false"/>
+      <den:lexeme name="Клей" ignore="true"/>
+      <den:lexeme name="Определение" ignore="false"/>
+      <den:lexeme name="ОкончаниеБлока" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="Щедрость">
+    <den:string value="!"/>
+  </den:definition>
+  <den:definition lexeme="ЛюбоеКоличество">
+    <den:string value="*"/>
+  </den:definition>
+  <den:definition lexeme="БолееОдного">
+    <den:lexeme name="СимволОграниченияСнизу" ignore="false"/>
+  </den:definition>
+  <den:definition lexeme="НеБолееОдного">
+    <den:choice>
+      <den:lexeme name="СимволОграниченияСверху" ignore="false"/>
+      <den:lexeme name="ДополнительныйСимволОграниченияСверху" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="Число">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="1" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="Цифра" ignore="false"/>
+      </den:body>
+      <den:glue/>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="СписокДиапазонов">
+    <den:repeat generosity="false">
+      <den:ranges>
+        <den:range min="2" max="0"/>
+      </den:ranges>
+      <den:body>
+        <den:lexeme name="ПолныйРазделительДиапазонов" ignore="false"/>
+      </den:body>
+      <den:glue>
+        <den:lexeme name="ОграничениеДиапазона" ignore="true"/>
+      </den:glue>
+    </den:repeat>
+  </den:definition>
+  <den:definition lexeme="ОграничениеДиапазона">
+    <den:choice>
+      <den:lexeme name="Число" ignore="false"/>
+      <den:lexeme name="Диапазон" ignore="false"/>
+      <den:lexeme name="ОграничениеСверху" ignore="false"/>
+      <den:lexeme name="ОграничениеСнизу" ignore="false"/>
+    </den:choice>
+  </den:definition>
+  <den:definition lexeme="Диапазон">
+    <den:list>
+      <den:lexeme name="Число" ignore="false"/>
+      <den:lexeme name="Пробел" ignore="true"/>
+      <den:lexeme name="РазделительДиапазона" ignore="true"/>
+      <den:lexeme name="Пробел" ignore="true"/>
+      <den:lexeme name="Число" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="ОграничениеСверху">
+    <den:list>
+      <den:lexeme name="Число" ignore="false"/>
+      <den:lexeme name="Пробел" ignore="true"/>
+      <den:lexeme name="СимволОграниченияСверху" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="ОграничениеСнизу">
+    <den:list>
+      <den:lexeme name="Число" ignore="false"/>
+      <den:lexeme name="Пробел" ignore="true"/>
+      <den:lexeme name="СимволОграниченияСнизу" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="Кавычка">
+    <den:string value="&quot;"/>
+  </den:definition>
+  <den:definition lexeme="КодСимвола">
+    <den:list>
+      <den:lexeme name="НачалоКодаСимвола" ignore="true"/>
+      <den:lexeme name="Число" ignore="false"/>
+      <den:lexeme name="ОкончаниеКодаСимвола" ignore="true"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="ВертикальноеДвоеточие">
+    <den:string value=":"/>
+  </den:definition>
+  <den:definition lexeme="ГоризонтальноеДвоеточие">
+    <den:string value=".."/>
+  </den:definition>
+  <den:definition lexeme="Клей">
+    <den:string value="_"/>
+  </den:definition>
+  <den:definition lexeme="СимволОграниченияСнизу">
+    <den:string value="+"/>
+  </den:definition>
+  <den:definition lexeme="СимволОграниченияСверху">
+    <den:string value="-"/>
+  </den:definition>
+  <den:definition lexeme="ДополнительныйСимволОграниченияСверху">
+    <den:string value="?"/>
+  </den:definition>
+  <den:definition lexeme="Цифра">
+    <den:characters min="48" max="57"/>
+  </den:definition>
+  <den:definition lexeme="ПолныйРазделительДиапазонов">
+    <den:list>
+      <den:lexeme name="Пробел" ignore="false"/>
+      <den:lexeme name="РазделительДиапазонов" ignore="false"/>
+      <den:lexeme name="Пробел" ignore="false"/>
+    </den:list>
+  </den:definition>
+  <den:definition lexeme="РазделительДиапазонов">
+    <den:string value=","/>
+  </den:definition>
+  <den:definition lexeme="НачалоКодаСимвола">
+    <den:string value="№"/>
+  </den:definition>
+  <den:definition lexeme="ОкончаниеКодаСимвола">
+    <den:string value=";"/>
+  </den:definition>
+</den:notation>

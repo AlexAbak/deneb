@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://deneblingvo.org/Notation/1.0" xmlns:tns="http://deneblingvo.org/Notation/1.0" elementFormDefault="qualified">
+    <complexType name="notation">
+    	<sequence minOccurs="1" maxOccurs="unbounded">
+    		<element name="definition" type="tns:definition"></element>
+    	</sequence>
+    	<attribute name="lang" type="string"></attribute>
+    </complexType>
+    <element name="notation" type="tns:notation"></element>
+
+    <complexType name="definition">
+   		<choice>
+   			<element name="string" type="tns:string"></element>
+   			<element name="characters" type="tns:characters"></element>
+   			<element name="choice" type="tns:choice"></element>
+   			<element name="repeat" type="tns:repeat"></element>
+   			<element name="list" type="tns:list"></element>
+   			<element name="lexeme" type="tns:lexeme"></element>
+   		</choice>
+   		<attribute name="lexeme" type="string"></attribute>
+    </complexType>
+    
+    <complexType name="string">
+    	<attribute name="value" type="string"></attribute>
+    </complexType>
+    
+    <complexType name="characters">
+    	<attribute name="min" type="string"></attribute>
+    	<attribute name="max" type="string"></attribute>
+    </complexType>
+
+    <complexType name="choice">
+    	<sequence minOccurs="1" maxOccurs="unbounded">
+    		<element name="lexeme" type="tns:lexeme"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="repeat">
+    	<sequence>
+    		<element name="ranges" type="tns:ranges"></element>
+    		<element name="body" type="tns:body"></element>
+    		<element name="glue" type="tns:glue"></element>
+    	</sequence>
+    	<attribute name="generosity" type="string"></attribute>
+    </complexType>
+
+    <complexType name="lexeme">
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="ignore" type="string"></attribute>
+    </complexType>
+
+    <complexType name="ranges">
+    	<sequence minOccurs="1" maxOccurs="unbounded">
+    		<element name="range" type="tns:range"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="body">
+    	<sequence minOccurs="0" maxOccurs="1">
+    		<element name="lexeme" type="tns:lexeme"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="glue">
+    	<sequence minOccurs="0" maxOccurs="1">
+    		<element name="lexeme" type="tns:lexeme"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="range">
+    	<attribute name="min" type="string"></attribute>
+    	<attribute name="max" type="string"></attribute>
+    </complexType>
+
+    <complexType name="list">
+    	<sequence minOccurs="1" maxOccurs="unbounded">
+    		<element name="lexeme" type="tns:lexeme"></element>
+    	</sequence>
+    </complexType>
+</schema>

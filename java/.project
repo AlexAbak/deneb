@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>xml</name>
+			<type>2</type>
+			<location>/home/alex/Projects/github/deneb/xml</location>
+		</link>
+	</linkedResources>
 </projectDescription>
