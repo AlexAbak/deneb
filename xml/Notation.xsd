@@ -4,7 +4,7 @@
     <xs:sequence minOccurs="1" maxOccurs="unbounded">
       <xs:element name="definition" type="tns:definition"></xs:element>
     </xs:sequence>
-    <xs:attribute name="lang" type="string"></xs:attribute>
+    <xs:attribute name="lang" type="xs:string"></xs:attribute>
   </xs:complexType>
   <xs:element name="notation" type="tns:notation"></xs:element>
 
@@ -17,16 +17,16 @@
       <xs:element name="list" type="tns:list"></xs:element>
       <xs:element name="lexeme" type="tns:lexeme"></xs:element>
     </xs:choice>
-    <xs:attribute name="lexeme" type="string"></xs:attribute>
+    <xs:attribute name="lexeme" type="xs:string"></xs:attribute>
   </xs:complexType>
 
   <xs:complexType name="string">
-    <xs:attribute name="value" type="string"></xs:attribute>
+    <xs:attribute name="value" type="xs:string"></xs:attribute>
   </xs:complexType>
 
   <xs:complexType name="characters">
-    <xs:attribute name="min" type="string"></xs:attribute>
-    <xs:attribute name="max" type="string"></xs:attribute>
+    <xs:attribute name="min" type="xs:string"></xs:attribute>
+    <xs:attribute name="max" type="xs:string"></xs:attribute>
   </xs:complexType>
 
   <xs:complexType name="choice">
@@ -41,12 +41,12 @@
       <xs:element name="body" type="tns:body"></xs:element>
       <xs:element name="glue" type="tns:glue"></xs:element>
     </xs:sequence>
-    <xs:attribute name="generosity" type="string"></xs:attribute>
+    <xs:attribute name="generosity" type="xs:string"></xs:attribute>
   </xs:complexType>
 
   <xs:complexType name="lexeme">
-    <xs:attribute name="name" type="string"></xs:attribute>
-    <xs:attribute name="ignore" type="string"></xs:attribute>
+    <xs:attribute name="name" type="xs:string"></xs:attribute>
+    <xs:attribute name="ignore" type="xs:string"></xs:attribute>
   </xs:complexType>
 
   <xs:complexType name="ranges">
@@ -68,8 +68,8 @@
   </xs:complexType>
 
   <xs:complexType name="range">
-    <xs:attribute name="min" type="string"></xs:attribute>
-    <xs:attribute name="max" type="string"></xs:attribute>
+    <xs:attribute name="min" type="xs:string"></xs:attribute>
+    <xs:attribute name="max" type="xs:string"></xs:attribute>
   </xs:complexType>
 
   <xs:complexType name="list">
