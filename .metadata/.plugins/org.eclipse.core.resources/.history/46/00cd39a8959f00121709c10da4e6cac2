@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://deneblingvo.org/xsd/transformation/1.0" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:dtn="http://deneblingvo.org/xsd/transformation/1.0">
+
+    <element name="transformation" type="dtn:trasformation"></element>
+    
+    <complexType name="trasformation">
+    	<sequence>
+    		<element name="stylesheet" type="dtn:stylesheet"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="stylesheet"></complexType>
+</schema>

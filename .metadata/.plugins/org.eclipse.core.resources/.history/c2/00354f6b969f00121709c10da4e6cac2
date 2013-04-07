@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://deneblingvo.org/xsd/transformation/1.0" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dtn="http://deneblingvo.org/xsd/transformation/1.0">
+
+    <xs:element name="transformation" type="dtn:trasformation"></xs:element>
+    
+    <xs:complexType name="trasformation">
+    	<xs:sequence>
+    		<xs:element name="stylesheet" type="dtn:stylesheet"
+    			minOccurs="1" maxOccurs="1">
+    		</xs:element>
+    		<xs:element name="source" type="dtn:source" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="stylesheet">
+    	<xs:attribute name="href" type="xs:anyURI"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="source">
+    	<xs:attribute name="href" type="xs:anyURI"></xs:attribute>
+    </xs:complexType>
+</xs:schema>
