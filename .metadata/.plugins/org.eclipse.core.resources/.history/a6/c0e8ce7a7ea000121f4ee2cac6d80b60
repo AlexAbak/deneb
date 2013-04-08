@@ -1,0 +1,14 @@
+package org.deneblingvo.transformator;
+
+import java.io.File;
+
+import com.beust.jcommander.IStringConverter;
+
+public class FileConverter {
+	
+	  @Override
+	  public File convert(String value) {
+	    return new File(value);
+	  }
+
+}

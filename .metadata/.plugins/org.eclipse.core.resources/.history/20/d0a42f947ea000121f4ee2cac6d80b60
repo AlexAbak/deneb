@@ -1,0 +1,26 @@
+package org.deneblingvo.transformator;
+
+import FileConverter;
+
+import java.io.File;
+
+import com.beust.jcommander.Parameter;
+
+public class Parameters {
+	
+	@Parameter(
+		names ={ "-f", "--file"},
+		description = "имя файла",
+		converter = FileConverter.class,
+		required = true
+	)
+	File file;
+
+	@Parameter(
+		names = { "-h", "--help" },
+		description = "справка",
+		help = true
+	)
+	boolean help = false;
+
+}

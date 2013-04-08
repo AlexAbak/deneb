@@ -1,0 +1,40 @@
+package org.deneblingvo.xml;
+
+import java.lang.reflect.Field;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Element;
+public class Reader {
+	
+	Object object;
+	
+	public Reader (Object object) {
+		this.object = object;
+	}
+	
+	private void parseNode(Element element, Object object) throws NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException {
+		NodeList nodes = element.getChildNodes();
+		Class<?> objectClass = object.getClass();
+		int index;
+		for (index = 0; index < nodes.getLength(); index++) {
+			Node node = nodes.item(index);
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+				Element current = (Element)node;
+				Field field = objectClass.getField(current.getLocalName());
+				Class<?> fieldClass = field.getDeclaringClass();
+				Object fieldValue = fieldClass.newInstance();
+				field.set(object, fieldValue);
+				this.parseNode(current, object);
+			}
+		}
+//		  Field field = objectClass.getField("");
+//		  field.set(this.object, value);
+		
+	}
+
+	public void parse (Document document) throws NoSuchFieldException, SecurityException {
+		this.parseNode(document.getDocumentElement(), this.object);
+	}
+}

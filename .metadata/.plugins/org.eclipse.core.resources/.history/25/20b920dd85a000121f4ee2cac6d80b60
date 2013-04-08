@@ -1,0 +1,26 @@
+package org.deneblingvo.xml;
+
+import java.lang.reflect.Field;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+
+public class Reader {
+	
+	Object object;
+	
+	public Reader (Object object) {
+		this.object = object;
+	}
+	
+	private void parseNode(Node node, Object object) {
+//		  Class<?> objectClass = this.object.getClass();
+//		  Field field = objectClass.getField("");
+//		  field.set(this.object, value);
+		
+	}
+
+	public void parse (Document document) throws NoSuchFieldException, SecurityException {
+		this.parseNode(document.getDocumentElement(), this.object);
+	}
+}

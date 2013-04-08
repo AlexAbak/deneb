@@ -1,0 +1,32 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+
+import org.deneblingvo.transformator.Parameters;
+import com.beust.jcommander.JCommander;
+
+
+public class DenebTransformator {
+
+	/**
+	 * @param args
+	 * @throws FileNotFoundException 
+	 */
+	public static void main(String[] args) throws FileNotFoundException {
+		Parameters parameters = new Parameters();
+		JCommander jc = new JCommander(parameters);
+		jc.parse(args);
+
+		jc.setProgramName("DenebCompiler");
+		jc.usage();
+		
+		InputStream source;
+		if (parameters.file.isFile()) {
+			source = new FileInputStream(parameters.file);
+		} else {
+			source = System.in;
+		}
+	}
+
+}

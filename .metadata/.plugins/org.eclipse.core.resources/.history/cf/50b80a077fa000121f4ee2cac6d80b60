@@ -1,0 +1,27 @@
+import java.io.FileInputStream;
+
+import org.deneblingvo.transformator.Parameters;
+import com.beust.jcommander.JCommander;
+
+
+public class DenebTransformator {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Parameters parameters = new Parameters();
+		JCommander jc = new JCommander(parameters);
+		jc.parse(args);
+		
+		FileInputStream source;
+		if (parameters.file.isFile()) {
+			source = new FileInputStream(parameters.file);
+
+		} else {
+			jc.setProgramName("DenebCompiler");
+			jc.usage();
+		}
+	}
+
+}
