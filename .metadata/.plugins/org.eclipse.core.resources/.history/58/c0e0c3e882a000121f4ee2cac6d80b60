@@ -1,9 +1,0 @@
-package org.deneblingvo.transformator;
-
-public class Transformation {
-
-	public Stylesheet stylesheet;
-
-	public Source source [];
-
-}

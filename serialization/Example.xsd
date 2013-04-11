@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://deneblingvo.org/xsd/Example/1.0" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:exm="http://deneblingvo.org/xsd/Example/1.0">
+
+    <xs:element name="root" type="exm:root"></xs:element>
+    
+    <xs:complexType name="root">
+    	<xs:sequence>
+    		<xs:element name="field_attribute"
+    			type="exm:field_attribute" minOccurs="1" maxOccurs="1">
+    		</xs:element>
+    		<xs:element name="field_attributes"
+    			type="exm:field_attributes" minOccurs="0"
+    			maxOccurs="unbounded">
+    		</xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="int_attribute" type="xs:int"></xs:attribute>
+    	<xs:attribute name="string_attribute" type="xs:string"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="field_attribute">
+    	<xs:attribute name="int_attribute" type="xs:int"></xs:attribute>
+    	<xs:attribute name="string_attribute" type="xs:string"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="field_attributes">
+    	<xs:attribute name="int_attribute" type="xs:int"></xs:attribute>
+    	<xs:attribute name="string_attribute" type="xs:string"></xs:attribute>
+    </xs:complexType>
+</xs:schema>
