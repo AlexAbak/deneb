@@ -10,6 +10,8 @@ import java.io.InputStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import junit.framework.Assert;
+
 // import junit.framework.Assert;
 
 import org.deneblingvo.serialization.xml.Reader;
@@ -70,6 +72,10 @@ public class ReaderTest {
 	@Test
 	public void testRead() throws Exception {
 		this.reader.read(this.document, this.example);
+		Assert.assertEquals(1234321, this.example.int_attribute);
+		Assert.assertEquals("qwerewq", this.example.string_attribute);
+		Assert.assertEquals(12321, this.example.field_attribute.int_attribute);
+		Assert.assertEquals("qwewq", this.example.field_attribute.string_attribute);
 	}
 
 }
