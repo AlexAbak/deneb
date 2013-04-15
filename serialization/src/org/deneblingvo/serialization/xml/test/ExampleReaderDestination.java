@@ -16,5 +16,6 @@ public class ExampleReaderDestination {
 	@Xpath(path = "field_attribute")
 	public ExampleReaderDestinationField field_attribute;
 
+	@Xpath(path = "field_attributes", itemClass = ExampleReaderDestinationField.class)
 	public Vector<ExampleReaderDestinationField> field_attributes;
 }

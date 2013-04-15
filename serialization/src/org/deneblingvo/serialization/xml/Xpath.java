@@ -9,5 +9,7 @@ public @interface Xpath {
 	String path();
 
 	boolean value() default false;
+	
+	Class<?> itemClass() default Object.class;
 
 }

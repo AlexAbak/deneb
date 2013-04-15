@@ -1,6 +1,7 @@
 package org.deneblingvo.serialization.xml;
 
 import java.lang.reflect.Field;
+import java.util.Vector;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
@@ -62,19 +63,38 @@ public class Reader {
 		this.readElementNode(node, v, fieldClass);
 	}
 	
+	private void readFieldObjects(NodeList nodes, Object obj, Field field, Class<?> fieldClass, Xpath annotation) throws InstantiationException, IllegalAccessException, IllegalArgumentException, XPathExpressionException {
+		if (fieldClass == Vector.class) {
+			Object v = fieldClass.newInstance();
+			field.set(obj, v);
+			@SuppressWarnings("unchecked")
+			Vector<Object> vector = (Vector<Object>)v;
+			Class<?> itemClass = annotation.itemClass();
+			for (int i = 0; i < nodes.getLength(); i++) {
+				Node node = nodes.item(i);
+				Object n = itemClass.newInstance();
+				this.readElementNode(node, n, itemClass);
+				vector.addElement(n);
+			}
+		} else {
+			Node node = nodes.item(0);
+			this.readFieldObject(node, obj, field, fieldClass);
+		}
+	}
+
 	private void readFieldXpath(Node root, Object obj, Field field, Class<?> fieldClass, Xpath annotation) throws XPathExpressionException, IllegalArgumentException, IllegalAccessException, InstantiationException {
 		XPathFactory factory = XPathFactory.newInstance();
 		XPath xpath = factory.newXPath();
 		XPathExpression expr = xpath.compile(annotation.path());
 		Object result = expr.evaluate(root, XPathConstants.NODESET);
 		NodeList nodes = (NodeList) result;
-		for (int i = 0; i < nodes.getLength(); i++) {
-			Node node = nodes.item(i);
-			if (annotation.value()) {
+		if (annotation.value()) {
+			for (int i = 0; i < nodes.getLength(); i++) {
+				Node node = nodes.item(i);
 				this.readFieldValue(node, obj, field, fieldClass);
-			} else {
-				this.readFieldObject(node, obj, field, fieldClass);
 			}
+		} else {
+			this.readFieldObjects(nodes, obj, field, fieldClass, annotation);
 		}
 	}
 

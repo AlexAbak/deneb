@@ -76,6 +76,11 @@ public class ReaderTest {
 		Assert.assertEquals("qwerewq", this.example.string_attribute);
 		Assert.assertEquals(12321, this.example.field_attribute.int_attribute);
 		Assert.assertEquals("qwewq", this.example.field_attribute.string_attribute);
+		Assert.assertEquals(2, this.example.field_attributes.size());
+		Assert.assertEquals(121, this.example.field_attributes.get(0).int_attribute);
+		Assert.assertEquals("qwq", this.example.field_attributes.get(0).string_attribute);
+		Assert.assertEquals(1, this.example.field_attributes.get(1).int_attribute);
+		Assert.assertEquals("q", this.example.field_attributes.get(1).string_attribute);
 	}
 
 }
