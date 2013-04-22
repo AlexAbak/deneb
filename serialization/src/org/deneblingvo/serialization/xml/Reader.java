@@ -115,6 +115,8 @@ public class Reader {
 		Xpath annotation = objectClass.getAnnotation(Xpath.class);
 		if (annotation != null) {
 			XPathFactory factory = XPathFactory.newInstance();
+//			XPathFactory factory = new com.sun.org.apache.xpath.internal.jaxp.XPathFactoryImpl();
+			System.out.println(factory.getClass());
 			XPath xpath = factory.newXPath();
 			XPathExpression expr = xpath.compile(annotation.path());
 			Object result = expr.evaluate(element, XPathConstants.NODESET);

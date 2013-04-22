@@ -1,16 +1,14 @@
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.xpath.XPathExpressionException;
 
 import org.deneblingvo.transformator.Parameters;
-import org.deneblingvo.transformator.Transformation;
-import org.deneblingvo.xml.Reader;
+import org.deneblingvo.transformator.Transformator;
 
 import com.beust.jcommander.JCommander;
 
@@ -26,8 +24,10 @@ public class DenebTransformator {
 	 * @throws InstantiationException 
 	 * @throws SecurityException 
 	 * @throws NoSuchFieldException 
+	 * @throws XPathExpressionException 
+	 * @throws TransformerException 
 	 */
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException {
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, TransformerException {
 		Parameters parameters = new Parameters();
 		JCommander jc = new JCommander(parameters);
 		jc.parse(args);
@@ -35,19 +35,16 @@ public class DenebTransformator {
 		jc.setProgramName("DenebCompiler");
 		jc.usage();
 		
+		Transformator transformator = new Transformator();
 		InputStream source;
-		if (parameters.file.isFile()) {
+		if ((parameters.file != null) && (parameters.file.isFile())) {
 			source = new FileInputStream(parameters.file);
+			transformator.transformate(source);
+			source.close();
 		} else {
 			source = System.in;
+			transformator.transformate(source);
 		}
-		DocumentBuilderFactory factory =  DocumentBuilderFactory.newInstance();
-		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document document = builder.parse(source);
-		
-		Transformation transformation = new Transformation();
-		Reader reader = new Reader(transformation);
-		reader.parse(document);
 	}
 
 }

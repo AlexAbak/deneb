@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root int_attribute="1234321" string_attribute="qwerewq" xmlns="http://deneblingvo.org/xsd/Example/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://deneblingvo.org/xsd/Example/1.0 Example.xsd ">
+  <field_attribute int_attribute="12321" string_attribute="qwewq"/>
+  <field_attributes int_attribute="121" string_attribute="qwq"/>
+  <field_attributes int_attribute="1" string_attribute="q"/>
+</root>

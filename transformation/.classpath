@@ -3,5 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jcommander-master"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/serialization"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/saxon9he"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

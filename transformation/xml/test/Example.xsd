@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://deneblingvo.org/xsd/transformator/Example/1.0" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0">
+
+    <xs:element name="database" type="exm:database"></xs:element>
+    
+    <xs:complexType name="database">
+    	<xs:sequence>
+    		<xs:element name="table" type="exm:table" minOccurs="0" maxOccurs="unbounded">
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="table">
+    	<xs:sequence>
+    		<xs:element name="field" type="exm:field" minOccurs="0" maxOccurs="unbounded">
+    		</xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="name" type="xs:string"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="field">
+    	<xs:attribute name="name" type="xs:string"></xs:attribute>
+    	<xs:attribute name="type" type="xs:string"></xs:attribute>
+    </xs:complexType>
+</xs:schema>

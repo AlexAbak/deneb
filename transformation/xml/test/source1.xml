@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exm:database xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://deneblingvo.org/xsd/transformator/Example/1.0 Example.xsd ">
+  <exm:table name="TABLE1">
+  	<exm:field name="K_ID" type="NUMBER(32)" />
+  	<exm:field name="F_VALUE1" type="VARCHAR" />
+  </exm:table>
+  <exm:table name="TABLE2">
+  	<exm:field name="K_ID" type="NUMBER(32)"></exm:field>
+  	<exm:field name="F_VALUE2" type="VARCHAR" /></exm:table>
+</exm:database>

@@ -55,7 +55,7 @@ public class ReaderTest {
 		this.reader = new Reader();
 		DocumentBuilderFactory factory =  DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
-		InputStream source = new FileInputStream("Example.xml");
+		InputStream source = new FileInputStream("xml/Example.xml");
 		this.document = builder.parse(source);
 	}
 
