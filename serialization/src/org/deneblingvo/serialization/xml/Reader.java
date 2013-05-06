@@ -9,6 +9,8 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import javax.xml.namespace.NamespaceContext;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -85,6 +87,8 @@ public class Reader {
 	private void readFieldXpath(Node root, Object obj, Field field, Class<?> fieldClass, Xpath annotation) throws XPathExpressionException, IllegalArgumentException, IllegalAccessException, InstantiationException {
 		XPathFactory factory = XPathFactory.newInstance();
 		XPath xpath = factory.newXPath();
+		NamespaceContext nsContext = new NamespaceContextMap("exm", "http://deneblingvo.org/xsd/Example/1.0");
+		xpath.setNamespaceContext(nsContext);
 		XPathExpression expr = xpath.compile(annotation.path());
 		Object result = expr.evaluate(root, XPathConstants.NODESET);
 		NodeList nodes = (NodeList) result;
@@ -115,9 +119,11 @@ public class Reader {
 		Xpath annotation = objectClass.getAnnotation(Xpath.class);
 		if (annotation != null) {
 			XPathFactory factory = XPathFactory.newInstance();
-//			XPathFactory factory = new com.sun.org.apache.xpath.internal.jaxp.XPathFactoryImpl();
-			System.out.println(factory.getClass());
 			XPath xpath = factory.newXPath();
+			if (annotation.namespaces().length > 0) {
+				NamespaceContext nsContext = new NamespaceContextMap(annotation.namespaces());
+				xpath.setNamespaceContext(nsContext);
+			}
 			XPathExpression expr = xpath.compile(annotation.path());
 			Object result = expr.evaluate(element, XPathConstants.NODESET);
 			NodeList nodes = (NodeList) result;

@@ -3,7 +3,6 @@
  */
 package org.deneblingvo.serialization.xml.test;
 
-// import static org.junit.Assert.*;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
@@ -11,8 +10,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import junit.framework.Assert;
-
-// import junit.framework.Assert;
 
 import org.deneblingvo.serialization.xml.Reader;
 import org.junit.After;
@@ -53,7 +50,7 @@ public class ReaderTest {
 	public void setUp() throws Exception {
 		this.example = new ExampleReaderDestination();
 		this.reader = new Reader();
-		DocumentBuilderFactory factory =  DocumentBuilderFactory.newInstance();
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		InputStream source = new FileInputStream("xml/Example.xml");
 		this.document = builder.parse(source);
