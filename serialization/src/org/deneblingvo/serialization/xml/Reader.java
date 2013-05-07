@@ -87,8 +87,10 @@ public class Reader {
 	private void readFieldXpath(Node root, Object obj, Field field, Class<?> fieldClass, Xpath annotation) throws XPathExpressionException, IllegalArgumentException, IllegalAccessException, InstantiationException {
 		XPathFactory factory = XPathFactory.newInstance();
 		XPath xpath = factory.newXPath();
-		NamespaceContext nsContext = new NamespaceContextMap("exm", "http://deneblingvo.org/xsd/Example/1.0");
-		xpath.setNamespaceContext(nsContext);
+		if (annotation.namespaces().length > 0) {
+			NamespaceContext nsContext = new NamespaceContextMap(annotation.namespaces());
+			xpath.setNamespaceContext(nsContext);
+		}
 		XPathExpression expr = xpath.compile(annotation.path());
 		Object result = expr.evaluate(root, XPathConstants.NODESET);
 		NodeList nodes = (NodeList) result;

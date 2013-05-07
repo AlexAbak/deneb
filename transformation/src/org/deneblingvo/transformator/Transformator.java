@@ -16,6 +16,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.xpath.XPathExpressionException;
 
 import net.sf.saxon.TransformerFactoryImpl;
+import net.sf.saxon.s9api.Processor;
+import net.sf.saxon.s9api.DocumentBuilder;
 
 import org.deneblingvo.serialization.xml.Reader;
 import org.w3c.dom.Document;
@@ -44,10 +46,10 @@ public class Transformator {
 		Reader reader = new Reader();
 		reader.read(document, transformation);
 
-		if (transformation.stylesheet == null) {
-			System.out.println("transformation.stylesheet == null");
-		}
-		Document stylesheet = builder.parse(transformation.stylesheet.href);
+		Processor processor = new Processor(false);
+		DocumentBuilder documentBuilder = processor.newDocumentBuilder();
+		
+		//Document stylesheet = builder.parse(transformation.stylesheet.href);
 		/*
 		Vector<Document> sources = new Vector<Document>();
 

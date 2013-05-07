@@ -12,6 +12,6 @@ public @interface Xpath {
 	
 	Class<?> itemClass() default Object.class;
 
-	String [] namespaces() default "";
+	String [] namespaces() default {};
 
 }
