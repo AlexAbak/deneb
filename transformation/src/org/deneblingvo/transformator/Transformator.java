@@ -2,25 +2,21 @@ package org.deneblingvo.transformator;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Vector;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMResult;
-import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamSource;
 import javax.xml.xpath.XPathExpressionException;
 
-import net.sf.saxon.TransformerFactoryImpl;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.DocumentBuilder;
+import net.sf.saxon.s9api.SAXDestination;
+import net.sf.saxon.s9api.SaxonApiException;
+import net.sf.saxon.s9api.XdmNode;
+import net.sf.saxon.s9api.XsltCompiler;
+import net.sf.saxon.s9api.XsltExecutable;
+import net.sf.saxon.s9api.XsltTransformer;
 
 import org.deneblingvo.serialization.xml.Reader;
-import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 public class Transformator {
@@ -35,21 +31,27 @@ public class Transformator {
 	 * @throws SecurityException 
 	 * @throws NoSuchFieldException 
 	 * @throws TransformerException 
+	 * @throws SaxonApiException 
 	 */
-	public void transformate(InputStream transformationStream) throws ParserConfigurationException, SAXException, IOException, NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, TransformerException {
-	
-		DocumentBuilderFactory factory =  DocumentBuilderFactory.newInstance();
-		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document document = builder.parse(transformationStream);
+	public void transformate(InputStream transformationStream) throws ParserConfigurationException, SAXException, IOException, NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, TransformerException, SaxonApiException {
 
 		Transformation transformation = new Transformation();
 		Reader reader = new Reader();
-		reader.read(document, transformation);
+		reader.read(transformationStream, transformation);
 
 		Processor processor = new Processor(false);
-		DocumentBuilder documentBuilder = processor.newDocumentBuilder();
+		StreamSource stylesheetSource = new StreamSource(transformation.stylesheet.href);
+		XsltCompiler xsltCompiler = processor.newXsltCompiler();
+		XsltExecutable xsltExecutable = xsltCompiler.compile(stylesheetSource);
+		XsltTransformer xsltTransformer = xsltExecutable.load();
 		
-		//Document stylesheet = builder.parse(transformation.stylesheet.href);
+		for (int i = 0; i < transformation.source.size(); i++) {
+			StreamSource transformationSource = new StreamSource(transformation.source.get(i).href);
+			xsltTransformer.setSource(transformationSource);
+		}
+		SAXDestination destination = new SAXDestination(null);
+		xsltTransformer.setDestination(destination);
+		xsltTransformer.transform();
 		/*
 		Vector<Document> sources = new Vector<Document>();
 

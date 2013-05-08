@@ -13,6 +13,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
 
+import net.sf.saxon.s9api.SaxonApiException;
+
 import org.deneblingvo.transformator.Transformator;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -71,9 +73,10 @@ public class TransformatorTest {
 	 * @throws InstantiationException 
 	 * @throws SecurityException 
 	 * @throws NoSuchFieldException 
+	 * @throws SaxonApiException 
 	 */
 	@Test
-	public void testTransformate() throws NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, ParserConfigurationException, SAXException, IOException, TransformerException {
+	public void testTransformate() throws NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, ParserConfigurationException, SAXException, IOException, TransformerException, SaxonApiException {
 		this.transformator.transformate(this.transformationStream);
 	}
 

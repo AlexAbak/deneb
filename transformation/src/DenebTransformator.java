@@ -1,6 +1,9 @@
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import net.sf.saxon.s9api.SaxonApiException;
+
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,8 +29,9 @@ public class DenebTransformator {
 	 * @throws NoSuchFieldException 
 	 * @throws XPathExpressionException 
 	 * @throws TransformerException 
+	 * @throws SaxonApiException 
 	 */
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, TransformerException {
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, TransformerException, SaxonApiException {
 		Parameters parameters = new Parameters();
 		JCommander jc = new JCommander(parameters);
 		jc.parse(args);

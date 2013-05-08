@@ -1,5 +1,7 @@
 package org.deneblingvo.serialization.xml;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.Vector;
 
@@ -10,11 +12,15 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import javax.xml.namespace.NamespaceContext;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import org.deneblingvo.serialization.xml.Xpath;
 
@@ -140,4 +146,10 @@ public class Reader {
 		this.readNode(document.getDocumentElement(), object);
 	}
 
+	public void read (InputStream stream, Object object) throws ParserConfigurationException, SAXException, IOException, NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException {
+		DocumentBuilderFactory factory =  DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document document = builder.parse(stream);
+		this.read(document, object);
+	}
 }
