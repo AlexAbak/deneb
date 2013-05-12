@@ -1,5 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><exm:database xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://deneblingvo.org/xsd/transformator/Example/1.0 Example.xsd"><exm:table xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0" name="TABLE1">
-		<exm:field xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0" name="K_ID" type="NUMBER(32)"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<exm:database
+	xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://deneblingvo.org/xsd/transformator/Example/1.0 Example.xsd">
+	<exm:table
+		xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0"
+		name="TABLE1">
+		<exm:field
+			xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0"
+			name="K_ID"
+			type="NUMBER(32)"/>
 		<exm:field xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0" name="F_VALUE1" type="VARCHAR"/>
 	</exm:table><exm:table xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0" name="TABLE2">
 		<exm:field xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0" name="K_ID" type="NUMBER(32)"/>
@@ -13,4 +23,5 @@
 	</exm:table><exm:table xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0" name="TABLE5">
 		<exm:field xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0" name="K_ID" type="NUMBER(32)"/>
 		<exm:field xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0" name="F_VALUE5" type="VARCHAR"/>
-	</exm:table></exm:database>
+	</exm:table>
+</exm:database>

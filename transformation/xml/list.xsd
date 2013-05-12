@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://deneblingvo.org/xsd/transformator/list/1.0" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:lst="http://deneblingvo.org/xsd/transformator/list/1.0">
+
+	<xs:element name="list" type="lst:list"/>
+    
+	<xs:complexType name="list">
+		<xs:sequence>
+			<xs:any/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

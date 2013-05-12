@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://deneblingvo.org/xsd/transformator/destination/1.0" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:dst="http://deneblingvo.org/xsd/transformator/destination/1.0">
+
+	<xs:element name="destination" type="dst:destination"/>
+
+	<xs:complexType name="destination">
+		<xs:sequence>
+			<xs:element name="file" type="dst:file"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="file">
+		<xs:sequence>
+			<xs:any/>
+		</xs:sequence>
+		<xs:attribute name="href" type="anyURI"/>
+	</xs:complexType>
+
+</xs:schema>
