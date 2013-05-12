@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<exm:database xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://deneblingvo.org/xsd/transformator/Example/1.0 Example.xsd ">
-  <exm:table name="TABLE3">
-    <exm:field name="K_ID" type="NUMBER(32)"/><exm:field name="F_VALUE3"
-    	type="VARCHAR" />
-  </exm:table>
+<exm:database
+	xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://deneblingvo.org/xsd/transformator/Example/1.0 Example.xsd">
+	<exm:table name="TABLE4">
+		<exm:field name="K_ID" type="NUMBER(32)"/>
+		<exm:field name="F_VALUE4" type="VARCHAR" />
+	</exm:table>
+	<exm:table name="TABLE5">
+		<exm:field name="K_ID" type="NUMBER(32)"/>
+		<exm:field name="F_VALUE5" type="VARCHAR" />
+	</exm:table>
 </exm:database>

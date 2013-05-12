@@ -13,4 +13,7 @@ public class Transformation {
 	@Xpath(path = "dtn:source", itemClass = Source.class, namespaces = {"dtn", "http://deneblingvo.org/xsd/transformation/1.0"})
 	public Vector<Source> source;
 
+	@Xpath(path = "dtn:destination", namespaces = {"dtn", "http://deneblingvo.org/xsd/transformation/1.0"})
+	public Destination destination;
+
 }

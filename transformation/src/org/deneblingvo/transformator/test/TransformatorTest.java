@@ -3,7 +3,7 @@
  */
 package org.deneblingvo.transformator.test;
 
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
