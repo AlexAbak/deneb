@@ -70,6 +70,13 @@ public class Transformator {
 	 * @throws SaxonApiException 
 	 */
 	private void saveDestinations(Processor processor, Document destination, Destination dest) throws ParserConfigurationException, SaxonApiException {
+		File file = new File("debug.xml");
+		Serializer serialization = processor.newSerializer(file);
+		net.sf.saxon.s9api.DocumentBuilder builder = processor.newDocumentBuilder();
+		XdmNode debug_node = builder.build(new DOMSource(destination));
+		serialization.setOutputProperty(Serializer.Property.INDENT, "yes");
+		serialization.serializeNode(debug_node);
+
 		Element element = destination.getDocumentElement();
 		NodeList nodes = element.getChildNodes();
 		for (int i = 0; i < nodes.getLength(); i++) {
@@ -105,6 +112,7 @@ public class Transformator {
 		Serializer serialization = processor.newSerializer(file);
 		net.sf.saxon.s9api.DocumentBuilder builder = processor.newDocumentBuilder();
 		XdmNode node = builder.build(new DOMSource(document));
+		serialization.setOutputProperty(Serializer.Property.INDENT, "yes");
 		serialization.serializeNode(node);
 	}
 

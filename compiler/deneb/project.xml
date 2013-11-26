@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dtn:transformation xmlns:dtn="http://deneblingvo.org/xsd/transformation/1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://deneblingvo.org/xsd/transformation/1.0 ../transformation.xsd">
+	<dtn:stylesheet href="stylesheet.xsl" />
+	<dtn:source href="../../xml/Notation.java.xml" />
+	<dtn:destination href="result.xml" />
+</dtn:transformation>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<den:notation lang="pas" xmlns:den="http://deneb-lingvo.org/Notation/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://deneb-lingvo.org/Notation/1.0 Notation.xsd">
+<den:notation lang="pas" xmlns:den="http://deneblingvo.org/xsd/notation/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://deneblingvo.org/xsd/notation/1.0 notation.xsd">
   <den:definition lexeme="Notation">
     <den:repeat generosity="false">
       <den:ranges>

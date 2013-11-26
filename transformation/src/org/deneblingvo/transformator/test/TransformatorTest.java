@@ -5,6 +5,7 @@ package org.deneblingvo.transformator.test;
 
 //import static org.junit.Assert.*;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,7 +29,9 @@ import org.xml.sax.SAXException;
  *
  */
 public class TransformatorTest {
-
+	
+	final String file_name = "xml/test/Example.xml";
+	
 	private Transformator transformator;
 	private InputStream transformationStream;
 	
@@ -52,7 +55,10 @@ public class TransformatorTest {
 	@Before
 	public void setUp() throws Exception {
 		this.transformator = new Transformator();
-		this.transformationStream = new FileInputStream("xml/test/Example.xml");
+		this.transformationStream = new FileInputStream(this.file_name);
+		File curent_file = new File(this.file_name);
+		String curent_dir = curent_file.getAbsoluteFile().getParent();
+		System.setProperty("user.dir", curent_dir);
 	}
 
 	/**

@@ -217,9 +217,9 @@
       $lang = '';
     }
     $root->setAttribute('lang', $lang);
-    $root->setAttribute('xmlns:den', 'http://deneb-lingvo.org/Notation/1.0');
+    $root->setAttribute('xmlns:den', 'http://deneblingvo.org/xsd/notation/1.0');
     $root->setAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
-    $root->setAttribute('xsi:schemaLocation', 'http://deneb-lingvo.org/Notation/1.0 Notation.xsd');
+    $root->setAttribute('xsi:schemaLocation', 'http://deneblingvo.org/xsd/notation/1.0 notation.xsd');
     foreach ($notation as $line) {
       if ((trim($line) != '') && (substr($line, 0, 2) != '//')) {
         $pos = strpos($line, ':=');
