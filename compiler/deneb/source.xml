@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lst:list xmlns:lst="http://deneblingvo.org/xsd/transformator/list/1.0">
+   <den:notation xmlns=""
+                 xmlns:den="http://deneblingvo.org/xsd/notation/1.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 lang="java"
+                 xsi:schemaLocation="http://deneblingvo.org/xsd/notation/1.0 notation.xsd">
+      <den:definition xmlns="" lexeme="Notation">
+         <den:repeat xmlns="" generosity="false">
+            <den:ranges xmlns="">
+               <den:range xmlns="" max="0" min="0"/>
+            </den:ranges>
+            <den:body xmlns="">
+               <den:lexeme xmlns="" ignore="false" name="NotationItem"/>
+            </den:body>
+            <den:glue xmlns=""/>
+         </den:repeat>
+      </den:definition>
+      <den:definition xmlns="" lexeme="NotationItem">
+         <den:choice xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="DefinitionLexeme"/>
+            <den:lexeme xmlns="" ignore="false" name="Comment"/>
+            <den:lexeme xmlns="" ignore="true" name="Space"/>
+         </den:choice>
+      </den:definition>
+      <den:definition xmlns="" lexeme="DefinitionLexeme">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="Lexeme"/>
+            <den:lexeme xmlns="" ignore="true" name="Space"/>
+            <den:lexeme xmlns="" ignore="true" name="DefinitionBegin"/>
+            <den:lexeme xmlns="" ignore="true" name="Space"/>
+            <den:lexeme xmlns="" ignore="false" name="Definition"/>
+            <den:lexeme xmlns="" ignore="true" name="Space"/>
+            <den:lexeme xmlns="" ignore="true" name="DefinitionEnd"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Comment">
+         <den:choice xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="SingleLineComment"/>
+            <den:lexeme xmlns="" ignore="false" name="MultiLineComment"/>
+         </den:choice>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Space">
+         <den:repeat xmlns="" generosity="false">
+            <den:ranges xmlns="">
+               <den:range xmlns="" max="0" min="0"/>
+            </den:ranges>
+            <den:body xmlns="">
+               <den:lexeme xmlns="" ignore="false" name="SpaceCharacters"/>
+            </den:body>
+            <den:glue xmlns=""/>
+         </den:repeat>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Lexeme">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="IgnoreLexemeTag"/>
+            <den:lexeme xmlns="" ignore="false" name="LexemeName"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="DefinitionBegin">
+         <den:string xmlns="" value=":="/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Definition">
+         <den:choice xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="Choice"/>
+            <den:lexeme xmlns="" ignore="false" name="List"/>
+            <den:lexeme xmlns="" ignore="false" name="Repeat"/>
+            <den:lexeme xmlns="" ignore="false" name="Lexeme"/>
+            <den:lexeme xmlns="" ignore="false" name="Characters"/>
+            <den:lexeme xmlns="" ignore="false" name="String"/>
+            <den:lexeme xmlns="" ignore="false" name="RegularExpression"/>
+            <den:lexeme xmlns="" ignore="false" name="Block"/>
+         </den:choice>
+      </den:definition>
+      <den:definition xmlns="" lexeme="DefinitionEnd">
+         <den:string xmlns="" value=";"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="SingleLineComment">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="true" name="SingleLineCommentBegin"/>
+            <den:lexeme xmlns="" ignore="false" name="AllCharacters"/>
+            <den:lexeme xmlns="" ignore="true" name="SingleLineCommentEnd"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="MultiLineComment">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="true" name="MultiLineCommentBegin"/>
+            <den:lexeme xmlns="" ignore="false" name="AllCharacters"/>
+            <den:lexeme xmlns="" ignore="true" name="MultiLineCommentEnd"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="SpaceCharacters">
+         <den:choice xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="SpaceCharacter"/>
+            <den:lexeme xmlns="" ignore="false" name="TabCharacter"/>
+            <den:lexeme xmlns="" ignore="false" name="CarriageReturnCharacter"/>
+            <den:lexeme xmlns="" ignore="false" name="LineFoldingCharacter"/>
+         </den:choice>
+      </den:definition>
+      <den:definition xmlns="" lexeme="IgnoreLexemeTag">
+         <den:repeat xmlns="" generosity="false">
+            <den:ranges xmlns="">
+               <den:range xmlns="" max="1" min="0"/>
+            </den:ranges>
+            <den:body xmlns="">
+               <den:lexeme xmlns="" ignore="false" name="IgnoreLexeme"/>
+            </den:body>
+            <den:glue xmlns=""/>
+         </den:repeat>
+      </den:definition>
+      <den:definition xmlns="" lexeme="LexemeName">
+         <den:repeat xmlns="" generosity="false">
+            <den:ranges xmlns="">
+               <den:range xmlns="" max="0" min="1"/>
+            </den:ranges>
+            <den:body xmlns="">
+               <den:lexeme xmlns="" ignore="false" name="LexemeCharacter"/>
+            </den:body>
+            <den:glue xmlns=""/>
+         </den:repeat>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Choice">
+         <den:repeat xmlns="" generosity="false">
+            <den:ranges xmlns="">
+               <den:range xmlns="" max="0" min="2"/>
+            </den:ranges>
+            <den:body xmlns="">
+               <den:lexeme xmlns="" ignore="false" name="Variant"/>
+            </den:body>
+            <den:glue xmlns="">
+               <den:lexeme xmlns="" ignore="true" name="FullChoiceDelimiter"/>
+            </den:glue>
+         </den:repeat>
+      </den:definition>
+      <den:definition xmlns="" lexeme="List">
+         <den:repeat xmlns="" generosity="false">
+            <den:ranges xmlns="">
+               <den:range xmlns="" max="0" min="2"/>
+            </den:ranges>
+            <den:body xmlns="">
+               <den:lexeme xmlns="" ignore="false" name="Item"/>
+            </den:body>
+            <den:glue xmlns="">
+               <den:lexeme xmlns="" ignore="true" name="Space"/>
+            </den:glue>
+         </den:repeat>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Repeat">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="Cvomponent"/>
+            <den:lexeme xmlns="" ignore="true" name="Space"/>
+            <den:lexeme xmlns="" ignore="false" name="GenerosityTag"/>
+            <den:lexeme xmlns="" ignore="true" name="Space"/>
+            <den:lexeme xmlns="" ignore="false" name="Count"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Characters">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="true" name="CharacterBegin"/>
+            <den:lexeme xmlns="" ignore="false" name="Literal"/>
+            <den:lexeme xmlns="" ignore="true" name="CharacterEnd"/>
+            <den:lexeme xmlns="" ignore="true" name="Space"/>
+            <den:lexeme xmlns="" ignore="true" name="RangeDelimiter"/>
+            <den:lexeme xmlns="" ignore="true" name="Space"/>
+            <den:lexeme xmlns="" ignore="true" name="CharacterBegin"/>
+            <den:lexeme xmlns="" ignore="false" name="Literal"/>
+            <den:lexeme xmlns="" ignore="true" name="CharacterEnd"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="String">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="true" name="StringBegin"/>
+            <den:lexeme xmlns="" ignore="false" name="Literals"/>
+            <den:lexeme xmlns="" ignore="true" name="StringEnd"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="RegularExpression">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="true" name="RegularExpressionTag"/>
+            <den:lexeme xmlns="" ignore="true" name="StringBegin"/>
+            <den:lexeme xmlns="" ignore="false" name="Literals"/>
+            <den:lexeme xmlns="" ignore="true" name="StringEnd"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Block">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="true" name="BlockBegin"/>
+            <den:lexeme xmlns="" ignore="false" name="Definition"/>
+            <den:lexeme xmlns="" ignore="true" name="BlockEnd"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="SingleLineCommentBegin">
+         <den:string xmlns="" value="//"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="AllCharacters">
+         <den:repeat xmlns="" generosity="true">
+            <den:ranges xmlns="">
+               <den:range xmlns="" max="0" min="0"/>
+            </den:ranges>
+            <den:body xmlns="">
+               <den:lexeme xmlns="" ignore="false" name="AllCharacter"/>
+            </den:body>
+            <den:glue xmlns=""/>
+         </den:repeat>
+      </den:definition>
+      <den:definition xmlns="" lexeme="SingleLineCommentEnd">
+         <den:choice xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="NewLine"/>
+            <den:lexeme xmlns="" ignore="false" name="CarriageReturnCharacter"/>
+            <den:lexeme xmlns="" ignore="false" name="LineFoldingCharacter"/>
+         </den:choice>
+      </den:definition>
+      <den:definition xmlns="" lexeme="MultiLineCommentBegin">
+         <den:string xmlns="" value="/*"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="MultiLineCommentEnd">
+         <den:string xmlns="" value="*/"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="SpaceCharacter">
+         <den:string xmlns="" value=" "/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="TabCharacter">
+         <den:string xmlns="" value="&#x9;"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="CarriageReturnCharacter">
+         <den:string xmlns="" value="&#xD;"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="LineFoldingCharacter">
+         <den:string xmlns="" value="&#xA;"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="IgnoreLexeme">
+         <den:string xmlns="" value="%"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="LexemeCharacter">
+         <den:characters xmlns="" max="1319" min="1024"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Variant">
+         <den:choice xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="List"/>
+            <den:lexeme xmlns="" ignore="false" name="Repeat"/>
+            <den:lexeme xmlns="" ignore="false" name="Lexeme"/>
+            <den:lexeme xmlns="" ignore="false" name="Characters"/>
+            <den:lexeme xmlns="" ignore="false" name="String"/>
+            <den:lexeme xmlns="" ignore="false" name="RegularExpression"/>
+            <den:lexeme xmlns="" ignore="false" name="Block"/>
+         </den:choice>
+      </den:definition>
+      <den:definition xmlns="" lexeme="FullChoiceDelimiter">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="Space"/>
+            <den:lexeme xmlns="" ignore="false" name="ChoiceDelimiter"/>
+            <den:lexeme xmlns="" ignore="false" name="Space"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="ChoiceDelimiter">
+         <den:string xmlns="" value="/"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Item">
+         <den:choice xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="Choice"/>
+            <den:lexeme xmlns="" ignore="false" name="Repeat"/>
+            <den:lexeme xmlns="" ignore="false" name="Lexeme"/>
+            <den:lexeme xmlns="" ignore="false" name="Characters"/>
+            <den:lexeme xmlns="" ignore="false" name="String"/>
+            <den:lexeme xmlns="" ignore="false" name="RegularExpression"/>
+            <den:lexeme xmlns="" ignore="false" name="Block"/>
+         </den:choice>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Cvomponent">
+         <den:choice xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="Lexeme"/>
+            <den:lexeme xmlns="" ignore="false" name="Block"/>
+            <den:lexeme xmlns="" ignore="false" name="RepeatBlock"/>
+         </den:choice>
+      </den:definition>
+      <den:definition xmlns="" lexeme="GenerosityTag">
+         <den:repeat xmlns="" generosity="false">
+            <den:ranges xmlns="">
+               <den:range xmlns="" max="1" min="0"/>
+            </den:ranges>
+            <den:body xmlns="">
+               <den:lexeme xmlns="" ignore="false" name="Generosity"/>
+            </den:body>
+            <den:glue xmlns=""/>
+         </den:repeat>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Count">
+         <den:choice xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="AnyQuantity"/>
+            <den:lexeme xmlns="" ignore="false" name="RangeList"/>
+            <den:lexeme xmlns="" ignore="false" name="MoreOne"/>
+            <den:lexeme xmlns="" ignore="false" name="NoMoreOne"/>
+            <den:lexeme xmlns="" ignore="false" name="Number"/>
+            <den:lexeme xmlns="" ignore="false" name="Range"/>
+            <den:lexeme xmlns="" ignore="false" name="UpRestriction"/>
+            <den:lexeme xmlns="" ignore="false" name="DownRestriction"/>
+         </den:choice>
+      </den:definition>
+      <den:definition xmlns="" lexeme="CharacterBegin">
+         <den:lexeme xmlns="" ignore="false" name="Quote"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Literal">
+         <den:choice xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="CharacterCode"/>
+            <den:lexeme xmlns="" ignore="false" name="AllCharacters"/>
+         </den:choice>
+      </den:definition>
+      <den:definition xmlns="" lexeme="CharacterEnd">
+         <den:lexeme xmlns="" ignore="false" name="Quote"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="RangeDelimiter">
+         <den:choice xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="VerticalColon"/>
+            <den:lexeme xmlns="" ignore="false" name="HorizontalColon"/>
+         </den:choice>
+      </den:definition>
+      <den:definition xmlns="" lexeme="StringBegin">
+         <den:lexeme xmlns="" ignore="false" name="Quote"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Literals">
+         <den:repeat xmlns="" generosity="false">
+            <den:ranges xmlns="">
+               <den:range xmlns="" max="0" min="1"/>
+            </den:ranges>
+            <den:body xmlns="">
+               <den:lexeme xmlns="" ignore="false" name="Literal"/>
+            </den:body>
+            <den:glue xmlns=""/>
+         </den:repeat>
+      </den:definition>
+      <den:definition xmlns="" lexeme="StringEnd">
+         <den:lexeme xmlns="" ignore="false" name="Quote"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="RegularExpressionTag">
+         <den:string xmlns="" value="№"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="BlockBegin">
+         <den:string xmlns="" value="("/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="BlockEnd">
+         <den:string xmlns="" value=")"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="AllCharacter">
+         <den:characters xmlns="" max="1114109" min="32"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="NewLine">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="CarriageReturnCharacter"/>
+            <den:lexeme xmlns="" ignore="false" name="LineFoldingCharacter"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="RepeatBlock">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="true" name="BlockBegin"/>
+            <den:lexeme xmlns="" ignore="false" name="Definition"/>
+            <den:lexeme xmlns="" ignore="true" name="Glue"/>
+            <den:lexeme xmlns="" ignore="false" name="Definition"/>
+            <den:lexeme xmlns="" ignore="true" name="BlockEnd"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Generosity">
+         <den:string xmlns="" value="!"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="AnyQuantity">
+         <den:string xmlns="" value="*"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="MoreOne">
+         <den:lexeme xmlns="" ignore="false" name="UpRestrictionCharacter"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="NoMoreOne">
+         <den:choice xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="DownRestrictionCharacter"/>
+            <den:lexeme xmlns="" ignore="false" name="AdditionalDownRestrictionCharacter"/>
+         </den:choice>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Number">
+         <den:repeat xmlns="" generosity="false">
+            <den:ranges xmlns="">
+               <den:range xmlns="" max="0" min="1"/>
+            </den:ranges>
+            <den:body xmlns="">
+               <den:lexeme xmlns="" ignore="false" name="Figure"/>
+            </den:body>
+            <den:glue xmlns=""/>
+         </den:repeat>
+      </den:definition>
+      <den:definition xmlns="" lexeme="RangeList">
+         <den:repeat xmlns="" generosity="false">
+            <den:ranges xmlns="">
+               <den:range xmlns="" max="0" min="2"/>
+            </den:ranges>
+            <den:body xmlns="">
+               <den:lexeme xmlns="" ignore="false" name="FullRangeDelimiter"/>
+            </den:body>
+            <den:glue xmlns="">
+               <den:lexeme xmlns="" ignore="true" name="RangeLimit"/>
+            </den:glue>
+         </den:repeat>
+      </den:definition>
+      <den:definition xmlns="" lexeme="RangeLimit">
+         <den:choice xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="Number"/>
+            <den:lexeme xmlns="" ignore="false" name="Range"/>
+            <den:lexeme xmlns="" ignore="false" name="UpRestriction"/>
+            <den:lexeme xmlns="" ignore="false" name="DownRestriction"/>
+         </den:choice>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Range">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="Number"/>
+            <den:lexeme xmlns="" ignore="true" name="Space"/>
+            <den:lexeme xmlns="" ignore="true" name="RangeDelimiter"/>
+            <den:lexeme xmlns="" ignore="true" name="Space"/>
+            <den:lexeme xmlns="" ignore="false" name="Number"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="UpRestriction">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="Number"/>
+            <den:lexeme xmlns="" ignore="true" name="Space"/>
+            <den:lexeme xmlns="" ignore="false" name="DownRestrictionCharacter"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="DownRestriction">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="Number"/>
+            <den:lexeme xmlns="" ignore="true" name="Space"/>
+            <den:lexeme xmlns="" ignore="false" name="UpRestrictionCharacter"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Quote">
+         <den:string xmlns="" value="&#34;"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="CharacterCode">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="true" name="CharacterCodeBegin"/>
+            <den:lexeme xmlns="" ignore="false" name="Number"/>
+            <den:lexeme xmlns="" ignore="true" name="CharacterCodeEnd"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="VerticalColon">
+         <den:string xmlns="" value=":"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="HorizontalColon">
+         <den:string xmlns="" value=".."/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Glue">
+         <den:string xmlns="" value="_"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="UpRestrictionCharacter">
+         <den:string xmlns="" value="+"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="DownRestrictionCharacter">
+         <den:string xmlns="" value="-"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="AdditionalDownRestrictionCharacter">
+         <den:string xmlns="" value="?"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="Figure">
+         <den:characters xmlns="" max="57" min="48"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="FullRangeDelimiter">
+         <den:list xmlns="">
+            <den:lexeme xmlns="" ignore="false" name="Space"/>
+            <den:lexeme xmlns="" ignore="false" name="RangeDelimiter"/>
+            <den:lexeme xmlns="" ignore="false" name="Space"/>
+         </den:list>
+      </den:definition>
+      <den:definition xmlns="" lexeme="RangeDelimiter">
+         <den:string xmlns="" value=","/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="CharacterCodeBegin">
+         <den:string xmlns="" value="№"/>
+      </den:definition>
+      <den:definition xmlns="" lexeme="CharacterCodeEnd">
+         <den:string xmlns="" value=";"/>
+      </den:definition>
+   </den:notation>
+</lst:list>

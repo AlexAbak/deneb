@@ -36,8 +36,9 @@ public class Transformator {
 	 * @throws ParserConfigurationException 
 	 * @throws IOException 
 	 * @throws SAXException 
+	 * @throws SaxonApiException 
 	 */
-	private DOMSource createSource(Vector<Source> source) throws ParserConfigurationException, SAXException, IOException {
+	private DOMSource createSource(Vector<Source> source) throws ParserConfigurationException, SAXException, IOException, SaxonApiException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder = factory.newDocumentBuilder();
 		Document document = documentBuilder.newDocument();
@@ -49,7 +50,24 @@ public class Transformator {
 			Node tsNode = document.adoptNode(tsDocument.getDocumentElement());
 			root.appendChild(tsNode);
 		}
+		saveSource(document, "source.xml");
 		return new DOMSource(document);
+	}
+	
+	/**
+	 * @param document
+	 * @param href
+	 * @return
+	 * @throws SaxonApiException 
+	 */
+	private void saveSource(Document document, String href) throws SaxonApiException {
+		Processor processor = new Processor(false);
+		File file = new File(href);
+		Serializer serialization = processor.newSerializer(file);
+		net.sf.saxon.s9api.DocumentBuilder builder = processor.newDocumentBuilder();
+		XdmNode node = builder.build(new DOMSource(document));
+		serialization.setOutputProperty(Serializer.Property.INDENT, "yes");
+		serialization.serializeNode(node);		
 	}
 
 	/**
