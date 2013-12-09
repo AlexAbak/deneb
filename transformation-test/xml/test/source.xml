@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lst:list xmlns:lst="http://deneblingvo.org/xsd/transformator/list/1.0">
+   <exm:database xmlns=""
+                 xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://deneblingvo.org/xsd/transformator/Example/1.0 Example.xsd">
+	     <exm:table xmlns="" name="TABLE1">
+		       <exm:field xmlns="" name="K_ID" type="NUMBER(32)"/>
+		       <exm:field xmlns="" name="F_VALUE1" type="VARCHAR"/>
+	     </exm:table>
+	     <exm:table xmlns="" name="TABLE2">
+		       <exm:field xmlns="" name="K_ID" type="NUMBER(32)"/>
+		       <exm:field xmlns="" name="F_VALUE2" type="VARCHAR"/>
+	     </exm:table>
+	     <exm:table xmlns="" name="TABLE3">
+		       <exm:field xmlns="" name="K_ID" type="NUMBER(32)"/>
+		       <exm:field xmlns="" name="F_VALUE3" type="VARCHAR"/>
+	     </exm:table>
+   </exm:database>
+   <exm:database xmlns=""
+                 xmlns:exm="http://deneblingvo.org/xsd/transformator/Example/1.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://deneblingvo.org/xsd/transformator/Example/1.0 Example.xsd">
+	     <exm:table xmlns="" name="TABLE4">
+		       <exm:field xmlns="" name="K_ID" type="NUMBER(32)"/>
+		       <exm:field xmlns="" name="F_VALUE4" type="VARCHAR"/>
+	     </exm:table>
+	     <exm:table xmlns="" name="TABLE5">
+		       <exm:field xmlns="" name="K_ID" type="NUMBER(32)"/>
+		       <exm:field xmlns="" name="F_VALUE5" type="VARCHAR"/>
+	     </exm:table>
+   </exm:database>
+</lst:list>
