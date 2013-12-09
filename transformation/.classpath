@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/jcommander-master"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/serialization"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/saxon9he"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/saxon9he"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/serialization"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jcommander-master"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
