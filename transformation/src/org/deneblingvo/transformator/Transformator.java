@@ -38,7 +38,7 @@ public class Transformator {
 	 * @throws SAXException 
 	 * @throws SaxonApiException 
 	 */
-	private DOMSource createSource(Vector<Source> source) throws ParserConfigurationException, SAXException, IOException, SaxonApiException {
+	private DOMSource createSource(boolean isDebug, Vector<Source> source) throws ParserConfigurationException, SAXException, IOException, SaxonApiException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder = factory.newDocumentBuilder();
 		Document document = documentBuilder.newDocument();
@@ -50,7 +50,9 @@ public class Transformator {
 			Node tsNode = document.adoptNode(tsDocument.getDocumentElement());
 			root.appendChild(tsNode);
 		}
-		saveSource(document, "source.xml");
+		if (isDebug) {
+			saveSource(document, "source.xml");
+		}
 		return new DOMSource(document);
 	}
 	
@@ -87,13 +89,15 @@ public class Transformator {
 	 * @throws ParserConfigurationException 
 	 * @throws SaxonApiException 
 	 */
-	private void saveDestinations(Processor processor, Document destination, Destination dest) throws ParserConfigurationException, SaxonApiException {
-		File file = new File("debug.xml");
-		Serializer serialization = processor.newSerializer(file);
-		net.sf.saxon.s9api.DocumentBuilder builder = processor.newDocumentBuilder();
-		XdmNode debug_node = builder.build(new DOMSource(destination));
-		serialization.setOutputProperty(Serializer.Property.INDENT, "yes");
-		serialization.serializeNode(debug_node);
+	private void saveDestinations(boolean isDebug, Processor processor, Document destination, Destination dest) throws ParserConfigurationException, SaxonApiException {
+		if (isDebug) {
+			File file = new File("debug.xml");
+			Serializer serialization = processor.newSerializer(file);
+			net.sf.saxon.s9api.DocumentBuilder builder = processor.newDocumentBuilder();
+			XdmNode debug_node = builder.build(new DOMSource(destination));
+			serialization.setOutputProperty(Serializer.Property.INDENT, "yes");
+			serialization.serializeNode(debug_node);
+		}
 
 		Element element = destination.getDocumentElement();
 		NodeList nodes = element.getChildNodes();
@@ -162,7 +166,7 @@ public class Transformator {
 	 * @throws NoSuchFieldException 
 	 * @throws SaxonApiException 
 	 */
-	public void transformate(InputStream transformationStream) throws NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, ParserConfigurationException, SAXException, IOException, SaxonApiException {
+	public void transformate(boolean isDebug, InputStream transformationStream) throws NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, ParserConfigurationException, SAXException, IOException, SaxonApiException {
 
 		Transformation transformation = new Transformation();
 		Reader reader = new Reader();
@@ -174,12 +178,12 @@ public class Transformator {
 		XsltExecutable xsltExecutable = xsltCompiler.compile(stylesheetSource);
 		XsltTransformer xsltTransformer = xsltExecutable.load();
 
-		xsltTransformer.setSource(this.createSource(transformation.source));
+		xsltTransformer.setSource(this.createSource(isDebug, transformation.source));
 		Document destination = this.createDestination();
 		xsltTransformer.setDestination(new DOMDestination(destination));
 		xsltTransformer.transform();
 		
-		this.saveDestinations(processor, destination, transformation.destination);
+		this.saveDestinations(isDebug, processor, destination, transformation.destination);
 	}
 
 }

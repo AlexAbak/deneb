@@ -10,7 +10,7 @@ public class Parameters {
 		description = "имя файла",
 		converter = FileConverter.class
 	)
-	public 	File file;
+	public File file;
 
 	@Parameter(
 		names = { "-h", "--help" },
@@ -18,5 +18,12 @@ public class Parameters {
 		help = true
 	)
 	boolean help = false;
+
+	@Parameter(
+		names = { "-d", "--debug" },
+		description = "отладка",
+		help = true
+	)
+	public boolean debug = false;
 
 }

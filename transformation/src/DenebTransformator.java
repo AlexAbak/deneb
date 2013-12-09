@@ -46,12 +46,12 @@ public class DenebTransformator {
 			String curent_dir = parameters.file.getAbsoluteFile().getParent();
 			System.setProperty("user.dir", curent_dir);
 			source = new FileInputStream(parameters.file);
-			transformator.transformate(source);
+			transformator.transformate(parameters.debug, source);
 			source.close();
 		} else {
 			jc.usage();
 			source = System.in;
-			transformator.transformate(source);
+			transformator.transformate(parameters.debug, source);
 		}
 	}
 

@@ -83,7 +83,7 @@ public class TransformatorTest {
 	 */
 	@Test
 	public void testTransformate() throws NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, ParserConfigurationException, SAXException, IOException, TransformerException, SaxonApiException {
-		this.transformator.transformate(this.transformationStream);
+		this.transformator.transformate(true, this.transformationStream);
 	}
 
 }
