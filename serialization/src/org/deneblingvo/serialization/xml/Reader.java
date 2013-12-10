@@ -22,10 +22,13 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import org.deneblingvo.serialization.xml.Xpath;
-import net.sf.saxon.xpath.XPathFactoryImpl;
-
 public class Reader {
+	
+	private XPathFactory factory;
+	
+	public Reader(XPathFactory factory) {
+		this.factory = factory;
+	}
 	
 	private void readFieldValue(Node node, Object obj, Field field, Class<?> fieldClass) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 		String s = node.getNodeValue();
@@ -92,8 +95,7 @@ public class Reader {
 	}
 
 	private void readFieldXpath(Node root, Object obj, Field field, Class<?> fieldClass, Xpath annotation) throws XPathExpressionException, IllegalArgumentException, IllegalAccessException, InstantiationException {
-		XPathFactory factory = XPathFactory.newInstance();
-		XPath xpath = factory.newXPath();
+		XPath xpath = this.factory.newXPath();
 		if (annotation.namespaces().length > 0) {
 			NamespaceContext nsContext = new NamespaceContextMap(annotation.namespaces());
 			xpath.setNamespaceContext(nsContext);
@@ -127,9 +129,7 @@ public class Reader {
 		Class<?> objectClass = object.getClass();
 		Xpath annotation = objectClass.getAnnotation(Xpath.class);
 		if (annotation != null) {
-			// XPathFactory factory = XPathFactory.newInstance();
-			XPathFactory factory = new XPathFactoryImpl();
-			XPath xpath = factory.newXPath();
+			XPath xpath = this.factory.newXPath();
 			if (annotation.namespaces().length > 0) {
 				NamespaceContext nsContext = new NamespaceContextMap(annotation.namespaces());
 				xpath.setNamespaceContext(nsContext);
