@@ -23,6 +23,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import org.deneblingvo.serialization.xml.Xpath;
+import net.sf.saxon.xpath.XPathFactoryImpl;
 
 public class Reader {
 	
@@ -126,7 +127,8 @@ public class Reader {
 		Class<?> objectClass = object.getClass();
 		Xpath annotation = objectClass.getAnnotation(Xpath.class);
 		if (annotation != null) {
-			XPathFactory factory = XPathFactory.newInstance();
+			// XPathFactory factory = XPathFactory.newInstance();
+			XPathFactory factory = new XPathFactoryImpl();
 			XPath xpath = factory.newXPath();
 			if (annotation.namespaces().length > 0) {
 				NamespaceContext nsContext = new NamespaceContextMap(annotation.namespaces());
