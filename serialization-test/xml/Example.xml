@@ -3,4 +3,5 @@
   <exm:field_attribute int_attribute="12321" string_attribute="qwewq"/>
   <exm:field_attributes int_attribute="121" string_attribute="qwq"/>
   <exm:field_attributes int_attribute="1" string_attribute="q"/>
+  <exm:text_node>text_node</exm:text_node>
 </exm:root>

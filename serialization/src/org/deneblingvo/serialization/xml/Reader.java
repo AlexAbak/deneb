@@ -32,6 +32,15 @@ public class Reader {
 	
 	private void readFieldValue(Node node, Object obj, Field field, Class<?> fieldClass) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 		String s = node.getNodeValue();
+		if ((node.getNodeType() == Node.ELEMENT_NODE) && (s == null)) {
+			NodeList nodes = node.getChildNodes();
+			if ((nodes != null) && (nodes.getLength() == 1)) {
+				Node textNode = nodes.item(0);
+				if (textNode.getNodeType() == Node.TEXT_NODE) {
+					s = textNode.getNodeValue();;
+				}
+			}
+		}
 		if (fieldClass.isPrimitive()) {
 			if (fieldClass == Boolean.TYPE) {
 				boolean v = Boolean.parseBoolean(s);

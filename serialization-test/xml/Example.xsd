@@ -12,6 +12,10 @@
     			type="exm:field_attributes" minOccurs="0"
     			maxOccurs="unbounded">
     		</xs:element>
+    		<xs:element name="text_node"
+    			type="xs:string" minOccurs="1"
+    			maxOccurs="1">
+    		</xs:element>
     	</xs:sequence>
     	<xs:attribute name="int_attribute" type="xs:int"></xs:attribute>
     	<xs:attribute name="string_attribute" type="xs:string"></xs:attribute>
@@ -26,4 +30,5 @@
     	<xs:attribute name="int_attribute" type="xs:int"></xs:attribute>
     	<xs:attribute name="string_attribute" type="xs:string"></xs:attribute>
     </xs:complexType>
+
 </xs:schema>

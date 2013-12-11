@@ -9,15 +9,18 @@ import java.io.InputStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.junit.Assert;
-
 import org.deneblingvo.serialization.xml.Reader;
+
+import org.junit.Assert;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import org.w3c.dom.Document;
+
+import net.sf.saxon.xpath.XPathFactoryImpl;
 
 /**
  * @author alex
@@ -49,7 +52,7 @@ public class ReaderTest {
 	@Before
 	public void setUp() throws Exception {
 		this.example = new ExampleReaderDestination();
-		this.reader = new Reader();
+		this.reader = new Reader(new XPathFactoryImpl());
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		InputStream source = new FileInputStream("xml/Example.xml");
@@ -69,7 +72,6 @@ public class ReaderTest {
 	@Test
 	public void testRead() throws Exception {
 		this.reader.read(this.document, this.example);
-		
 		Assert.assertEquals(1234321, this.example.int_attribute);
 		Assert.assertEquals("qwerewq", this.example.string_attribute);
 		Assert.assertEquals(12321, this.example.field_attribute.int_attribute);
@@ -79,6 +81,7 @@ public class ReaderTest {
 		Assert.assertEquals("qwq", this.example.field_attributes.get(0).string_attribute);
 		Assert.assertEquals(1, this.example.field_attributes.get(1).int_attribute);
 		Assert.assertEquals("q", this.example.field_attributes.get(1).string_attribute);
+		Assert.assertEquals("text_node", this.example.text_node);
 	}
 
 }

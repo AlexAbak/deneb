@@ -21,6 +21,8 @@ import net.sf.saxon.s9api.XsltCompiler;
 import net.sf.saxon.s9api.XsltExecutable;
 import net.sf.saxon.s9api.XsltTransformer;
 
+import net.sf.saxon.xpath.XPathFactoryImpl;
+
 import org.deneblingvo.serialization.xml.Reader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -169,7 +171,7 @@ public class Transformator {
 	public void transformate(boolean isDebug, InputStream transformationStream) throws NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, ParserConfigurationException, SAXException, IOException, SaxonApiException {
 
 		Transformation transformation = new Transformation();
-		Reader reader = new Reader();
+		Reader reader = new Reader(new XPathFactoryImpl());
 		reader.read(transformationStream, transformation);
 
 		Processor processor = new Processor(false);
