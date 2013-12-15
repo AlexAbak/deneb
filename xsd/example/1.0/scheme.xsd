@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://deneblingvo.org/xsd/example/1.0"
+            elementFormDefault="qualified"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:exm="http://deneblingvo.org/xsd/example/1.0">
+
+	<xsd:annotation>
+		<xsd:documentation>Схема тестирования десериализатора</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:element name="root"
+	             type="exm:root">
+		<xsd:annotation>
+			<xsd:documentation>Корневой элемент</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:complexType name="root">
+		<xsd:sequence>
+			<xsd:element name="field_attribute"
+			             type="exm:field_attribute"
+			             minOccurs="1"
+			             maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>Элемент содержащий объект</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="field_attributes"
+			             type="exm:field_attributes"
+			             minOccurs="0"
+			             maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Элемент содержащий список объектов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="text_node"
+			             type="xsd:string"
+			             minOccurs="1"
+			             maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>Элемент содержащий текст</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="int_attribute" 
+		               type="xsd:int">
+			<xsd:annotation>
+				<xsd:documentation>Атрибут содержащий целое</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="string_attribute"
+		               type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>Атрибут содержащий строку</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		</xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="field_attribute">
+		<xsd:attribute name="int_attribute" 
+		               type="xsd:int">
+			<xsd:annotation>
+				<xsd:documentation>Атрибут содержащий целое</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="string_attribute"
+		               type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>Атрибут содержащий строку</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="field_attributes">
+		<xsd:attribute name="int_attribute" 
+		               type="xsd:int">
+			<xsd:annotation>
+				<xsd:documentation>Атрибут содержащий целое</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="string_attribute"
+		               type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>Атрибут содержащий строку</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+
+</xsd:schema>

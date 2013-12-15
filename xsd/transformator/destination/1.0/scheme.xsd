@@ -14,6 +14,7 @@
 			<xs:any/>
 		</xs:sequence>
 		<xs:attribute name="href" type="anyURI"/>
+		<xs:attribute name="text" type="xs:boolean"/>
 	</xs:complexType>
 
 </xs:schema>

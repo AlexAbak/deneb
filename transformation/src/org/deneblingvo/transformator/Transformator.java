@@ -1,6 +1,7 @@
 package org.deneblingvo.transformator;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Vector;
@@ -26,6 +27,7 @@ import net.sf.saxon.xpath.XPathFactoryImpl;
 import org.deneblingvo.serialization.xml.Reader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Text;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -113,8 +115,47 @@ public class Transformator {
 				} else {
 					href = dest.href;
 				}
-				this.saveDestination(processor, cur, href);
+				boolean text = false;
+				if (cur.hasAttribute("text")) {
+					text = cur.getAttribute("text").equals("true");
+				} else {
+					text = dest.text;
+				}
+				if (text) {
+					this.saveTextDestination(processor, cur, href);
+				} else {
+					this.saveDestination(processor, cur, href);
+				}
 			}
+		}
+	}
+
+	/**
+	 * @param cur
+	 * @param href
+	 * @throws ParserConfigurationException 
+	 * @throws SaxonApiException 
+	 */
+	private void saveTextDestination(Processor processor, Element element, String href) {
+		String value = "";
+		NodeList nodes = element.getChildNodes();
+		for (int i = 0; i < nodes.getLength(); i++) {
+			Node node = nodes.item(i);
+			if (node.getNodeType() == Node.TEXT_NODE) {
+				Text cur = (Text)node;
+				value = value.concat(cur.getNodeValue());
+			}
+		}
+		File file = new File(href);
+		FileWriter fileWriter;
+		try {
+			File dir = file.getCanonicalFile().getParentFile();
+			dir.mkdirs();
+			fileWriter = new FileWriter(file);
+			fileWriter.write(value);
+			fileWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -133,6 +174,12 @@ public class Transformator {
 		document.appendChild(root);
 
 		File file = new File(href);
+		try {
+			File dir = file.getCanonicalFile().getParentFile();
+				dir.mkdirs();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		Serializer serialization = processor.newSerializer(file);
 		net.sf.saxon.s9api.DocumentBuilder builder = processor.newDocumentBuilder();
 		XdmNode node = builder.build(new DOMSource(document));

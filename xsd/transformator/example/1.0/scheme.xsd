@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://deneblingvo.org/xsd/transformator/example/1.0"
+            elementFormDefault="qualified"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:exm="http://deneblingvo.org/xsd/transformator/example/1.0">
+
+	<xsd:annotation>
+		<xsd:documentation>Схема тестирования трансформатора</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:element name="database" type="exm:database">
+		<xsd:annotation>
+			<xsd:documentation>Условная база данных</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:complexType name="database">
+		<xsd:sequence>
+			<xsd:element name="table"
+			             type="exm:table"
+			             minOccurs="0"
+			             maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Условная таблица</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="table">
+		<xsd:sequence>
+			<xsd:element name="field" type="exm:field" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Условное поле</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="field">
+		<xsd:attribute name="name" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>Имя поля</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="type" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>Тип поля</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+
+</xsd:schema>
