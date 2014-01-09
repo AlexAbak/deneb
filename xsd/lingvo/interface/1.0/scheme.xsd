@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://deneblingvo.org/lingvo/interface/1.0"
+           xmlns:int="http://deneblingvo.org/lingvo/interface/1.0"
+           elementFormDefault="qualified">
+
+	<xs:complexType name="interface">
+		<xs:annotation>
+			<xs:documentation>Интерфейс.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:choice>
+				<xs:element name="property" type="int:property"></xs:element>
+				<xs:element name="method" type="int:method"></xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="interface"
+	            type="int:interface">
+	</xs:element>
+
+
+	<xs:complexType name="property">
+		<xs:attribute name="type" type="xs:IDREF"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="method"></xs:complexType>
+
+</xs:schema>

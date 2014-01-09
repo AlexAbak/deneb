@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://deneblingvo.org/xsd/notation/1.0" xmlns:tns="http://deneblingvo.org/xsd/notation/1.0" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://deneblingvo.org/xsd/notation/1.0"
+           xmlns:tns="http://deneblingvo.org/xsd/notation/1.0"
+           elementFormDefault="qualified">
+
   <xs:complexType name="notation">
     <xs:sequence minOccurs="1" maxOccurs="unbounded">
       <xs:element name="definition" type="tns:definition"></xs:element>
