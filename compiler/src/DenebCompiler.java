@@ -2,8 +2,6 @@ import java.io.*;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.deneblingvo.language.*;
-import org.deneblingvo.notation.*;
 import org.deneblingvo.parser.*;
 import org.xml.sax.SAXException;
 
@@ -15,10 +13,12 @@ public class DenebCompiler {
 		DenebCompilerParameters parameters = new DenebCompilerParameters();
 		JCommander jc = new JCommander(parameters);
 		jc.parse(args);
+
+		/*
 		Notationable notation;
 		notation = new Notation();
 		Parser parser;
-		
+
 		parser = new Parser(notation);
 		FileInputStream source;
 		if (parameters.file.isFile()) {
@@ -28,6 +28,8 @@ public class DenebCompiler {
 			jc.setProgramName("DenebCompiler");
 			jc.usage();
 		}
+		*/
+
 	}
 
 }

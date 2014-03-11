@@ -10,7 +10,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
 
-import org.deneblingvo.transformator.Parameters;
 import org.deneblingvo.transformator.Transformator;
 
 import com.beust.jcommander.JCommander;

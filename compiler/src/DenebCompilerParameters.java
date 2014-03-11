@@ -2,7 +2,7 @@ import com.beust.jcommander.*;
 import java.io.*;
 
 public class DenebCompilerParameters {
-	
+
 	@Parameter(
 		names ={ "-f", "--file"},
 		description = "имя файла",
@@ -10,6 +10,20 @@ public class DenebCompilerParameters {
 		required = true
 	)
 	File file;
+
+	@Parameter(
+		names ={ "-n", "--notation"},
+		description = "нотация",
+		converter = FileConverter.class
+	)
+	File notation;
+
+	@Parameter(
+		names ={ "-x", "--xml"},
+		description = "xml нотация",
+		converter = FileConverter.class
+	)
+	File xml;
 
 	@Parameter(
 		names = { "-h", "--help" },
