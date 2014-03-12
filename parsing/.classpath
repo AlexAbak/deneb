@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jcommander-master"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/saxon9he"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/serialization"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/utils"/>
-	<classpathentry kind="output" path="bin"/>
+<?xml version="1.0" encoding="UTF-8"?><classpath>
+<classpathentry kind="src" path="src"/>
+<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jcommander-master"/>
+<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/saxon9he"/>
+<classpathentry kind="src" path="/serialization"/>
+<classpathentry kind="src" path="/utils"/>
+<classpathentry kind="output" path="bin"/>
+<classpathentry kind="lib" path="/sdcard/AppProjects/jcommander-1.31-SNAPSHOT.jar"/>
+<classpathentry kind="lib" path="/sdcard/AppProjects/saxon9he.jar"/>
 </classpath>
