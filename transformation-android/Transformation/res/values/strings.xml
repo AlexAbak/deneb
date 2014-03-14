@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Проекты</string>
+	<string name="pickFile">Выбрать...</string>
+	<string name="addFile">Добавить</string>
+    <string name="app_name">Трансформация</string>
+
+</resources>

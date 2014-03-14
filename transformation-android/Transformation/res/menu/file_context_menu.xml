@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item
+        android:id="@+id/file_run"
+        android:title="Запустить"/>
+ 
+	<item
+		android:id="@+id/file_open"
+		android:title="Открыть"/>
+
+	<item
+		android:id="@+id/file_del"
+		android:title="Удалить"/>
+
+</menu>
