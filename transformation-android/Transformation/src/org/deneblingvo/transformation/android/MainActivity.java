@@ -14,22 +14,26 @@ import android.view.ContextMenu.*;
 public class MainActivity extends Activity
 {
 	
+	public TextView tvHeader;
+	private ListView lvFiles;
+	private EditText etFileName;
+	private Button btPickFile;
+	private Button btAddFile;
+	
 	private static final int PICKFILE_RESULT_CODE = 1;
 	
-	private SettingsDb settings;
+	public SettingsDb settings;
 	
-	private Vector<SettingsFile> files;
+	public Vector<SettingsFile> files;
 	
-	private void reloadFiles() {
+	public void reloadFiles() {
 		this.files = this.settings.selectFiles();
 		String[] names = new String[this.files.size()];
 		for (int i = 0; i < this.files.size(); i++) {
 			names[i] = this.files.get(i).getPath();
 		}
-		
-		ListView l = (ListView) this.findViewById(R.id.lvMain);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
-		l.setAdapter(adapter);
+		this.lvFiles.setAdapter(adapter);
 	}
 	
 	private void initPickButton () {
@@ -41,17 +45,15 @@ public class MainActivity extends Activity
 				startActivityForResult(pick, PICKFILE_RESULT_CODE);
 			}
 		};
-		Button pickFile = (Button) this.findViewById(R.id.btFileName);
-		pickFile.setOnClickListener(addListener);
+		this.btPickFile.setOnClickListener(addListener);
 	}
 	
 	@Override 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch(requestCode){
 			case PICKFILE_RESULT_CODE: if(resultCode == RESULT_OK){
-				String FilePath = data.getData().getPath();
-				EditText t = (EditText) findViewById(R.id.etFileName);	
-				t.setText(FilePath); 
+				String FilePath = data.getData().getPath();	
+				this.etFileName.setText(FilePath); 
 			}
 			break;
 		}
@@ -61,49 +63,49 @@ public class MainActivity extends Activity
 		OnClickListener addListener = new OnClickListener() {
 			@Override
 			public void onClick (View v) {
-				EditText t = (EditText) findViewById(R.id.etFileName);
-				settings.addFile(t.getText().toString());
-				t.setText("");
+				settings.addFile(etFileName.getText().toString());
+				etFileName.setText("");
 				reloadFiles();
 			}
 		};
-		Button addFile = (Button) this.findViewById(R.id.btAddFile);
-		addFile.setOnClickListener(addListener);
+		btAddFile.setOnClickListener(addListener);
 	}
 	
+	public ActionMode action;
+	private int actionPosition;
+
 	private void initListViewActions() {
-		OnItemLongClickListener longClick = new OnItemLongClickListener() {
-			public boolean onItemLongClick(AdapterView<?> adapter, View view, int position, long id) {
-				settings.delFile(files.get(position).getId());
-				reloadFiles();
-				return true;
-			}
-		};
-		OnCreateContextMenuListener contextMenu = new OnCreateContextMenuListener() {
-			public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo info) {
-				getMenuInflater().inflate(R.menu.file_context_menu, menu);
-			}
-			public void onContextItemSelected(MenuItem item) {
-				switch(item.getItemId()) {
-					case R.id.file_del:
-						ListView l = (ListView) findViewById(R.id.lvMain);
-						settings.delFile(files.get(l.getSelectedItemPosition()).getId());
-						reloadFiles();	
-					break;
+		OnItemClickListener itemClick = new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> adapter, View view, int position, long id)
+			{
+				if (action == null) {
+					action = startActionMode(new FileContextCallback(MainActivity.this, position));
+					actionPosition = position;
+				} else {
+					if (actionPosition == position) {
+						action.finish();
+					} else {
+						action.finish();
+						action = startActionMode(new FileContextCallback(MainActivity.this, position));
+						actionPosition = position;
+					}
 				}
 			}
 		};
-		ListView l = (ListView) this.findViewById(R.id.lvMain);
-		l.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		//l.setOnItemLongClickListener(longClick);
-		l.setOnCreateContextMenuListener(contextMenu);
+		this.lvFiles.setOnItemClickListener(itemClick);
 	}
-	
+
     @Override
     public void onCreate(Bundle savedInstanceState)
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+		this.tvHeader = (TextView) this.findViewById(R.id.tvHeader);
+		this.lvFiles = (ListView) this.findViewById(R.id.lvFiles);
+		this.etFileName = (EditText) this.findViewById(R.id.etFileName);
+		this.btPickFile = (Button) this.findViewById(R.id.btPickFile);
+		this.btAddFile = (Button) this.findViewById(R.id.btAddFile);
 		this.settings = new SettingsDb(this);
 		this.initPickButton();
 		this.initAddButton();
