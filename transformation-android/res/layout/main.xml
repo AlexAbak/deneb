@@ -41,5 +41,5 @@
 			android:text="@string/addFile"/>
 
 	</LinearLayout>
-
+	
 </LinearLayout>

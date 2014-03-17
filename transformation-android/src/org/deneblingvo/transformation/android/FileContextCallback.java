@@ -5,6 +5,8 @@ import android.webkit.*;
 import android.content.*;
 import android.net.*;
 import java.io.*;
+import org.deneblingvo.transformation.*;
+import org.deneblingvo.transformator.*;
 
 public class FileContextCallback implements ActionMode.Callback {
 
@@ -43,13 +45,22 @@ public class FileContextCallback implements ActionMode.Callback {
 		try {
 			intent.setDataAndType(Uri.parse("file://"+url), mType);
 			this.activity.startActivity(intent);
-		} catch (Exception e) {
-			this.activity.tvHeader.setText(e.getClass().getCanonicalName());
+		} catch (ActivityNotFoundException e) {
+			this.activity.tvHeader.setText(e.getLocalizedMessage());
 		}
 	}
 	
 	private void runFile() {
-		// TODO: run transformation
+		Transformator transformator = new Transformator();
+		String url = this.activity.files.get(this.position).getPath();
+		File file = new File(url);
+		try {
+			InputStream source = new FileInputStream(file);
+			transformator.transformate(false, source);
+			source.close();
+		} catch (Exception e) {
+			this.activity.tvHeader.setText(e.getLocalizedMessage());
+		}
 	}
 	
 	public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
