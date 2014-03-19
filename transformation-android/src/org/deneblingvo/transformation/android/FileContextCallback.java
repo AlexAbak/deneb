@@ -5,7 +5,6 @@ import android.webkit.*;
 import android.content.*;
 import android.net.*;
 import java.io.*;
-import org.deneblingvo.transformation.*;
 import org.deneblingvo.transformator.*;
 
 public class FileContextCallback implements ActionMode.Callback {
@@ -60,6 +59,7 @@ public class FileContextCallback implements ActionMode.Callback {
 			source.close();
 		} catch (Exception e) {
 			this.activity.tvHeader.setText(e.getLocalizedMessage());
+			e.printStackTrace();
 		}
 	}
 	
