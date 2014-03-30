@@ -10,6 +10,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
 
+import org.deneblingvo.transformator.NotImplementNodeType;
 import org.deneblingvo.transformator.Transformator;
 
 import com.beust.jcommander.JCommander;
@@ -29,8 +30,9 @@ public class DenebTransformator {
 	 * @throws XPathExpressionException 
 	 * @throws TransformerException 
 	 * @throws SaxonApiException 
+	 * @throws NotImplementNodeType 
 	 */
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, TransformerException, SaxonApiException {
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, TransformerException, SaxonApiException, NotImplementNodeType {
 		for (int i = 0; i < args.length; i++) {
 			System.out.println(args[i]);
 		}

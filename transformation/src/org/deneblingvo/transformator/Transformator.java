@@ -1,6 +1,7 @@
 package org.deneblingvo.transformator;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +26,7 @@ import net.sf.saxon.s9api.XsltTransformer;
 import net.sf.saxon.xpath.XPathFactoryImpl;
 
 import org.deneblingvo.serialization.xml.Reader;
+import org.deneblingvo.transformator.NotImplementNodeType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
@@ -92,8 +94,10 @@ public class Transformator {
 	 * @param dest
 	 * @throws ParserConfigurationException 
 	 * @throws SaxonApiException 
+	 * @throws IOException 
+	 * @throws NotImplementNodeType 
 	 */
-	private void saveDestinations(boolean isDebug, Processor processor, Document destination, Destination dest) throws ParserConfigurationException, SaxonApiException {
+	private void saveDestinations(boolean isDebug, Processor processor, Document destination, Destination dest) throws ParserConfigurationException, SaxonApiException, IOException, NotImplementNodeType {
 		if (isDebug) {
 			File file = new File("debug.xml");
 			Serializer serialization = processor.newSerializer(file);
@@ -164,8 +168,10 @@ public class Transformator {
 	 * @param href
 	 * @throws ParserConfigurationException 
 	 * @throws SaxonApiException 
+	 * @throws IOException 
+	 * @throws NotImplementNodeType 
 	 */
-	private void saveDestination(Processor processor, Element cur, String href) throws ParserConfigurationException, SaxonApiException {
+	private void saveDestination(Processor processor, Element cur, String href) throws ParserConfigurationException, SaxonApiException, IOException, NotImplementNodeType {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder = factory.newDocumentBuilder();
 		Document document = documentBuilder.newDocument();
@@ -180,11 +186,16 @@ public class Transformator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		PlainXmlSerializer serializer = new PlainXmlSerializer(new FileOutputStream(file));
+		serializer.serialize(document);
+		
+		/*
 		Serializer serialization = processor.newSerializer(file);
 		net.sf.saxon.s9api.DocumentBuilder builder = processor.newDocumentBuilder();
 		XdmNode node = builder.build(new DOMSource(document));
 		serialization.setOutputProperty(Serializer.Property.INDENT, "yes");
 		serialization.serializeNode(node);
+		*/
 	}
 
 	/**
@@ -214,8 +225,9 @@ public class Transformator {
 	 * @throws SecurityException 
 	 * @throws NoSuchFieldException 
 	 * @throws SaxonApiException 
+	 * @throws NotImplementNodeType 
 	 */
-	public void transformate(boolean isDebug, InputStream transformationStream) throws NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, ParserConfigurationException, SAXException, IOException, SaxonApiException {
+	public void transformate(boolean isDebug, InputStream transformationStream) throws NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, ParserConfigurationException, SAXException, IOException, SaxonApiException, NotImplementNodeType {
 
 		Transformation transformation = new Transformation();
 		Reader reader = new Reader(new XPathFactoryImpl());
