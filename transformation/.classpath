@@ -2,10 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/saxon9he"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/serialization"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jcommander-master"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/utils"/>
+	<classpathentry kind="lib" path="../../java/saxon9he/saxon9he.jar"/>
+	<classpathentry kind="lib" path="../../java/jcommander-master/jcommander-1.31-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

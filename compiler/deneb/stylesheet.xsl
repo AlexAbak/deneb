@@ -22,9 +22,9 @@
 			<xsl:namespace name="dst">http://deneblingvo.org/xsd/transformator/destination/1.0</xsl:namespace>
 			<xsl:element name="dst:file"
 			             namespace="http://deneblingvo.org/xsd/transformator/destination/1.0">
+				<xsl:element name="lib:library"
+				             namespace="http://deneblingvo.org/xsd/deneb/library/1.0">
 <!--
-			tets
- 			<lib:library>
 					<xsl:for-each select="lst:list/den:notation/den:definition">
 						<lib:class>
 							<xsl:attribute name="name">
@@ -32,8 +32,8 @@
 							</xsl:attribute>
 						</lib:class>
 					</xsl:for-each>
-				</lib:library>
 -->
+				</xsl:element>
 			</xsl:element>
 		</xsl:element>
 	</xsl:template>

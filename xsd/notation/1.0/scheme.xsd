@@ -72,8 +72,8 @@
   </xs:complexType>
 
   <xs:complexType name="range">
-    <xs:attribute name="min" type="xs:string"></xs:attribute>
-    <xs:attribute name="max" type="xs:string"></xs:attribute>
+    <xs:attribute name="min" type="xs:int"></xs:attribute>
+    <xs:attribute name="max" type="xs:int"></xs:attribute>
   </xs:complexType>
 
   <xs:complexType name="list">
