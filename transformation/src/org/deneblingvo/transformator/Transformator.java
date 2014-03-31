@@ -1,38 +1,21 @@
 package org.deneblingvo.transformator;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Vector;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.xpath.XPathExpressionException;
-
-import net.sf.saxon.s9api.DOMDestination;
-import net.sf.saxon.s9api.Processor;
-import net.sf.saxon.s9api.SaxonApiException;
-import net.sf.saxon.s9api.Serializer;
-import net.sf.saxon.s9api.XdmNode;
-import net.sf.saxon.s9api.XsltCompiler;
-import net.sf.saxon.s9api.XsltExecutable;
-import net.sf.saxon.s9api.XsltTransformer;
-
-import net.sf.saxon.xpath.XPathFactoryImpl;
+import java.io.*;
+import java.util.*;
+import javax.xml.parsers.*;
+import javax.xml.transform.dom.*;
+import javax.xml.transform.stream.*;
+import javax.xml.xpath.*;
+import net.sf.saxon.s9api.*;
+import net.sf.saxon.xpath.*;
+import org.deneblingvo.serialization.xml.*;
+import org.deneblingvo.serialization.xml.plain.*;
+import org.w3c.dom.*;
+import org.xml.sax.*;
 
 import org.deneblingvo.serialization.xml.Reader;
-import org.deneblingvo.transformator.NotImplementNodeType;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Text;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
+import javax.xml.parsers.DocumentBuilder;
+import org.deneblingvo.serialization.xml.plain.Serializer;
 
 public class Transformator {
 
@@ -71,11 +54,11 @@ public class Transformator {
 	private void saveSource(Document document, String href) throws SaxonApiException {
 		Processor processor = new Processor(false);
 		File file = new File(href);
-		Serializer serialization = processor.newSerializer(file);
+		/*Serializer serialization = processor.newSerializer(file);
 		net.sf.saxon.s9api.DocumentBuilder builder = processor.newDocumentBuilder();
 		XdmNode node = builder.build(new DOMSource(document));
 		serialization.setOutputProperty(Serializer.Property.INDENT, "yes");
-		serialization.serializeNode(node);		
+		serialization.serializeNode(node);		*/
 	}
 
 	/**
@@ -99,12 +82,12 @@ public class Transformator {
 	 */
 	private void saveDestinations(boolean isDebug, Processor processor, Document destination, Destination dest) throws ParserConfigurationException, SaxonApiException, IOException, NotImplementNodeType {
 		if (isDebug) {
-			File file = new File("debug.xml");
+			/*File file = new File("debug.xml");
 			Serializer serialization = processor.newSerializer(file);
 			net.sf.saxon.s9api.DocumentBuilder builder = processor.newDocumentBuilder();
 			XdmNode debug_node = builder.build(new DOMSource(destination));
 			serialization.setOutputProperty(Serializer.Property.INDENT, "yes");
-			serialization.serializeNode(debug_node);
+			serialization.serializeNode(debug_node);*/
 		}
 
 		Element element = destination.getDocumentElement();
@@ -186,8 +169,8 @@ public class Transformator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		PlainXmlSerializer serializer = new PlainXmlSerializer(new FileOutputStream(file));
-		serializer.serialize(document);
+		Serializer serializer = new Serializer();
+		serializer.serialize(document, new FileOutputStream(file));
 		
 		/*
 		Serializer serialization = processor.newSerializer(file);

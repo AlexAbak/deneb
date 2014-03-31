@@ -1,4 +1,4 @@
-package org.deneblingvo.transformator;
+package org.deneblingvo.serialization.xml.plain;
 
 public class NotImplementNodeType extends Exception {
 

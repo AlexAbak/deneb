@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="src" path="../serialization"/>
 	<classpathentry kind="src" path="../transformation"/>
+	<classpathentry kind="src" path="../plain-xml-serializer"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="lib" path="../../java/saxon9he/saxon9he.jar"/>

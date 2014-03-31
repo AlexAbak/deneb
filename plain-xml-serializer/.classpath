@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/plain-xml-serializer"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/serialization"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/utils"/>
 	<classpathentry kind="lib" path="../../java/saxon9he/saxon9he.jar"/>
