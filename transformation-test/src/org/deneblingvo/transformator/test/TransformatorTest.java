@@ -16,6 +16,7 @@ import javax.xml.xpath.XPathExpressionException;
 
 import net.sf.saxon.s9api.SaxonApiException;
 
+import org.deneblingvo.serialization.xml.plain.NotImplementNodeType;
 import org.deneblingvo.transformator.Transformator;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -80,9 +81,10 @@ public class TransformatorTest {
 	 * @throws SecurityException 
 	 * @throws NoSuchFieldException 
 	 * @throws SaxonApiException 
+	 * @throws NotImplementNodeType 
 	 */
 	@Test
-	public void testTransformate() throws NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, ParserConfigurationException, SAXException, IOException, TransformerException, SaxonApiException {
+	public void testTransformate() throws NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, XPathExpressionException, ParserConfigurationException, SAXException, IOException, TransformerException, SaxonApiException, NotImplementNodeType {
 		this.transformator.transformate(true, this.transformationStream);
 	}
 

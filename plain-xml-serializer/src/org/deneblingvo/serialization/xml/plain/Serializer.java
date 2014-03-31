@@ -32,7 +32,7 @@ public class Serializer {
 		}
 	}
 
-	private void serializeNodes(Writer writer, NsList list, NodeList nodes, int deep) throws NotImplementNodeType{
+	public void serializeNodes(Writer writer, NsList list, NodeList nodes, int deep) throws NotImplementNodeType{
 		for (int i = 0; i < nodes.getLength(); i++) {
 			Node node = nodes.item(i);
 			serializeNode(writer, list, node, deep);
@@ -42,7 +42,7 @@ public class Serializer {
 	private void serializeNode(Writer writer, NsList list, Node node, int deep) throws NotImplementNodeType {
 		for (SerializerItem item : this.items) {
 			if (item.canSerialize(node)) {
-				item.serialize(writer, list, node, deep);
+				item.serialize(this, writer, list, node, deep);
 				return;
 			}
 		}
@@ -60,7 +60,9 @@ public class Serializer {
 		NamedNodeMap attributes = element.getAttributes();
 		for (int i = 0; i < attributes.getLength(); i++) {
 			Attr attribute = (Attr) attributes.item(i);
-			list.addAttrNs(attribute.getPrefix(), attribute.getNamespaceURI(), element.getNamespaceURI());
+			if (attribute.getNamespaceURI() != "http://www.w3.org/2000/xmlns/") {
+				list.addAttrNs(attribute.getPrefix(), attribute.getNamespaceURI(), element.getNamespaceURI());
+			}
 		}
 		NodeList childs = element.getChildNodes();
 		for (int i = 0; i < childs.getLength(); i++) {

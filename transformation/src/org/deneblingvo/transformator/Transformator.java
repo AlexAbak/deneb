@@ -8,7 +8,6 @@ import javax.xml.transform.stream.*;
 import javax.xml.xpath.*;
 import net.sf.saxon.s9api.*;
 import net.sf.saxon.xpath.*;
-import org.deneblingvo.serialization.xml.*;
 import org.deneblingvo.serialization.xml.plain.*;
 import org.w3c.dom.*;
 import org.xml.sax.*;
@@ -26,8 +25,9 @@ public class Transformator {
 	 * @throws IOException 
 	 * @throws SAXException 
 	 * @throws SaxonApiException 
+	 * @throws NotImplementNodeType 
 	 */
-	private DOMSource createSource(boolean isDebug, Vector<Source> source) throws ParserConfigurationException, SAXException, IOException, SaxonApiException {
+	private DOMSource createSource(boolean isDebug, Vector<Source> source) throws ParserConfigurationException, SAXException, IOException, SaxonApiException, NotImplementNodeType {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder = factory.newDocumentBuilder();
 		Document document = documentBuilder.newDocument();
@@ -50,15 +50,13 @@ public class Transformator {
 	 * @param href
 	 * @return
 	 * @throws SaxonApiException 
+	 * @throws NotImplementNodeType 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	private void saveSource(Document document, String href) throws SaxonApiException {
-		Processor processor = new Processor(false);
-		File file = new File(href);
-		/*Serializer serialization = processor.newSerializer(file);
-		net.sf.saxon.s9api.DocumentBuilder builder = processor.newDocumentBuilder();
-		XdmNode node = builder.build(new DOMSource(document));
-		serialization.setOutputProperty(Serializer.Property.INDENT, "yes");
-		serialization.serializeNode(node);		*/
+	private void saveSource(Document document, String href) throws SaxonApiException, FileNotFoundException, IOException, NotImplementNodeType {
+		Serializer serializer = new Serializer();
+		serializer.serialize(document, new FileOutputStream(new File(href)));
 	}
 
 	/**
@@ -82,12 +80,8 @@ public class Transformator {
 	 */
 	private void saveDestinations(boolean isDebug, Processor processor, Document destination, Destination dest) throws ParserConfigurationException, SaxonApiException, IOException, NotImplementNodeType {
 		if (isDebug) {
-			/*File file = new File("debug.xml");
-			Serializer serialization = processor.newSerializer(file);
-			net.sf.saxon.s9api.DocumentBuilder builder = processor.newDocumentBuilder();
-			XdmNode debug_node = builder.build(new DOMSource(destination));
-			serialization.setOutputProperty(Serializer.Property.INDENT, "yes");
-			serialization.serializeNode(debug_node);*/
+			Serializer serializer = new Serializer();
+			serializer.serialize(destination, new FileOutputStream(new File("debug.xml")));
 		}
 
 		Element element = destination.getDocumentElement();
@@ -171,14 +165,6 @@ public class Transformator {
 		}
 		Serializer serializer = new Serializer();
 		serializer.serialize(document, new FileOutputStream(file));
-		
-		/*
-		Serializer serialization = processor.newSerializer(file);
-		net.sf.saxon.s9api.DocumentBuilder builder = processor.newDocumentBuilder();
-		XdmNode node = builder.build(new DOMSource(document));
-		serialization.setOutputProperty(Serializer.Property.INDENT, "yes");
-		serialization.serializeNode(node);
-		*/
 	}
 
 	/**

@@ -7,12 +7,6 @@ public class NsList {
 	
 	private int nsNumber = 0;
 
-	public String getPrefix(String namespaceURI)
-	{
-		// TODO: Implement this method
-		return null;
-	}
-
 	public void addAttrNs(String prefix, String namespaceURI, String elementNamespaceURI) {
 		if (namespaceURI == null) {
 			namespaceURI = elementNamespaceURI;
@@ -21,7 +15,7 @@ public class NsList {
 	}
 
 	public void addNs(String prefix, String namespaceURI) {
-		if (!this.namespaces.containsKey(namespaceURI)) {
+		if ((namespaceURI != null) && (!this.namespaces.containsKey(namespaceURI))) {
 			if (this.namespaces.containsValue(prefix)) {
 				this.nsNumber++;
 				String nsPrefix = "ns" + Integer.toString(this.nsNumber);
@@ -31,5 +25,17 @@ public class NsList {
 			}
 		}
 	}
-	
+
+	public Hashtable<String, String> getNamespaces() {
+		return this.namespaces;
+	}
+
+	public String getPrefix(String namespaceURI) {
+		if ((namespaceURI != null) && this.namespaces.containsKey(namespaceURI)) {
+			return this.namespaces.get(namespaceURI);
+		} else {
+			return null;
+		}
+	}
+
 }

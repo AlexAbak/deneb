@@ -6,5 +6,6 @@ public interface SerializerItem {
 
 	public boolean canSerialize (Node node);
 
-	public void serialize (Writer writer, NsList list, Node node, int deep);
+	public void serialize (Serializer serializer, Writer writer, NsList list, Node node, int deep);
+
 }
