@@ -6,6 +6,7 @@ import android.content.*;
 import android.net.*;
 import java.io.*;
 import org.deneblingvo.transformator.*;
+import net.sf.saxon.s9api.*;
 
 public class FileContextCallback implements ActionMode.Callback {
 
@@ -54,11 +55,28 @@ public class FileContextCallback implements ActionMode.Callback {
 		String url = this.activity.files.get(this.position).getPath();
 		File file = new File(url);
 		try {
+			String curent_dir = file.getAbsoluteFile().getParent();
+			System.setProperty("user.dir", curent_dir);
 			InputStream source = new FileInputStream(file);
 			transformator.transformate(false, source);
 			source.close();
+		} catch (SaxonApiException e) {
+			StringWriter s = new StringWriter();
+			s.write(url);
+			s.write("\n");
+			s.write(e.getLocalizedMessage());
+			s.write("\n");
+			QName errorCode = e.getErrorCode();
+			if (errorCode != null) {
+				s.write(errorCode.getLocalName());
+			} else {
+				s.write("null error");
+			}
+			s.write("\n");
+			e.printStackTrace(new PrintWriter(s));
+			this.activity.tvHeader.setText(s.toString());
 		} catch (Exception e) {
-			this.activity.tvHeader.setText(e.getLocalizedMessage());
+			this.activity.tvHeader.setText(e.getClass().getCanonicalName() + ": " + e.getLocalizedMessage());
 			e.printStackTrace();
 		}
 	}

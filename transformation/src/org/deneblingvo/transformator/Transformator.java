@@ -202,18 +202,23 @@ public class Transformator {
 		Reader reader = new Reader(new XPathFactoryImpl());
 		reader.read(transformationStream, transformation);
 
-		Processor processor = new Processor(false);
-		StreamSource stylesheetSource = new StreamSource(transformation.stylesheet.href);
-		XsltCompiler xsltCompiler = processor.newXsltCompiler();
-		XsltExecutable xsltExecutable = xsltCompiler.compile(stylesheetSource);
-		XsltTransformer xsltTransformer = xsltExecutable.load();
-
-		xsltTransformer.setSource(this.createSource(isDebug, transformation.source));
-		Document destination = this.createDestination();
-		xsltTransformer.setDestination(new DOMDestination(destination));
-		xsltTransformer.transform();
+		String curent_dir = System.getProperty("user.dir");
+		File stylesheetFile = new File(curent_dir + "/" + transformation.stylesheet.href);
 		
-		this.saveDestinations(isDebug, processor, destination, transformation.destination);
+		Processor processor = new Processor(false);
+		StreamSource stylesheetSource = new StreamSource(stylesheetFile.getAbsolutePath());
+		XsltCompiler xsltCompiler = processor.newXsltCompiler();
+		try {
+			XsltExecutable xsltExecutable = xsltCompiler.compile(stylesheetSource);
+			XsltTransformer xsltTransformer = xsltExecutable.load();
+			xsltTransformer.setSource(this.createSource(isDebug, transformation.source));
+			Document destination = this.createDestination();
+			xsltTransformer.setDestination(new DOMDestination(destination));
+			xsltTransformer.transform();
+			this.saveDestinations(isDebug, processor, destination, transformation.destination);
+		} catch (SaxonApiException e) {
+			
+		}
 	}
 
 }
